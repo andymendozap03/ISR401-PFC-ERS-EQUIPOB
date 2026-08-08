@@ -52,7 +52,9 @@
 \usepackage{caption}
 \usepackage{titlesec}
 \captionsetup{font=small, labelfont=bf}
+\usepackage{amsmath}
 \usepackage{amssymb}
+
 
 % ── Forzar "Tabla" en lugar de "Cuadro" ──────────────────────
 \renewcommand{\thetable}{\arabic{table}}
@@ -99,430 +101,616 @@ doi=true
 
 \begin{document}
 	\begin{titlepage}
-	\centering
-
-	{\large\bfseries UNIVERSIDAD TÉCNICA ESTATAL DE QUEVEDO\\[12pt]}
-
-	\includegraphics[width=0.2\textwidth]{figuras/logo_uteq.png}\\[12pt]
-
-	{\large\bfseries FACULTAD DE CIENCIAS DE LA COMPUTACIÓN\\[4pt]
-		CARRERA DE INGENIERÍA EN SOFTWARE}
-
-	\vspace{1cm}
-
-	{\normalsize\bfseries TEMA:}\\[4pt]
-	{\normalsize PRÁCTICA EXPERIMENTAL -- UNIDAD IV}\\[4pt]
-	{\normalsize Validación, Gestión de Requisitos y Herramientas CASE}\\[4pt]
-	\vspace{0.5cm}
-
-	{\normalsize\bfseries ASIGNATURA:}\\[4pt]
-	{\normalsize INGENIERÍA DE REQUERIMIENTOS}
-
-	\vspace{0.5cm}
-
-	{\normalsize\bfseries DOCENTE:}\\[4pt]
-	{\normalsize ING. GUERRERO ULLOA GLEISTON CICERÓN}
-
-	\vspace{0.5cm}
-
-	{\normalsize\bfseries INTEGRANTES:}\\[6pt]
-
-	\textit{CEDEÑO AVILA WINSTON DAMIAN},~CI: 0942833492,~wcedenoa2@uteq.edu.ec\\
-
-
-	\vspace{0.5cm}
-
-	\textit{CORDOVA CARREÑO MAYRA LUCILA},~CI: 0750286775,~mcordovac2@uteq.edu.ec\\
-
-
-	\vspace{0.5cm}
-
-	\textit{\textbf{MENDOZA PÁRRAGA ANDY JOHEL}},~CI: 1251401590,~amendozap9@uteq.edu.ec,~Titular PFC\\
-
-
-	\vspace{0.5cm}
-
-	{\normalsize\bfseries EQUIPO:}\\[4pt]
-	{\normalsize B}
-
-	\vspace{0.5cm}
-
-	{\normalsize\bfseries CURSO/PARALELO:}\\[4pt]
-	{\normalsize CUARTO SEMESTRE PARALELO ``B''}
-
-	\vspace{0.5cm}
-
-	{\normalsize\bfseries SISTEMA PFC:}\\[4pt]
-	{\normalsize MundiPets (Andy Mendoza -- Titular PFC)}
-
-	\vspace{0.5cm}
-
-	\textbf{REPOSITORIO GITHUB:}\\[4pt]
-	% NOTA (G1 -- criterio de piso): la URL debe verse completa, en una sola línea y el repo debe ser público.
-	\url{https://github.com/andymendozap03/ISR401-PFC-ERS-EQUIPOB.git}
-
-	\vspace{1cm}
-
-	{\normalsize\bfseries QUEVEDO -- LOS RÍOS -- ECUADOR}\\[4pt]
-	{\normalsize\bfseries 2026 -- 2027 PPA}
-
-\end{titlepage}
-
-
-\newpage
-\tableofcontents
-\newpage
-
+		\centering
+		
+		{\large\bfseries UNIVERSIDAD TÉCNICA ESTATAL DE QUEVEDO\\[12pt]}
+		
+		\includegraphics[width=0.2\textwidth]{figuras/logo_uteq.png}\\[12pt]
+		
+		{\large\bfseries FACULTAD DE CIENCIAS DE LA COMPUTACIÓN\\[4pt]
+			CARRERA DE INGENIERÍA EN SOFTWARE}
+		
+		\vspace{1cm}
+		
+		{\normalsize\bfseries TEMA:}\\[4pt]
+		{\normalsize PRÁCTICA EXPERIMENTAL -- UNIDAD IV}\\[4pt]
+		{\normalsize Validación, Gestión de Requisitos y Herramientas CASE}\\[4pt]
+		\vspace{0.5cm}
+		
+		{\normalsize\bfseries ASIGNATURA:}\\[4pt]
+		{\normalsize INGENIERÍA DE REQUERIMIENTOS}
+		
+		\vspace{0.5cm}
+		
+		{\normalsize\bfseries DOCENTE:}\\[4pt]
+		{\normalsize ING. GUERRERO ULLOA GLEISTON CICERÓN}
+		
+		\vspace{0.5cm}
+		
+		{\normalsize\bfseries INTEGRANTES:}\\[6pt]
+		
+		\textit{CEDEÑO AVILA WINSTON DAMIAN},~CI: 0942833492,~wcedenoa2@uteq.edu.ec\\
+		
+		
+		\vspace{0.5cm}
+		
+		\textit{CORDOVA CARREÑO MAYRA LUCILA},~CI: 0750286775,~mcordovac2@uteq.edu.ec\\
+		
+		
+		\vspace{0.5cm}
+		
+		\textit{\textbf{MENDOZA PÁRRAGA ANDY JOHEL}},~CI: 1251401590,~amendozap9@uteq.edu.ec,~Titular PFC\\
+		
+		
+		\vspace{0.5cm}
+		
+		{\normalsize\bfseries EQUIPO:}\\[4pt]
+		{\normalsize B}
+		
+		\vspace{0.5cm}
+		
+		{\normalsize\bfseries CURSO/PARALELO:}\\[4pt]
+		{\normalsize CUARTO SEMESTRE PARALELO ``B''}
+		
+		\vspace{0.5cm}
+		
+		{\normalsize\bfseries SISTEMA PFC:}\\[4pt]
+		{\normalsize MundiPets (Andy Mendoza -- Titular PFC)}
+		
+		\vspace{0.5cm}
+		
+		\textbf{REPOSITORIO GITHUB:}\\[4pt]
+		% NOTA (G1 -- criterio de piso): la URL debe verse completa, en una sola línea y el repo debe ser público.
+		\url{https://github.com/andymendozap03/ISR401-PFC-ERS-EQUIPOB.git}
+		
+		\vspace{1cm}
+		
+		{\normalsize\bfseries QUEVEDO -- LOS RÍOS -- ECUADOR}\\[4pt]
+		{\normalsize\bfseries 2026 -- 2027 PPA}
+		
+	\end{titlepage}
+	
+	
+	\newpage
+	\tableofcontents
+	\newpage
+	
 	% ============================================================
 	% 2. RESUMEN Y OBJETIVOS (máx. 200 palabras)
 	% ============================================================
 	\section{Resumen y objetivos}
-
-% TODO (máx. 200 palabras): resumen ejecutivo redactado por el equipo al FINALIZAR el
-% informe (se escribe de último, aunque va primero). Debe mencionar: sistema del PFC
-% (MundiPets), qué se hizo (inspección Fagan, RFC/CCB, trazabilidad en herramienta CASE,
-% baseline con Git, comparativa) y el resultado principal obtenido (p. ej. n.º de
-% defectos corregidos, versión final del ERS, tag de baseline publicado).
-
-\subsection{Objetivo general}
-
-Aplicar técnicas formales de validación de requisitos, gestionar cambios mediante un
-Change Control Board (CCB) simulado, implementar la trazabilidad del ERS en una
-herramienta CASE, establecer una línea base con Git y comparar metodológicamente la
-Ingeniería de Requisitos (IR) tradicional frente a la IR ágil, sobre el ERS real del
-Proyecto Fin de Curso MundiPets.
-
-\subsection{Objetivos específicos}
-
-\begin{enumerate}
-	\item Ejecutar una inspección formal tipo Fagan sobre el ERS del PFC, con roles
-	diferenciados, lista de verificación y registro de defectos.
-	\item Calcular e interpretar métricas de inspección (densidad de defectos,
-	distribución por tipo y severidad, tasa de corrección).
-	\item Tramitar tres solicitudes formales de cambio (RFC) con análisis de impacto
-	sustentado en la matriz de trazabilidad.
-	\item Deliberar y decidir en un CCB simulado, dejando acta motivada y versión
-	actualizada del ERS.
-	\item Construir la trazabilidad bidireccional del ERS en una herramienta CASE de
-	gestión (Jira o Trello) con campos personalizados y enlaces verificables.
-	\item Establecer y publicar la línea base del ERS con control de versiones
-	(commit semántico, tag anotado y \texttt{CHANGELOG.md}).
-	\item Comparar herramientas CASE de IR y contrastar la IR tradicional frente a la
-	IR ágil, cerrando con conclusiones críticas propias.
-\end{enumerate}
+	
+	% TODO (máx. 200 palabras): resumen ejecutivo redactado por el equipo al FINALIZAR el
+	% informe (se escribe de último, aunque va primero). Debe mencionar: sistema del PFC
+	% (MundiPets), qué se hizo (inspección Fagan, RFC/CCB, trazabilidad en herramienta CASE,
+	% baseline con Git, comparativa) y el resultado principal obtenido (p. ej. n.º de
+	% defectos corregidos, versión final del ERS, tag de baseline publicado).
+	
+	\subsection{Objetivo general}
+	
+	Aplicar técnicas formales de validación de requisitos, gestionar cambios mediante un
+	Change Control Board (CCB) simulado, implementar la trazabilidad del ERS en una
+	herramienta CASE, establecer una línea base con Git y comparar metodológicamente la
+	Ingeniería de Requisitos (IR) tradicional frente a la IR ágil, sobre el ERS real del
+	Proyecto Fin de Curso MundiPets.
+	
+	\subsection{Objetivos específicos}
+	
+	\begin{enumerate}
+		\item Ejecutar una inspección formal tipo Fagan sobre el ERS del PFC, con roles
+		diferenciados, lista de verificación y registro de defectos.
+		\item Calcular e interpretar métricas de inspección (densidad de defectos,
+		distribución por tipo y severidad, tasa de corrección).
+		\item Tramitar tres solicitudes formales de cambio (RFC) con análisis de impacto
+		sustentado en la matriz de trazabilidad.
+		\item Deliberar y decidir en un CCB simulado, dejando acta motivada y versión
+		actualizada del ERS.
+		\item Construir la trazabilidad bidireccional del ERS en una herramienta CASE de
+		gestión (Jira o Trello) con campos personalizados y enlaces verificables.
+		\item Establecer y publicar la línea base del ERS con control de versiones
+		(commit semántico, tag anotado y \texttt{CHANGELOG.md}).
+		\item Comparar herramientas CASE de IR y contrastar la IR tradicional frente a la
+		IR ágil, cerrando con conclusiones críticas propias.
+	\end{enumerate}
 	% ============================================================
 	% 3. FUNDAMENTO TEÓRICO
 	% ============================================================
-
+	\newpage
 	\section{Fundamento teórico}
-
-\subsection{Marco normativo}
-
-\subsubsection{¿Qué regula la validación y gestión de requisitos?}
-% TODO: panorama general de por qué la validación y la gestión del cambio requieren un marco
-% normativo propio, distinto de la elicitación y la especificación (temas de PE2 y PE3).
-
-\subsubsection{IEEE/ISO/IEC 29148:2018 -- Proceso de validación de requisitos de software}
-% TODO: ubicación exacta en la norma (sección 6.4, Software Requirements Validation Process);
-% qué actividades exige y qué evidencia produce.
-
-\subsubsection{IEEE/ISO/IEC 15288:2023 y 12207:2017 -- Procesos de control de cambios}
-% TODO: cómo cada norma enmarca la gestión de la configuración y el control de cambios del ERS.
-
-\subsubsection{ISO/IEC 25010:2023 -- Modelo de calidad aplicado al ERS}
-% TODO: características de calidad del modelo SQuaRE relevantes para validar un ERS.
-
-\subsubsection{SWEBOK v4.0 y Pohl (2025) Parte V}
-% TODO: qué aportan las secciones 1.6-1.8 del SWEBOK y la Parte V de Pohl a la validación
-% y gestión de requisitos.
-
-\subsubsection{El CCB según PMBOK 7.ª edición}
-% TODO: rol del Change Control Board dentro del sistema de control de cambios del proyecto,
-% conforme al PMBOK.
-
-\subsection{Validación de requisitos}
-
-\subsubsection{Verificación vs. validación: diferencias conceptuales}
-% TODO: distinguir "construir el producto correctamente" (verificación) de "construir el
-% producto correcto" (validación), con cita normativa.
-
-\subsubsection{Principios de validación de requisitos}
-% TODO: principios generales que debe cumplir todo proceso de validación (objetividad,
-% trazabilidad al stakeholder, independencia del revisor, etc.).
-
-\subsubsection{Técnicas de validación}
-% TODO: revisión informal, walkthrough, prototipado, listas de verificación, análisis por
-% perspectivas (perspective-based reading); ventajas y limitaciones de cada una.
-
-\subsubsection{Inspección Fagan: origen, fases y roles}
-% TODO: origen del método (Fagan, 1976); fases (planificación, preparación individual, reunión
-% de inspección, corrección, seguimiento); roles (Moderador, Lector, Inspector 1, Inspector 2).
-
-\subsubsection{Métricas de inspección}
-% TODO: densidad de defectos, distribución por tipo, distribución por severidad, tasa de
-% detección por inspector, esfuerzo en horas-persona; qué revela cada métrica sobre el ERS.
-
-\subsubsection{Caso de estudio o ejemplo aplicado}
-% TODO: ejemplo breve (propio o de la literatura) que ilustre una inspección Fagan aplicada.
-
-\subsection{Gestión de requisitos}
-
-\subsubsection{Gestión de la configuración del ERS}
-% TODO: qué implica gestionar la configuración de un documento de requisitos vivo.
-
-\subsubsection{Línea base (baseline) y control de versiones}
-% TODO: qué es una línea base, cuándo se declara, y su relación con el versionado semántico
-% del ERS (v1.0, v1.1, etc.).
-
-\subsubsection{Atributos de los requisitos}
-% TODO: atributos típicos de gestión (prioridad, fuente, estado, responsable, estabilidad) y
-% su utilidad para la trazabilidad y el seguimiento.
-
-\subsubsection{Trazabilidad: pre-traceability y post-traceability}
-% TODO: trazabilidad hacia atrás (fuente/stakeholder) y hacia adelante (CU, clase, módulo,
-% prueba); diferencia entre pre- y post-traceability.
-
-\subsubsection{Matriz de trazabilidad}
-% TODO: propósito, estructura típica y utilidad de la matriz de trazabilidad en el análisis
-% de impacto de un cambio.
-
-\subsubsection{Proceso de cambio: RFC, análisis de impacto, CCB, implementación y cierre}
-% TODO: ciclo de vida completo de una solicitud de cambio, desde su registro hasta el cierre.
-
-\subsubsection{Métricas de volatilidad de requisitos}
-% TODO: qué mide la volatilidad de requisitos y por qué es relevante para el PFC.
-
-\subsection{Herramientas CASE para IR}
-
-Las herramientas CASE (\textit{Computer-Aided Software Engineering}) constituyen el soporte tecnológico que automatiza, total o parcialmente, las actividades de elicitación, especificación, verificación, validación y gestión de los requisitos a lo largo del ciclo de vida del software. Su adopción responde a la necesidad de reducir el esfuerzo manual asociado a la trazabilidad, el control de versiones y la comunicación entre los interesados, actividades que, gestionadas sin apoyo automatizado, incrementan la probabilidad de inconsistencias en el ERS \cite{ISO29148-2018}.
-
-\subsubsection{Clasificación de herramientas CASE}
-
-Las herramientas CASE aplicadas a la ingeniería de requisitos (IR) se clasifican habitualmente según la etapa del proceso que automatizan y el alcance funcional que ofrecen. Un análisis reciente de 56 herramientas de IR agrupó sus características en siete perspectivas complementarias: gestión de proyectos, especificación, colaboración, personalización, interoperabilidad, metodología y soporte al usuario, evidenciando que ninguna herramienta cubre de manera uniforme la totalidad de estas dimensiones \cite{Ozkaya2023}. Desde una perspectiva funcional más orientada al mercado, otros estudios distinguen entre herramientas de \textit{requirements gathering} (apoyadas en técnicas visuales, diagramas de contexto, descomposición funcional e historias de usuario) y herramientas de \textit{requirements management} propiamente dichas, orientadas al control de cambios, la trazabilidad y la generación de reportes \cite{Nadeem2022}. Esta doble clasificación por etapa del proceso y por alcance funcional resulta coherente con el proceso de validación y gestión descrito en el estándar ISO/IEC/IEEE 29148:2018 y con los procesos de control de cambios de la ISO/IEC/IEEE 12207:2017 \cite{ISO29148-2018, ISO12207-2017}.
-
-\subsubsection{Funcionalidades esperables en gestión de requisitos}
-
-Con independencia de la clasificación adoptada, la literatura converge en un conjunto de funcionalidades mínimas esperables en una herramienta CASE orientada a la gestión de requisitos. Ozkaya et al. \cite{Ozkaya2023} identifican, entre las más recurrentes, la especificación estructurada de requisitos, el versionado, la trazabilidad bidireccional, el soporte a la colaboración distribuida entre analistas y stakeholders, y la interoperabilidad con otras herramientas del ciclo de vida (gestión de pruebas, control de código y gestión de proyectos). En la misma línea, la comparación cualitativa de diez herramientas comerciales de gestión de requisitos realizada por Nadeem et al. \cite{Nadeem2022} evalúa explícitamente diez parámetros --seguimiento de errores, gestión jerárquica de requisitos, diseño visual, gestión de riesgos, gestión de pruebas, verificación de requisitos, análisis de calidad, versionado, gestión de \textit{releases} y generación de reportes--, concluyendo que ninguna herramienta analizada obtiene un desempeño uniformemente alto en todos ellos, lo que refuerza la necesidad de un criterio de selección alineado con las prioridades específicas del proyecto.
-
-\subsubsection{Criterios de selección de una herramienta CASE}
-
-La selección de una herramienta CASE no es un problema trivial: involucra criterios técnicos, organizacionales y económicos que deben ponderarse según el contexto del proyecto. Bjarnason et al. \cite{Bjarnason2023} proponen un modelo de selección de software a gran escala construido a partir de revisiones rápidas e iterativas, que combina una lista de criterios de evaluación (funcionales, de usabilidad, de soporte del proveedor y de costo total de propiedad) con un proceso estructurado para identificar, valorar y filtrar alternativas antes de la adopción definitiva. Este enfoque es aplicable directamente a la selección de herramientas de gestión de requisitos, dado que ambos dominios comparten la dificultad de comparar productos con conjuntos de características parcialmente solapados y una oferta comercial heterogénea. Entre los criterios más citados en la literatura destacan la facilidad de integración con el resto del ecosistema de herramientas del proyecto, la curva de aprendizaje, el soporte a estándares de la industria y la escalabilidad para equipos distribuidos \cite{Bjarnason2023, Ozkaya2023}.
-
-\subsubsection{Limitaciones y costos}
-
-La adopción de herramientas CASE no está exenta de limitaciones. En primer lugar, el costo total de propiedad --licenciamiento, capacitación del equipo y mantenimiento-- constituye una barrera relevante, particularmente para organizaciones pequeñas o proyectos con presupuestos ajustados \cite{Bjarnason2023}. En segundo lugar, el análisis comparativo de Nadeem et al. \cite{Nadeem2022} evidencia que las herramientas orientadas a funcionalidades avanzadas (gestión de riesgos, análisis de calidad de requisitos) suelen sacrificar simplicidad de uso, lo que puede traducirse en una curva de adopción prolongada. Finalmente, Ozkaya et al. \cite{Ozkaya2023} señalan que la interoperabilidad entre herramientas de distintos proveedores continúa siendo una limitación estructural del mercado, lo que obliga frecuentemente a las organizaciones a asumir integraciones a medida o a tolerar silos de información entre la especificación de requisitos y otras disciplinas del ciclo de vida (pruebas, arquitectura, gestión de proyectos).
-
-\subsection{IR en procesos ágiles}
-
-La incorporación de prácticas ágiles ha transformado sustancialmente la forma en que se elicitan, documentan y gestionan los requisitos, desplazando el énfasis desde la especificación exhaustiva y previa hacia una construcción incremental y colaborativa del entendimiento del producto. Esta sección revisa los artefactos, prácticas y mecanismos de trazabilidad propios de la IR ágil, y los contrasta con el enfoque documental descrito en 3.1--3.3.
-
-\subsubsection{Product backlog, historias de usuario y criterios de aceptación}
-
-El \textit{product backlog} constituye el artefacto central de la gestión ágil de requisitos: una lista ordenada y viva de necesidades del producto que se refina de manera continua. Su unidad de trabajo predominante es la historia de usuario, cuyo origen se remonta a la programación extrema y que se popularizó como mecanismo para capturar requisitos desde la perspectiva del usuario final, priorizando la conversación sobre la documentación exhaustiva \cite{Ferreira2022}. No obstante, la sola redacción de una historia de usuario no garantiza su calidad: el estudio de caso de Kuhail y Lauesen \cite{Kuhail2022}, que evaluó las respuestas de ocho profesionales de TI frente a un proyecto real utilizando los criterios de calidad de la IEEE~830 (completitud, corrección, verificabilidad y trazabilidad), encontró que las historias de usuario producidas cubrieron apenas el 33\,\% de las necesidades identificadas en el informe de análisis original, lo que evidencia el riesgo de pérdida de información al migrar de una especificación documental a un formato ágil sin mecanismos de control adicionales. Por ello, Ferreira et al. \cite{Ferreira2022} proponen enriquecer las historias de usuario con criterios de aceptación explícitos, épicas y temas que permitan preservar la trazabilidad conceptual entre el requisito de alto nivel y su implementación incremental, en línea con los atributos de calidad definidos en la ISO/IEC/IEEE 29148:2018 \cite{ISO29148-2018}.
-
-\subsubsection{Grooming y Definition of Ready / Definition of Done}
-
-El refinamiento del backlog (\textit{backlog grooming} o \textit{refinement}) es la actividad continua mediante la cual el equipo desglosa, estima y clarifica los elementos del backlog hasta que cumplen un nivel de detalle suficiente para ser abordados en un sprint. La Guía de Scrum no define formalmente una \textit{Definition of Ready} (DoR), pero establece que los elementos del backlog deben alcanzar un grado de transparencia y comprensión que permita completarlos dentro de un sprint \cite{ScrumGuide2020}. La \textit{Definition of Done} (DoD), en cambio, sí forma parte del marco oficial de Scrum y constituye un compromiso formal y compartido por el equipo sobre lo que significa que un incremento esté terminado, siendo responsabilidad primaria del equipo de desarrollo mantener su cumplimiento \cite{ScrumGuide2020}. Tomaselli et al. \cite{Tomaselli2025}, en su revisión sistemática sobre métodos de gestión de requisitos en desarrollo ágil, destacan que la ausencia de criterios de entrada y salida explícitos --es decir, de un DoR y un DoD bien definidos-- es una de las causas recurrentes de retrabajo y de defectos de calidad en los incrementos entregados, y recomiendan su integración temprana como práctica de gestión de requisitos dentro del marco de calidad ágil (\textit{Agile Quality Framework}).
-
-\subsubsection{BDD y formato Gherkin}
-
-El desarrollo guiado por comportamiento (\textit{Behavior-Driven Development}, BDD) extiende la lógica de las historias de usuario hacia especificaciones ejecutables, escritas en lenguaje natural estructurado mediante el formato Gherkin (\textit{Given-When-Then}), que permite a analistas, desarrolladores y evaluadores compartir un mismo artefacto como documentación, criterio de aceptación y base para pruebas automatizadas. La revisión sistemática de Abushama et al. \cite{Abushama2021} sobre el efecto del desarrollo guiado por pruebas (TDD) y del BDD en los factores de éxito de un proyecto concluye que ambas prácticas inciden positivamente en la satisfacción del cliente y en la reducción de defectos, atribuyendo al BDD un valor adicional en la mejora de la comunicación entre perfiles técnicos y no técnicos gracias a la legibilidad de sus escenarios. Esta característica convierte al formato Gherkin en un mecanismo natural de validación de requisitos en entornos ágiles, ya que cada escenario actúa simultáneamente como criterio de aceptación verificable y como evidencia de trazabilidad entre la necesidad del negocio y el comportamiento implementado del sistema.
-
-\subsubsection{Trazabilidad en entornos ágiles}
-
-La trazabilidad de requisitos --la capacidad de seguir un requisito desde su origen hasta su implementación y verificación-- presenta desafíos particulares en contextos ágiles, donde la reducción deliberada de la documentación formal puede debilitar los enlaces explícitos entre artefactos. El estudio de mapeo de Charalampidou et al. \cite{Charalampidou2021} sobre trazabilidad de software identifica que, si bien la mayoría de los métodos de trazabilidad fueron concebidos originalmente para procesos secuenciales y documentales, existe una tendencia creciente hacia enfoques ligeros y semiautomatizados basados en recuperación de información y en la vinculación de commits, historias de usuario y casos de prueba que se adaptan mejor a la cadencia iterativa del desarrollo ágil. En la misma dirección, Loh Mun Keong y Che Embi \cite{LohMunKeong2022} advierten que la documentación de requisitos no funcionales es una de las prácticas más frecuentemente descuidadas en equipos ágiles, lo que compromete la trazabilidad de atributos de calidad como los definidos en la ISO/IEC 25010:2023 \cite{ISO25010-2023} y exige mecanismos complementarios (etiquetado de historias, matrices ligeras o herramientas CASE integradas) para no perder dicha trazabilidad frente a la mayor velocidad de entrega.
-
-\subsubsection{IR documental frente a IR ágil: ¿cuándo conviene cada enfoque?}
-
-La disyuntiva entre un enfoque documental --propio de los estándares revisados en 3.1 a 3.3, con énfasis en el ERS, la línea base y la matriz de trazabilidad formal-- y un enfoque ágil --centrado en el backlog vivo, las historias de usuario y la trazabilidad ligera-- no debe entenderse como una elección excluyente, sino como una decisión de diseño de proceso condicionada por el contexto del proyecto. La revisión de Tomaselli et al. \cite{Tomaselli2025} concluye que los proyectos con alta variabilidad de requisitos, plazos cortos y participación constante del cliente se benefician de prácticas ágiles de gestión de requisitos, mientras que proyectos regulados, de misión crítica o con requisitos contractuales estrictos --por ejemplo, aquellos sujetos a normas como la ISO/IEC/IEEE 29148:2018 o a certificaciones sectoriales-- requieren preservar un nivel de documentación formal y trazabilidad verificable que los formatos puramente ágiles no garantizan por defecto \cite{ISO29148-2018}. En la práctica, numerosas organizaciones adoptan esquemas híbridos: mantienen una especificación de alto nivel documentada y una línea base contractual, mientras gestionan el detalle operativo mediante backlog, historias de usuario y escenarios Gherkin, combinando así la trazabilidad formal exigida por el marco normativo con la agilidad necesaria para responder a los cambios propios del desarrollo iterativo \cite{Tomaselli2025, LohMunKeong2022}.
+	
+	\subsection{Marco normativo}
+	
+	La ingeniería de requisitos se apoya en estándares, cuerpos de conocimiento y marcos metodológicos que establecen principios para especificar, validar, mantener y controlar los requisitos durante el ciclo de vida de un sistema. Entre los principales referentes se encuentran ISO/IEC/IEEE 29148:2018 para los procesos de ingeniería de requisitos, ISO/IEC/IEEE 15288:2023 e ISO/IEC/IEEE 12207:2017 para los procesos del ciclo de vida, ISO/IEC 25010:2023 para las características de calidad, así como SWEBOK v4.0 y los fundamentos contemporáneos de ingeniería de requisitos desarrollados por Pohl. Estos referentes permiten abordar la calidad de los requisitos no únicamente desde su redacción, sino también desde su verificabilidad, trazabilidad y evolución durante el desarrollo.
+	
+	La relevancia de estos mecanismos continúa siendo respaldada por investigaciones recientes. Un estudio de mapeo publicado en \textit{Requirements Engineering} señala que la calidad de los requisitos constituye un área multidimensional cuya evaluación involucra diferentes propiedades, defectos y mecanismos de aseguramiento \cite{Montgomery2022}. Esta perspectiva justifica la utilización conjunta de estándares y prácticas de ingeniería para establecer criterios consistentes de calidad y control de los requisitos.
+	
+	\subsubsection{¿Qué regula la validación y gestión de requisitos?}
+	
+	La validación y la gestión de requisitos comprenden actividades destinadas a asegurar que los requisitos representen adecuadamente las necesidades de los interesados y permanezcan controlados durante la evolución del proyecto. La validación se orienta a determinar si los requisitos especificados corresponden con las necesidades y objetivos que el sistema debe satisfacer, mientras que la gestión considera aspectos como los atributos de los requisitos, su trazabilidad, priorización, versionado y tratamiento de cambios.
+	
+	Estas actividades no deben entenderse como procesos aislados. La modificación de un requisito puede afectar otros requisitos y artefactos asociados, por lo que resulta necesario mantener relaciones que permitan conocer su procedencia y las consecuencias de su evolución. Investigaciones recientes sobre ingeniería de requisitos identifican precisamente la validación y la gestión como actividades fundamentales: la primera busca comprobar la calidad y adecuación de la información obtenida, mientras que la segunda permite seguir los cambios producidos en los requisitos y mantenerlos acordes con las necesidades de los stakeholders \cite{Umar2024}.
+	
+	\subsubsection{IEEE/ISO/IEC 29148:2018 -- Proceso de validación de requisitos de software}
+	
+	ISO/IEC/IEEE 29148:2018 constituye uno de los principales referentes normativos para la ingeniería de requisitos de sistemas y software. El estándar establece procesos y disposiciones relacionadas con la identificación, formulación, análisis y gestión de requisitos a lo largo del ciclo de vida \cite{ISO29148-2018}. Dentro de este contexto, la validación permite determinar si los requisitos y la especificación resultante representan adecuadamente las necesidades de los interesados y los objetivos establecidos para el sistema.
+	
+	La calidad de un requisito implica que pueda comprenderse y utilizarse posteriormente para actividades de diseño, implementación y comprobación. Por esta razón, la especificación debe procurar características que reduzcan ambigüedades, inconsistencias y dificultades de interpretación. La investigación empírica reciente confirma que la calidad de requisitos continúa siendo un problema relevante en ingeniería de software y que sus atributos y defectos requieren métodos sistemáticos de evaluación \cite{Montgomery2022}.
+	
+	\subsubsection{IEEE/ISO/IEC 15288:2023 y 12207:2017 -- Procesos de control de cambios}
+	
+	ISO/IEC/IEEE 15288:2023 proporciona un marco de procesos para el ciclo de vida de sistemas, mientras que ISO/IEC/IEEE 12207:2017 establece procesos aplicables al ciclo de vida del software \cite{ISO15288-2023, ISO12207-2017}. Dentro de este marco, los requisitos no se consideran elementos estáticos: pueden evolucionar como consecuencia de nuevas necesidades, restricciones, decisiones técnicas o cambios en el contexto del sistema.
+	
+	Por ello, el control de cambios debe permitir identificar una modificación, analizar sus posibles consecuencias y mantener consistentes los elementos afectados. En ingeniería de requisitos esto adquiere especial importancia porque una modificación puede repercutir en requisitos relacionados, diseño, implementación y pruebas. Consecuentemente, la trazabilidad constituye un mecanismo de apoyo fundamental para determinar dichas relaciones.
+	
+	Esta necesidad está respaldada por estudios contemporáneos sobre trazabilidad, que señalan que mantener los requisitos actualizados y comprender su contexto resulta especialmente importante conforme aumenta el tamaño y complejidad del proyecto. La trazabilidad permite recuperar información sobre el origen, las modificaciones y las personas involucradas en un requisito, proporcionando la información necesaria para gestionar su evolución \cite{Mucha2024}.
+	
+	\subsubsection{ISO/IEC 25010:2023 -- Modelo de calidad aplicado al ERS}
+	
+	ISO/IEC 25010:2023 establece un modelo de calidad que permite caracterizar y evaluar la calidad de productos software y sistemas \cite{ISO25010-2023}. Aunque el estándar no sustituye a ISO/IEC/IEEE 29148 como marco específico de ingeniería de requisitos, sus características de calidad pueden utilizarse para orientar la definición de requisitos no funcionales y atributos de calidad dentro de una Especificación de Requisitos de Software \cite{ISO29148-2018}.
+	
+	Esto significa que las características de calidad relevantes para el producto deben transformarse en requisitos suficientemente claros y evaluables. De esta forma, el ERS actúa como vínculo entre las necesidades de calidad identificadas y las posteriores actividades de diseño, implementación y pruebas.
+	
+	La importancia de definir correctamente estos atributos está respaldada por la investigación reciente sobre calidad de requisitos, que encuentra una diversidad considerable de atributos y problemas utilizados para estudiar empíricamente la calidad de los requisitos, lo que evidencia la necesidad de utilizar marcos estructurados para definir y evaluar sus propiedades \cite{Montgomery2022}.
+	
+	\subsubsection{SWEBOK v4.0 y Pohl (2025) Parte V}
+	
+	El \textit{Guide to the Software Engineering Body of Knowledge} (SWEBOK) v4.0, publicado por IEEE Computer Society en 2024, consolida el conocimiento generalmente aceptado dentro de la ingeniería de software. Su área dedicada a requisitos contempla fundamentos, elicitación, análisis y otras actividades necesarias para transformar necesidades de los interesados en requisitos que puedan ser utilizados durante el desarrollo del software \cite{Washizaki2024, Washizaki2024b}. La versión 4.0 actualiza además el cuerpo de conocimiento para incorporar prácticas contemporáneas de ingeniería de software.
+	
+	Complementariamente, la segunda edición de \textit{Requirements Engineering: Fundamentals, Principles, and Techniques}, publicada por Springer en 2025, presenta un tratamiento sistemático de la ingeniería de requisitos. Particularmente, la Parte V, denominada \textit{Cross-Sectional Activities}, desarrolla cuatro actividades de validación y tres actividades relacionadas con la gestión de requisitos. Este planteamiento permite comprender ambas actividades como elementos transversales que acompañan la evolución de los requisitos y no únicamente como tareas realizadas al finalizar su especificación \cite{Pohl2025}.
+	
+	La combinación de SWEBOK v4.0 y Pohl proporciona, por tanto, una perspectiva complementaria al marco normativo: mientras SWEBOK sintetiza el cuerpo de conocimiento aceptado de la disciplina, Pohl profundiza en principios, procedimientos y técnicas específicas para validar y gestionar requisitos.
+	
+	\subsubsection{El CCB según PMBOK 7.ª edición}
+	
+	El control formal de cambios requiere establecer responsabilidades para evaluar las modificaciones propuestas antes de incorporarlas a una línea base. En este contexto se utiliza el Change Control Board (CCB) o Comité de Control de Cambios, entendido como un grupo formalmente establecido al que se asigna autoridad para evaluar determinadas solicitudes de cambio conforme al procedimiento definido para el proyecto \cite{PMBOK7-2021}.
+	
+	Aplicado a la ingeniería de requisitos, una solicitud de modificación debe registrarse y someterse a análisis antes de modificar directamente el ERS o su línea base. El análisis de impacto permite determinar qué requisitos, artefactos, componentes, costos, plazos o pruebas podrían verse afectados. Con esa información puede adoptarse una decisión sobre la aprobación, rechazo o aplazamiento del cambio y, cuando corresponda, actualizar los elementos afectados manteniendo su trazabilidad \cite{PMBOK7-2021}.
+	
+	\subsection{Validación de requisitos}
+	
+	La validación de requisitos constituye una actividad esencial de la ingeniería de requisitos orientada a determinar si la especificación representa adecuadamente las necesidades, expectativas y objetivos de los interesados. Su importancia radica en detectar problemas antes de que estos se propaguen hacia etapas posteriores del desarrollo, donde su corrección puede implicar modificaciones en el diseño, implementación y pruebas del sistema.
+	
+	La literatura reciente continúa considerando la validación como una de las actividades fundamentales de la ingeniería de requisitos, señalando que busca garantizar que la información recopilada se encuentre correctamente organizada para satisfacer los objetivos del sistema, evaluando aspectos como exactitud, completitud y corrección de los documentos o modelos de requisitos \cite{Umar2024}.
+	
+	Esta actividad se relaciona directamente con la calidad del ERS. Entre los atributos estudiados con mayor frecuencia en la calidad de requisitos se identifican la ambigüedad, completitud, consistencia y corrección, características cuya evaluación permite descubrir deficiencias antes de utilizar la especificación como base para las siguientes etapas del desarrollo \cite{Montgomery2022}.
+	
+	\subsubsection{Verificación vs. validación: diferencias conceptuales}
+	
+	Aunque los términos verificación y validación suelen aparecer conjuntamente, representan objetivos diferentes dentro del aseguramiento de la calidad. La verificación se concentra principalmente en comprobar si los requisitos han sido especificados de manera adecuada, es decir, si presentan las propiedades necesarias para poder ser comprendidos, analizados y posteriormente comprobados. En este proceso pueden examinarse características como consistencia, completitud, ausencia de ambigüedad y verificabilidad.
+	
+	La validación, en cambio, se orienta hacia la correspondencia entre los requisitos documentados y las necesidades reales de los stakeholders. Por tanto, un requisito puede estar correctamente redactado desde el punto de vista formal y aun así no representar lo que necesita el usuario. La validación requiere entonces involucrar a los interesados para determinar si lo especificado describe el sistema que realmente se pretende desarrollar.
+	
+	La diferencia puede sintetizarse en dos preguntas: la verificación analiza si los requisitos están correctamente especificados, mientras que la validación determina si se han especificado los requisitos adecuados. Sin embargo, ambas actividades son complementarias y contribuyen conjuntamente al aseguramiento de la calidad del ERS.
+	
+	La importancia de la verificabilidad se evidencia en enfoques destinados específicamente a verificar requisitos de rendimiento y generar entornos de prueba a partir de ellos, lo cual muestra la relación existente entre requisitos correctamente formulados y su posterior comprobación \cite{Abdeen2022}.
+	
+	\subsubsection{Principios de validación de requisitos}
+	
+	La validación debe realizarse de manera sistemática y considerar tanto las características individuales de cada requisito como la consistencia del conjunto completo. Un requisito aislado puede parecer adecuado, pero generar contradicciones cuando se relaciona con otros elementos del ERS. Por ello, la revisión debe considerar la especificación desde una perspectiva integral.
+	
+	Entre los aspectos fundamentales se encuentran la corrección, para determinar si el requisito representa una necesidad real; la completitud, para comprobar que la información necesaria haya sido especificada; la consistencia, para identificar contradicciones entre requisitos; y la ausencia de ambigüedad, de modo que un requisito no admita interpretaciones incompatibles.
+	
+	Estos aspectos están respaldados por el estudio sistemático de Montgomery et al., que identifica doce atributos de calidad estudiados empíricamente y encuentra que ambigüedad, completitud, consistencia y corrección se encuentran entre los más prominentes en la investigación sobre calidad de requisitos \cite{Montgomery2022}.
+	
+	La validación tampoco debe concebirse exclusivamente como una actividad final. Los requisitos evolucionan y pueden ser modificados como resultado de nuevas necesidades o de la detección de inconsistencias. Por ello, resulta conveniente realizar actividades de validación de manera iterativa durante su elaboración y después de cambios relevantes.
+	
+	\subsubsection{Técnicas de validación}
+	
+	La validación de requisitos puede realizarse mediante diferentes técnicas cuya selección depende de las características del proyecto, los artefactos disponibles y la participación de los stakeholders. Entre las alternativas se encuentran las revisiones e inspecciones, el uso de prototipos, la construcción y evaluación de escenarios, la utilización de listas de comprobación y la derivación temprana de casos o criterios de prueba.
+	
+	Las revisiones permiten que diferentes participantes examinen los requisitos para localizar omisiones, contradicciones, ambigüedades o información incorrecta. Los prototipos permiten representar anticipadamente determinadas características o interacciones del sistema, facilitando que los usuarios evalúen si el comportamiento esperado corresponde con sus necesidades. Los escenarios, por su parte, describen situaciones concretas de utilización y permiten analizar cómo los requisitos se manifiestan durante una interacción determinada.
+	
+	La investigación reciente demuestra que las prácticas de validación continúan evolucionando según el contexto tecnológico. Un estudio de mapeo sobre ingeniería de requisitos para sistemas basados en inteligencia artificial identificó 53 estudios relacionados con validación de requisitos, encontrando prácticas como entrevistas, cuestionarios y escenarios, además de nuevas propuestas adaptadas a estos sistemas \cite{Habiba2024}. La utilización conjunta de diferentes técnicas puede resultar especialmente útil, debido a que una sola técnica difícilmente permite detectar todos los tipos de defectos presentes en una especificación.
+	
+	\subsubsection{Inspección Fagan: origen, fases y roles}
+	
+	La Inspección Fagan constituye un método formal y estructurado de revisión introducido originalmente por Michael Fagan para la detección sistemática de defectos en artefactos de software. Aunque su origen es anterior al intervalo bibliográfico establecido para los artículos de este trabajo, continúa siendo utilizado como referente conceptual en investigaciones contemporáneas relacionadas con inspecciones \cite{Li2023}.
+	
+	Aplicada a un ERS, la inspección permite examinar sistemáticamente los requisitos para identificar defectos antes de avanzar hacia etapas posteriores. El proceso puede organizarse en actividades de planificación, preparación individual, reunión de inspección, corrección o retrabajo y seguimiento. Durante estas actividades se distribuyen responsabilidades entre participantes como el autor del artefacto, el moderador o responsable de conducir la inspección, los inspectores o revisores y, cuando se establece como función independiente, el encargado de registrar los defectos encontrados.
+	
+	La finalidad principal de la inspección no consiste en rediseñar inmediatamente el requisito durante la reunión, sino en identificar y registrar sus defectos para que posteriormente puedan ser corregidos y verificados.
+	
+	La vigencia de la inspección de requisitos puede observarse en investigaciones recientes que estudian los fallos dependientes producidos durante la inspección de requisitos, y destacan que la especificación suele ser examinada por un equipo de inspectores para detectar defectos, debido a la influencia que su calidad ejerce sobre las fases posteriores y sobre el producto software \cite{Li2023}.
+	
+	\subsubsection{Métricas de inspección}
+	
+	Las métricas de inspección permiten evaluar cuantitativamente los resultados de una revisión y proporcionan información para valorar la efectividad del proceso. Entre las medidas que pueden registrarse se encuentran el número total de defectos identificados, su clasificación por tipo o severidad, el tiempo empleado en la inspección, la cantidad de requisitos examinados y la distribución de defectos entre las diferentes partes del ERS.
+	
+	A partir de estas medidas pueden construirse indicadores como la densidad de defectos, relacionando la cantidad de defectos encontrados con el tamaño del artefacto inspeccionado. También puede analizarse la productividad de la revisión considerando los defectos identificados respecto al esfuerzo invertido.
+	
+	No obstante, una cantidad elevada de defectos detectados no necesariamente significa que el proceso de requisitos sea de mejor calidad; puede indicar que la inspección ha sido efectiva, pero también que el documento inicial contenía numerosos problemas. Por ello, las métricas deben interpretarse conjuntamente y compararse entre revisiones o versiones del ERS.
+	
+	Es necesario además considerar la composición del equipo de inspección, puesto que la incorporación de varios inspectores no garantiza que sus detecciones sean completamente independientes entre sí \cite{Li2023}.
+	
+	\subsubsection{Caso de estudio o ejemplo aplicado}
+	
+	Como ejemplo de aplicación, considérese la validación de un requisito perteneciente al proyecto MundiPets:
+	
+	\begin{quote}
+		\textbf{RF-01:} El sistema permitirá registrar una mascota asociándola con los datos correspondientes a su propietario.
+	\end{quote}
+	
+	Durante una revisión del requisito, el equipo podría identificar que la expresión ``datos correspondientes'' no especifica cuáles son obligatorios ni establece qué debe ocurrir si el propietario todavía no se encuentra registrado. Además, tampoco indica restricciones sobre la información de la mascota ni las condiciones que determinan que el registro se haya realizado correctamente.
+	
+	Como resultado de la validación, el requisito podría descomponerse o complementarse con criterios específicos relacionados con los datos obligatorios, las validaciones de entrada y el comportamiento esperado ante situaciones excepcionales. Posteriormente, los stakeholders deberían confirmar que las modificaciones representan correctamente el proceso que desean implementar.
+	
+	Este ejemplo evidencia que la validación no se limita a comprobar la gramática del requisito. Su objetivo es descubrir información ausente, ambigua, inconsistente o incorrecta antes de que el requisito sea utilizado como fundamento para el diseño y desarrollo. Además, cualquier modificación resultante deberá incorporarse mediante los mecanismos de gestión de requisitos tratados en la Sección~3.3, manteniendo su versión y trazabilidad.
+	
+	\subsection{Gestión de requisitos}
+	
+	La gestión de requisitos comprende el conjunto de actividades destinadas a mantener los requisitos identificados, organizados, actualizados y trazables durante el ciclo de vida del sistema. Su importancia aumenta conforme evoluciona el proyecto, debido a que los requisitos pueden modificarse como consecuencia de nuevas necesidades de los stakeholders, restricciones técnicas, cambios del entorno o decisiones tomadas durante el desarrollo.
+	
+	Gestionar los requisitos implica, por tanto, mantener información sobre su estado, origen, prioridad, versión y relaciones con otros elementos del proyecto. La trazabilidad constituye uno de los principales mecanismos para conseguirlo, ya que permite establecer vínculos entre los requisitos y los artefactos que los originan o que posteriormente se producen a partir de ellos.
+	
+	Mantener los requisitos actualizados y comprender su contexto resulta especialmente importante conforme los proyectos aumentan de tamaño y complejidad. La trazabilidad permite responder preguntas relacionadas con el origen de un requisito, los motivos de sus modificaciones y las personas involucradas en su definición \cite{Mucha2024}.
+	
+	\subsubsection{Gestión de la configuración del ERS}
+	
+	La Especificación de Requisitos de Software (ERS) constituye uno de los principales artefactos documentales de la ingeniería de requisitos. Debido a que puede evolucionar durante el proyecto, resulta necesario gestionar su configuración para identificar las versiones existentes y mantener control sobre las modificaciones realizadas.
+	
+	La gestión de configuración del ERS permite determinar qué versión se encuentra vigente, qué requisitos fueron modificados, cuándo se produjeron los cambios y cuáles son los elementos afectados. De esta manera, se evita que diferentes miembros del equipo trabajen con versiones incompatibles de la especificación y se conserva un historial de su evolución.
+	
+	Este control adquiere especial importancia cuando los requisitos mantienen relaciones con otros artefactos. Un cambio realizado en el ERS puede repercutir posteriormente en elementos de diseño, código o pruebas, por lo que la configuración y la trazabilidad deben mantenerse coordinadas.
+	
+	\subsubsection{Línea base (baseline) y control de versiones}
+	
+	Una línea base o \textit{baseline} representa una versión formalmente establecida de un conjunto de requisitos que sirve como referencia para continuar el desarrollo. Una vez establecida, sus elementos no deberían modificarse de manera informal; los cambios posteriores deben someterse al procedimiento de control definido por el proyecto.
+	
+	La línea base no significa que los requisitos sean inmutables. Su propósito consiste en proporcionar un punto de referencia conocido frente al cual puedan identificarse y evaluar las modificaciones posteriores. Así, cuando se aprueba un cambio, se registra la modificación y se genera una nueva versión manteniendo el historial correspondiente.
+	
+	El control de versiones complementa este mecanismo al permitir identificar la evolución del ERS y de sus requisitos. Como mínimo, debe ser posible conocer qué elemento cambió, cuál era su contenido anterior, cuál es su estado actual y qué modificación dio lugar a la nueva versión.
+	
+	\subsubsection{Atributos de los requisitos}
+	
+	Además de su descripción textual, los requisitos pueden incorporar atributos que proporcionan información adicional para facilitar su gestión. Estos atributos permiten identificar, clasificar, priorizar y controlar los requisitos durante su evolución.
+	
+	Entre los atributos que pueden asociarse a un requisito se encuentran un identificador único, estado, prioridad, responsable, fuente u origen, versión, fecha de creación o modificación y criterios asociados a su verificación. La selección concreta de atributos dependerá de las necesidades del proyecto y de su proceso de gestión.
+	
+	Por ejemplo, un requisito funcional podría registrarse de la siguiente manera:
+	
+	\begin{quote}
+		Identificador: RF-01\\
+		Descripción: Registrar mascota.\\
+		Prioridad: Alta.\\
+		Fuente: Stakeholder.\\
+		Estado: Aprobado.\\
+		Versión: 1.1.
+	\end{quote}
+	
+	Esta información facilita posteriormente operaciones como localizar requisitos, identificar modificaciones, determinar responsabilidades y establecer relaciones de trazabilidad. Por ello, los atributos no sustituyen al contenido del requisito, sino que proporcionan los metadatos necesarios para administrarlo durante su ciclo de vida.
+	
+	\subsubsection{Trazabilidad: pre-traceability y post-traceability}
+	
+	La trazabilidad de requisitos es la capacidad de establecer y mantener relaciones entre un requisito y la información vinculada con su origen, evolución e implementación. Estas relaciones permiten comprender por qué existe determinado requisito y qué elementos podrían verse afectados si se modifica.
+	
+	Se distingue entre \textit{pre-requirements specification traceability} (pre-RS) y \textit{post-requirements specification traceability} (post-RS). La primera establece relaciones entre los requisitos y sus fuentes anteriores a su incorporación en la especificación, como entrevistas con stakeholders, reuniones, documentos organizacionales o sistemas existentes \cite{Mucha2024}. Por ejemplo:
+	
+	\begin{quote}
+		Entrevista con propietario $\rightarrow$ necesidad identificada $\rightarrow$ RF-01 Registrar mascota.
+	\end{quote}
+	
+	La post-traceability, por otra parte, establece relaciones entre los requisitos especificados y los artefactos generados posteriormente durante el desarrollo, como elementos de diseño, código fuente y casos de prueba. Por ejemplo:
+	
+	\begin{quote}
+		RF-01 Registrar mascota $\rightarrow$ módulo de registro $\rightarrow$ código correspondiente $\rightarrow$ CP-01 Prueba de registro.
+	\end{quote}
+	
+	Por tanto, ambas perspectivas permiten reconstruir el ciclo del requisito: la pre-traceability ayuda a comprender de dónde proviene, mientras que la post-traceability permite conocer cómo fue desarrollado y comprobado.
+	
+	La investigación reciente continúa demostrando la importancia y, al mismo tiempo, las dificultades prácticas de mantener estos vínculos, señalando las barreras que dificultan la adopción de trazabilidad en proyectos reales y una menor atención histórica hacia la pre-trazabilidad en comparación con la trazabilidad posterior a la especificación \cite{Mucha2024, Ruiz2023}.
+	
+	\subsubsection{Matriz de trazabilidad}
+	
+	Una matriz de trazabilidad de requisitos constituye una representación estructurada de las relaciones existentes entre requisitos y otros elementos del proyecto. Su objetivo es facilitar la comprobación de cobertura y permitir identificar rápidamente qué artefactos están relacionados con determinado requisito.
+	
+	Una representación simplificada para MundiPets podría ser la que se muestra en la Tabla~\ref{tab:trazabilidad-simplificada}.
+	
+	\begin{table}[H]
+		\centering
+		\caption{Ejemplo simplificado de matriz de trazabilidad para MundiPets.}
+		\label{tab:trazabilidad-simplificada}
+		\small
+		\begin{tabularx}{\textwidth}{@{}l X l l l@{}}
+			\toprule
+			\textbf{ID} & \textbf{Requisito} & \textbf{Fuente} & \textbf{Diseño/Módulo} & \textbf{Caso de prueba} \\
+			\midrule
+			RF-01 & Registrar mascota & Entrevista E01 & Gestión de mascotas & CP-01 \\
+			RF-02 & Consultar mascota & Entrevista E02 & Gestión de mascotas & CP-02 \\
+			RF-03 & Actualizar datos & Entrevista E02 & Gestión de mascotas & CP-03 \\
+			\bottomrule
+		\end{tabularx}
+	\end{table}
+	
+	La matriz permite realizar tanto seguimiento hacia adelante como hacia atrás. Por ejemplo, partiendo de RF-01 puede localizarse el módulo y caso de prueba relacionados; en sentido contrario, partiendo de CP-01 puede identificarse qué requisito justifica la existencia de dicha prueba.
+	
+	Esta información también resulta útil durante el análisis de cambios. Si RF-01 se modifica, los enlaces permiten identificar los artefactos potencialmente afectados y determinar cuáles deben revisarse.
+	
+	No obstante, mantener trazabilidad tiene un costo organizacional. Un estudio empírico encontró que, aunque existen numerosas técnicas y herramientas de trazabilidad, su utilización práctica continúa enfrentándose a distintas barreras \cite{Ruiz2023}.
+	
+	\subsubsection{Proceso de cambio: RFC, análisis de impacto, CCB, implementación y cierre}
+	
+	Los requisitos pueden cambiar durante el desarrollo, pero sus modificaciones deben gestionarse de manera controlada cuando forman parte de una línea base. Un procedimiento estructurado evita que una modificación sea incorporada sin conocer previamente sus consecuencias \cite{Mucha2024}.
+	
+	El proceso puede comenzar mediante una \textit{Request for Change} (RFC) o solicitud de cambio, en la cual se registra la modificación propuesta y su justificación. Posteriormente se realiza un análisis de impacto, considerando los requisitos relacionados y los artefactos que podrían verse afectados, además de factores como esfuerzo, costo, riesgos y planificación \cite{ISO12207-2017}.
+	
+	Con esta información, el Change Control Board (CCB) o la autoridad establecida por el proyecto puede evaluar la solicitud y decidir su aprobación, rechazo o aplazamiento. Si el cambio es aprobado, se procede a su implementación, actualizando el requisito y los elementos relacionados. Finalmente se realiza el cierre, verificando que las modificaciones hayan sido efectuadas correctamente, actualizando las versiones y conservando la trazabilidad del cambio.
+	
+	De manera resumida, el flujo puede representarse como:
+	
+	\begin{quote}
+		RFC $\rightarrow$ registro $\rightarrow$ análisis de impacto $\rightarrow$ evaluación del CCB $\rightarrow$ aprobación/rechazo $\rightarrow$ implementación $\rightarrow$ verificación $\rightarrow$ actualización de línea base $\rightarrow$ cierre.
+	\end{quote}
+	
+	La trazabilidad desempeña un papel fundamental durante este procedimiento porque permite determinar las posibles consecuencias de modificar un requisito. La literatura reciente señala precisamente que los enlaces de trazabilidad ayudan a comprender el contexto y evolución de los requisitos, incluyendo las razones que motivaron determinadas modificaciones \cite{Mucha2024}.
+	
+	\subsubsection{Métricas de volatilidad de requisitos}
+	
+	La volatilidad de requisitos representa el grado en que los requisitos cambian durante un período determinado del proyecto. Su seguimiento permite identificar situaciones en las que se están produciendo modificaciones frecuentes y analizar si estas pueden afectar la estabilidad del desarrollo.
+	
+	Entre los elementos que pueden contabilizarse se encuentran los requisitos añadidos, modificados y eliminados durante un período. A partir de estos datos pueden establecerse indicadores relativos respecto al número total de requisitos existentes en la línea base.
+	
+	Por ejemplo, para fines de seguimiento interno podría utilizarse una razón como:
+	
+	\begin{equation}
+		V = \frac{R_a + R_m + R_e}{R_t} \times 100
+	\end{equation}
+	
+	donde $R_a$ representa los requisitos añadidos, $R_m$ los modificados, $R_e$ los eliminados y $R_t$ el número de requisitos tomado como referencia para el período. Esta expresión debe entenderse como un indicador operativo de seguimiento y no como una fórmula universal establecida por ISO/IEC/IEEE 29148.
+	
+	Si una línea base contiene 50 requisitos y durante un período se añaden 2, se modifican 3 y se elimina 1, el indicador sería:
+	
+	\begin{equation}
+		V = \frac{2 + 3 + 1}{50} \times 100 = 12
+	\end{equation}
+	
+	El resultado indica que durante ese período se produjo actividad de cambio equivalente al 12\,\% del conjunto tomado como referencia. Sin embargo, el porcentaje no debe interpretarse aisladamente como bueno o malo; debe analizarse junto con la etapa del proyecto, las causas de los cambios y sus impactos.
+	
+	Un estudio que aborda específicamente la \textit{Requirement Change Volatility} (RCV) señala que una planificación insuficiente frente a cambios destinados a responder a las expectativas de los stakeholders puede producir propagación de modificaciones y contribuir a problemas en el proyecto. Su investigación utiliza redes de requisitos y técnicas de aprendizaje automático para evaluar y predecir esta volatilidad \cite{Hein2021}.
+	
+	De esta manera, las métricas de volatilidad complementan la gestión de cambios: mientras la RFC y el análisis de impacto permiten administrar una modificación concreta, las métricas permiten observar el comportamiento agregado de los cambios a lo largo del proyecto.
+	
+	\subsection{Herramientas CASE para IR}
+	
+	Las herramientas CASE (\textit{Computer-Aided Software Engineering}) constituyen el soporte tecnológico que automatiza, total o parcialmente, las actividades de elicitación, especificación, verificación, validación y gestión de los requisitos a lo largo del ciclo de vida del software. Su adopción responde a la necesidad de reducir el esfuerzo manual asociado a la trazabilidad, el control de versiones y la comunicación entre los interesados, actividades que, gestionadas sin apoyo automatizado, incrementan la probabilidad de inconsistencias en el ERS \cite{ISO29148-2018}.
+	
+	\subsubsection{Clasificación de herramientas CASE}
+	
+	Las herramientas CASE aplicadas a la ingeniería de requisitos (IR) se clasifican habitualmente según la etapa del proceso que automatizan y el alcance funcional que ofrecen. Un análisis reciente de 56 herramientas de IR agrupó sus características en siete perspectivas complementarias: gestión de proyectos, especificación, colaboración, personalización, interoperabilidad, metodología y soporte al usuario, evidenciando que ninguna herramienta cubre de manera uniforme la totalidad de estas dimensiones \cite{Ozkaya2023}. Desde una perspectiva funcional más orientada al mercado, otros estudios distinguen entre herramientas de \textit{requirements gathering} (apoyadas en técnicas visuales, diagramas de contexto, descomposición funcional e historias de usuario) y herramientas de \textit{requirements management} propiamente dichas, orientadas al control de cambios, la trazabilidad y la generación de reportes \cite{Nadeem2022}. Esta doble clasificación por etapa del proceso y por alcance funcional resulta coherente con el proceso de validación y gestión descrito en el estándar ISO/IEC/IEEE 29148:2018 y con los procesos de control de cambios de la ISO/IEC/IEEE 12207:2017 \cite{ISO29148-2018, ISO12207-2017}.
+	
+	\subsubsection{Funcionalidades esperables en gestión de requisitos}
+	
+	Con independencia de la clasificación adoptada, la literatura converge en un conjunto de funcionalidades mínimas esperables en una herramienta CASE orientada a la gestión de requisitos. Ozkaya et al. \cite{Ozkaya2023} identifican, entre las más recurrentes, la especificación estructurada de requisitos, el versionado, la trazabilidad bidireccional, el soporte a la colaboración distribuida entre analistas y stakeholders, y la interoperabilidad con otras herramientas del ciclo de vida (gestión de pruebas, control de código y gestión de proyectos). En la misma línea, la comparación cualitativa de diez herramientas comerciales de gestión de requisitos realizada por Nadeem et al. \cite{Nadeem2022} evalúa explícitamente diez parámetros --seguimiento de errores, gestión jerárquica de requisitos, diseño visual, gestión de riesgos, gestión de pruebas, verificación de requisitos, análisis de calidad, versionado, gestión de \textit{releases} y generación de reportes--, concluyendo que ninguna herramienta analizada obtiene un desempeño uniformemente alto en todos ellos, lo que refuerza la necesidad de un criterio de selección alineado con las prioridades específicas del proyecto.
+	
+	\subsubsection{Criterios de selección de una herramienta CASE}
+	
+	La selección de una herramienta CASE no es un problema trivial: involucra criterios técnicos, organizacionales y económicos que deben ponderarse según el contexto del proyecto. Bjarnason et al. \cite{Bjarnason2023} proponen un modelo de selección de software a gran escala construido a partir de revisiones rápidas e iterativas, que combina una lista de criterios de evaluación (funcionales, de usabilidad, de soporte del proveedor y de costo total de propiedad) con un proceso estructurado para identificar, valorar y filtrar alternativas antes de la adopción definitiva. Este enfoque es aplicable directamente a la selección de herramientas de gestión de requisitos, dado que ambos dominios comparten la dificultad de comparar productos con conjuntos de características parcialmente solapados y una oferta comercial heterogénea. Entre los criterios más citados en la literatura destacan la facilidad de integración con el resto del ecosistema de herramientas del proyecto, la curva de aprendizaje, el soporte a estándares de la industria y la escalabilidad para equipos distribuidos \cite{Bjarnason2023, Ozkaya2023}.
+	
+	\subsubsection{Limitaciones y costos}
+	
+	La adopción de herramientas CASE no está exenta de limitaciones. En primer lugar, el costo total de propiedad --licenciamiento, capacitación del equipo y mantenimiento-- constituye una barrera relevante, particularmente para organizaciones pequeñas o proyectos con presupuestos ajustados \cite{Bjarnason2023}. En segundo lugar, el análisis comparativo de Nadeem et al. \cite{Nadeem2022} evidencia que las herramientas orientadas a funcionalidades avanzadas (gestión de riesgos, análisis de calidad de requisitos) suelen sacrificar simplicidad de uso, lo que puede traducirse en una curva de adopción prolongada. Finalmente, Ozkaya et al. \cite{Ozkaya2023} señalan que la interoperabilidad entre herramientas de distintos proveedores continúa siendo una limitación estructural del mercado, lo que obliga frecuentemente a las organizaciones a asumir integraciones a medida o a tolerar silos de información entre la especificación de requisitos y otras disciplinas del ciclo de vida (pruebas, arquitectura, gestión de proyectos).
+	
+	\subsection{IR en procesos ágiles}
+	
+	La incorporación de prácticas ágiles ha transformado sustancialmente la forma en que se elicitan, documentan y gestionan los requisitos, desplazando el énfasis desde la especificación exhaustiva y previa hacia una construcción incremental y colaborativa del entendimiento del producto. Esta sección revisa los artefactos, prácticas y mecanismos de trazabilidad propios de la IR ágil, y los contrasta con el enfoque documental descrito en 3.1--3.3.
+	
+	\subsubsection{Product backlog, historias de usuario y criterios de aceptación}
+	
+	El \textit{product backlog} constituye el artefacto central de la gestión ágil de requisitos: una lista ordenada y viva de necesidades del producto que se refina de manera continua. Su unidad de trabajo predominante es la historia de usuario, cuyo origen se remonta a la programación extrema y que se popularizó como mecanismo para capturar requisitos desde la perspectiva del usuario final, priorizando la conversación sobre la documentación exhaustiva \cite{Ferreira2022}. No obstante, la sola redacción de una historia de usuario no garantiza su calidad: el estudio de caso de Kuhail y Lauesen \cite{Kuhail2022}, que evaluó las respuestas de ocho profesionales de TI frente a un proyecto real utilizando los criterios de calidad de la IEEE~830 (completitud, corrección, verificabilidad y trazabilidad), encontró que las historias de usuario producidas cubrieron apenas el 33\,\% de las necesidades identificadas en el informe de análisis original, lo que evidencia el riesgo de pérdida de información al migrar de una especificación documental a un formato ágil sin mecanismos de control adicionales. Por ello, Ferreira et al. \cite{Ferreira2022} proponen enriquecer las historias de usuario con criterios de aceptación explícitos, épicas y temas que permitan preservar la trazabilidad conceptual entre el requisito de alto nivel y su implementación incremental, en línea con los atributos de calidad definidos en la ISO/IEC/IEEE 29148:2018 \cite{ISO29148-2018}.
+	
+	\subsubsection{Grooming y Definition of Ready / Definition of Done}
+	
+	El refinamiento del backlog (\textit{backlog grooming} o \textit{refinement}) es la actividad continua mediante la cual el equipo desglosa, estima y clarifica los elementos del backlog hasta que cumplen un nivel de detalle suficiente para ser abordados en un sprint. La Guía de Scrum no define formalmente una \textit{Definition of Ready} (DoR), pero establece que los elementos del backlog deben alcanzar un grado de transparencia y comprensión que permita completarlos dentro de un sprint \cite{ScrumGuide2020}. La \textit{Definition of Done} (DoD), en cambio, sí forma parte del marco oficial de Scrum y constituye un compromiso formal y compartido por el equipo sobre lo que significa que un incremento esté terminado, siendo responsabilidad primaria del equipo de desarrollo mantener su cumplimiento \cite{ScrumGuide2020}. Tomaselli et al. \cite{Tomaselli2025}, en su revisión sistemática sobre métodos de gestión de requisitos en desarrollo ágil, destacan que la ausencia de criterios de entrada y salida explícitos --es decir, de un DoR y un DoD bien definidos-- es una de las causas recurrentes de retrabajo y de defectos de calidad en los incrementos entregados, y recomiendan su integración temprana como práctica de gestión de requisitos dentro del marco de calidad ágil (\textit{Agile Quality Framework}).
+	
+	\subsubsection{BDD y formato Gherkin}
+	
+	El desarrollo guiado por comportamiento (\textit{Behavior-Driven Development}, BDD) extiende la lógica de las historias de usuario hacia especificaciones ejecutables, escritas en lenguaje natural estructurado mediante el formato Gherkin (\textit{Given-When-Then}), que permite a analistas, desarrolladores y evaluadores compartir un mismo artefacto como documentación, criterio de aceptación y base para pruebas automatizadas. La revisión sistemática de Abushama et al. \cite{Abushama2021} sobre el efecto del desarrollo guiado por pruebas (TDD) y del BDD en los factores de éxito de un proyecto concluye que ambas prácticas inciden positivamente en la satisfacción del cliente y en la reducción de defectos, atribuyendo al BDD un valor adicional en la mejora de la comunicación entre perfiles técnicos y no técnicos gracias a la legibilidad de sus escenarios. Esta característica convierte al formato Gherkin en un mecanismo natural de validación de requisitos en entornos ágiles, ya que cada escenario actúa simultáneamente como criterio de aceptación verificable y como evidencia de trazabilidad entre la necesidad del negocio y el comportamiento implementado del sistema.
+	
+	\subsubsection{Trazabilidad en entornos ágiles}
+	
+	La trazabilidad de requisitos --la capacidad de seguir un requisito desde su origen hasta su implementación y verificación-- presenta desafíos particulares en contextos ágiles, donde la reducción deliberada de la documentación formal puede debilitar los enlaces explícitos entre artefactos. El estudio de mapeo de Charalampidou et al. \cite{Charalampidou2021} sobre trazabilidad de software identifica que, si bien la mayoría de los métodos de trazabilidad fueron concebidos originalmente para procesos secuenciales y documentales, existe una tendencia creciente hacia enfoques ligeros y semiautomatizados basados en recuperación de información y en la vinculación de commits, historias de usuario y casos de prueba que se adaptan mejor a la cadencia iterativa del desarrollo ágil. En la misma dirección, Loh Mun Keong y Che Embi \cite{LohMunKeong2022} advierten que la documentación de requisitos no funcionales es una de las prácticas más frecuentemente descuidadas en equipos ágiles, lo que compromete la trazabilidad de atributos de calidad como los definidos en la ISO/IEC 25010:2023 \cite{ISO25010-2023} y exige mecanismos complementarios (etiquetado de historias, matrices ligeras o herramientas CASE integradas) para no perder dicha trazabilidad frente a la mayor velocidad de entrega.
+	
+	\subsubsection{IR documental frente a IR ágil: ¿cuándo conviene cada enfoque?}
+	
+	La disyuntiva entre un enfoque documental --propio de los estándares revisados en 3.1 a 3.3, con énfasis en el ERS, la línea base y la matriz de trazabilidad formal-- y un enfoque ágil --centrado en el backlog vivo, las historias de usuario y la trazabilidad ligera-- no debe entenderse como una elección excluyente, sino como una decisión de diseño de proceso condicionada por el contexto del proyecto. La revisión de Tomaselli et al. \cite{Tomaselli2025} concluye que los proyectos con alta variabilidad de requisitos, plazos cortos y participación constante del cliente se benefician de prácticas ágiles de gestión de requisitos, mientras que proyectos regulados, de misión crítica o con requisitos contractuales estrictos --por ejemplo, aquellos sujetos a normas como la ISO/IEC/IEEE 29148:2018 o a certificaciones sectoriales-- requieren preservar un nivel de documentación formal y trazabilidad verificable que los formatos puramente ágiles no garantizan por defecto \cite{ISO29148-2018}. En la práctica, numerosas organizaciones adoptan esquemas híbridos: mantienen una especificación de alto nivel documentada y una línea base contractual, mientras gestionan el detalle operativo mediante backlog, historias de usuario y escenarios Gherkin, combinando así la trazabilidad formal exigida por el marco normativo con la agilidad necesaria para responder a los cambios propios del desarrollo iterativo \cite{Tomaselli2025, LohMunKeong2022}.
 	% ============================================================
 	% 4. INSPECCIÓN FORMAL FAGAN
 	% ============================================================
+	\newpage
 	\section{Inspección formal del ERS (método Fagan)}
-
+	
 	\subsection{Planificación y roles}
 	% TODO: Moderador, Lector, Inspector 1, Inspector 2 (nombre y firma); alcance inspeccionado
 	% (secciones del ERS y número de páginas efectivas).
-
+	
 	\subsection{Preparación individual}
 	% TODO: Anexo A por cada inspector (mínimo 6 defectos por inspector, con marca temporal
 	% verificable), sobre las seis propiedades: ambigüedad, completitud, consistencia,
 	% verificabilidad, trazabilidad y factibilidad.
-
+	
 	\subsection{Acta de la reunión de inspección}
 	% TODO: reunión máx. 90 minutos; consolidación en el Anexo B (N.º, sección, descripción del
 	% defecto, tipo, severidad crítico/mayor/menor, requisito afectado). Mínimo 15 defectos únicos,
 	% de los cuales al menos 3 críticos o mayores.
-
+	
 	\subsection{Métricas de inspección}
 	% TODO: tabla y gráfico de densidad de defectos (defectos/página), distribución por tipo,
 	% distribución por severidad, tasa de detección por inspector, esfuerzo total en horas-persona.
 	% Interpretar cada métrica en una oración.
-
+	
 	% ============================================================
 	% 5. CORRECCIONES APLICADAS
 	% ============================================================
+	\newpage
 	\section{Correcciones aplicadas}
 	% TODO: tabla antes/después por cada defecto crítico y mayor (100 % corregidos), con
 	% referencia al requisito afectado. Defectos menores no corregidos deben quedar justificados.
-
+	
 	% ============================================================
 	% 6. GESTIÓN DEL CAMBIO Y CCB
 	% ============================================================
+	\newpage
 	\section{Gestión del cambio y Change Control Board (CCB)}
-
+	
 	\subsection{RFC-01 -- Cambio de alcance (nuevo requisito)}
 	% TODO: Anexo C completo (ID, fecha, solicitante y rol, requisito afectado, descripción,
 	% justificación de negocio, requisitos impactados desde la matriz de trazabilidad, artefactos
 	% impactados, costo estimado en horas-persona, riesgo, recomendación técnica).
-
+	
 	\subsection{RFC-02 -- Cambio de calidad (modificación de un RNF)}
 	% TODO: mismo formato que RFC-01.
-
+	
 	\subsection{RFC-03 -- Cambio de restricción o normativa}
 	% TODO: mismo formato que RFC-01.
-
+	
 	\subsection{Acta del CCB}
 	% TODO: asistentes con roles diferenciados (presidente, representante del cliente, analista,
 	% desarrollador); agenda; deliberación resumida por RFC; decisión (aprobado / aprobado con
 	% condiciones / rechazado / diferido); justificación; acciones; responsables; plazos; nueva
 	% versión resultante del ERS; firmas.
-
+	
 	\subsection{Versión resultante del ERS}
 	% TODO: de v1.0 a v1.1 (coherente entre portada, historial de revisiones, CHANGELOG.md y tag de Git).
-
+	
 	% ============================================================
 	% 7. TRAZABILIDAD EN HERRAMIENTA CASE
 	% ============================================================
+	\newpage
 	\section{Trazabilidad en herramienta CASE} \label{sec:trazabilidad_case}
-
+	
 	\subsection{Estructura del tablero}
 	% TODO: nombre del proyecto (Jira o Trello); Epics por área funcional (≥ 4); Stories por
 	% requisito funcional (≥ 15); Sub-tasks por criterio de aceptación (≥ 2 por al menos 5 historias).
-
+	
 	\subsection{Campos personalizados}
 	% TODO: mínimo dos campos (Prioridad MoSCoW, Fuente del requisito); campo opcional de
 	% estado de verificación.
-
+	
 	\subsection{Matriz de trazabilidad}
 	% TODO: tabla (mínimo 15 filas), forma: Stakeholder → RF → CU → Clase/Módulo → Prueba.
 	% Todo requisito debe enlazar hacia atrás (fuente) y hacia adelante (CU, clase, módulo, prueba);
 	% reportar explícitamente los requisitos huérfanos.
-
+	
 	\subsection{Evidencias del tablero}
 	% TODO: capturas del tablero completo, del detalle de al menos 3 issues con enlaces visibles,
 	% del panel de estadísticas, y referencia al CSV exportado (Anexo D).
-
+	
 	% ============================================================
 	% 8. LÍNEA BASE CON GIT
 	% ============================================================
+	\newpage
 	\section{Línea base del ERS con Git}
-
+	
 	\subsection{Repositorio y estructura}
 	% TODO: repositorio público ISR401-PFC-ERS-[NombreEquipo]; README.md con sistema, integrantes,
 	% estructura de carpetas e instrucciones de compilación del informe (compilador, orden de
 	% comandos, archivo principal, dependencias).
-
+	
 	\subsection{Commits semánticos}
 	% TODO: mínimo 8 commits distribuidos, con autoría de todos los integrantes; ejemplo de mensaje
 	% semántico: docs(ers): v1.1 - aplicar cambios CCB semana 14.
-
+	
 	\subsection{Tag anotado de línea base}
 	% TODO: git tag -a baseline-v1.1 -m "Baseline aprobada por CCB"; git push origin baseline-v1.1.
-
+	
 	\subsection{CHANGELOG.md}
 	% TODO: formato [Versión] -- [Fecha] / Añadido / Cambiado / Eliminado, una entrada por RFC aprobado.
-
+	
 	\subsection{Historial de commits (evidencia)}
 	% TODO: capturas de git log --oneline --graph --decorate y git tag -n (ver también Anexo E).
-
+	
 	% ============================================================
 	% 9. COMPARATIVA DE HERRAMIENTAS CASE
 	% ============================================================
+	\newpage
 	\section{Comparativa de herramientas CASE}
 	% TODO: cuadro comparativo de mínimo 4 herramientas (Jira, IBM DOORS, Jama Connect, ReqView u
 	% otras justificadas) con al menos 6 criterios (funcionalidades de IR, trazabilidad, colaboración,
 	% integración con VCS, costo, curva de aprendizaje). Cerrar con recomendación argumentada para
 	% el PFC del equipo.
-
+	
 	% ============================================================
 	% 10. IR TRADICIONAL FRENTE A IR ÁGIL
 	% ============================================================
+	\newpage
 	\section{IR tradicional frente a IR ágil}
 	% TODO: tabla de seis dimensiones (documentación, gestión del cambio, participación de
 	% stakeholders, herramientas, velocidad, escalabilidad), indicando en qué contexto conviene
 	% cada enfoque, con discusión contextual.
-
+	
 	% ============================================================
 	% 11. CONCLUSIONES CRÍTICAS
 	% ============================================================
+	\newpage
 	\section{Conclusiones críticas}
 	% TODO: cinco conclusiones críticas que integren los cuatro temas de la unidad (inspección,
 	% CCB, trazabilidad CASE, baseline/comparativa). Cada conclusión debe interpretar un resultado
 	% propio del equipo, no una afirmación general de manual.
-
+	
 	% ============================================================
 	% 12. DISTRIBUCIÓN DEL TRABAJO
 	% ============================================================
+	\newpage
 	\section{Distribución del trabajo}
 	% TODO: tabla de aportes por integrante (roles desempeñados en la inspección, RFC trabajados,
 	% construcción del tablero CASE, commits), contrastable con el historial de commits de GitHub.
-
+	
 	% ============================================================
 	% 13. REFERENCIAS
 	% ============================================================
+	\newpage
 	\section{Referencias}
+	\printbibliography[heading=none]
 	% Ver \printbibliography en el Anexo D-equivalente / Anexo F más abajo.
 	% TODO: asegurar formato IEEE comprimido y que toda referencia citada en el texto figure aquí
 	% (y viceversa) -- una discrepancia se contabiliza como defecto de rigor bibliográfico.
-
+	
 	% ============================================================
 	% 14. ANEXOS A-F
 	% ============================================================
-
-\newpage
-\section*{Anexo A --- Lista de verificación de inspección (checklists individuales)}
-\addcontentsline{toc}{section}{Anexo A --- Lista de verificación de inspección (checklists individuales)}
-% TODO: una fila por propiedad (ambigüedad, completitud, consistencia, verificabilidad,
-% trazabilidad, factibilidad) con columnas: pregunta de verificación, requisito revisado,
-% cumple (S/N), evidencia, observación. Una copia por inspector, firmada y fechada.
-
-\newpage
-\section*{Anexo B --- Registro de defectos}
-\addcontentsline{toc}{section}{Anexo B --- Registro de defectos}
-% TODO: tabla con columnas N.º, Sección, Descripción del defecto, Tipo, Severidad, Corrección.
-% Mínimo 15 defectos únicos consolidados (≥ 3 críticos o mayores).
-
-\newpage
-\section*{Anexo C --- Formularios RFC y acta del CCB}
-\addcontentsline{toc}{section}{Anexo C --- Formularios RFC y acta del CCB}
-% TODO: tres instancias completas de RFC (ID/Fecha/Solicitante, Requisito afectado, Descripción del
-% cambio, Justificación de negocio, Requisitos impactados, Artefactos impactados, Costo estimado/
-% Riesgo, Recomendación técnica, Decisión del CCB/Justificación/Responsable/Plazo) más el acta del CCB.
-
-\newpage
-\section*{Anexo D --- Exportación CSV del backlog}
-\addcontentsline{toc}{section}{Anexo D --- Exportación CSV del backlog}
-% TODO: referenciar el archivo exportado desde Jira/Trello, incluido en 04_Trazabilidad/ del
-% repositorio.
-
-\newpage
-\section*{Anexo E --- Capturas del tablero CASE y del repositorio Git}
-\addcontentsline{toc}{section}{Anexo E --- Capturas del tablero CASE y del repositorio Git}
-% TODO: capturas del tablero completo, detalle de ≥ 3 issues, panel de estadísticas,
-% y capturas de git log --oneline --graph --decorate y git tag -n.
-
-\newpage
-\section*{Anexo F --- Referencias IEEE y declaración de uso de Inteligencia Artificial}
-\addcontentsline{toc}{section}{Anexo F --- Referencias IEEE y declaración de uso de Inteligencia Artificial}
-
-\printbibliography[title={Referencias}]
-
-\newpage
-
-\textbf{Uso de la IA}
-% TODO: declarar herramienta, versión, tarea asistida, fragmento afectado y verificación crítica
-% realizada por el equipo, con firma de los integrantes (criterio de admisión A4 -- su omisión
-% asigna la nota mínima).
-
+	
+	\newpage
+	\section*{Anexo A --- Lista de verificación de inspección (checklists individuales)}
+	\addcontentsline{toc}{section}{Anexo A --- Lista de verificación de inspección (checklists individuales)}
+	% TODO: una fila por propiedad (ambigüedad, completitud, consistencia, verificabilidad,
+	% trazabilidad, factibilidad) con columnas: pregunta de verificación, requisito revisado,
+	% cumple (S/N), evidencia, observación. Una copia por inspector, firmada y fechada.
+	
+	\newpage
+	\section*{Anexo B --- Registro de defectos}
+	\addcontentsline{toc}{section}{Anexo B --- Registro de defectos}
+	% TODO: tabla con columnas N.º, Sección, Descripción del defecto, Tipo, Severidad, Corrección.
+	% Mínimo 15 defectos únicos consolidados (≥ 3 críticos o mayores).
+	
+	\newpage
+	\section*{Anexo C --- Formularios RFC y acta del CCB}
+	\addcontentsline{toc}{section}{Anexo C --- Formularios RFC y acta del CCB}
+	% TODO: tres instancias completas de RFC (ID/Fecha/Solicitante, Requisito afectado, Descripción del
+	% cambio, Justificación de negocio, Requisitos impactados, Artefactos impactados, Costo estimado/
+	% Riesgo, Recomendación técnica, Decisión del CCB/Justificación/Responsable/Plazo) más el acta del CCB.
+	
+	\newpage
+	\section*{Anexo D --- Exportación CSV del backlog}
+	\addcontentsline{toc}{section}{Anexo D --- Exportación CSV del backlog}
+	% TODO: referenciar el archivo exportado desde Jira/Trello, incluido en 04_Trazabilidad/ del
+	% repositorio.
+	
+	\newpage
+	\section*{Anexo E --- Capturas del tablero CASE y del repositorio Git}
+	\addcontentsline{toc}{section}{Anexo E --- Capturas del tablero CASE y del repositorio Git}
+	% TODO: capturas del tablero completo, detalle de ≥ 3 issues, panel de estadísticas,
+	% y capturas de git log --oneline --graph --decorate y git tag -n.
+	
+	\newpage
+	\section*{Anexo F --- Referencias IEEE y declaración de uso de Inteligencia Artificial}
+	\addcontentsline{toc}{section}{Anexo F --- Referencias IEEE y declaración de uso de Inteligencia Artificial}
+	
+	\printbibliography[title={Referencias}]
+	
+	\newpage
+	
+	\textbf{Uso de la IA}
+	% TODO: declarar herramienta, versión, tarea asistida, fragmento afectado y verificación crítica
+	% realizada por el equipo, con firma de los integrantes (criterio de admisión A4 -- su omisión
+	% asigna la nota mínima).
+	
 \end{document}
