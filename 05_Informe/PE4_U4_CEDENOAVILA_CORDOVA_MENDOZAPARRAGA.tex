@@ -1,0 +1,524 @@
+% ============================================================
+%  Práctica Experimental N.º 4 (Unidad IV) -- Validación, Gestión de Requisitos y Herramientas CASE
+%  Asignatura: Ingeniería de Requerimientos [20303] -- UTEQ 2026-2027
+%  Sistema del PFC: MundiPets
+%  Estructura de trabajo en equipo (esqueleto -- completar cada sección)
+%  Formato: IEEE onecolumn | Biber + biblatex (estilo IEEE)
+% ============================================================
+\documentclass[journal,onecolumn]{IEEEtran}
+
+% ── Codificación e idioma ───────────────────────────────────
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-tabla]{babel}
+\usepackage[autostyle=true, spanish=mexican]{csquotes}
+
+% ── Tablas ──────────────────────────────────────────────────
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{longtable}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+% ── Figuras ─────────────────────────────────────────────────
+\usepackage{graphicx}
+\usepackage{float}
+
+% ── Color y enlaces ─────────────────────────────────────────
+\usepackage{xcolor}
+
+% ── Geometría ─────────────────────────────────────────────
+\usepackage{geometry}
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm, headheight=14pt, footskip=1.2cm}
+
+% ── Encabezado ────────────────────────────────────────────
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{\small Práctica Experimental 4 -- Ingeniería de Requerimientos}
+\fancyhead[R]{\small MundiPets}
+\fancyfoot[C]{\thepage}
+
+% ── Espaciado y Parches ─────────────────────────────────────
+\usepackage{parskip}
+\setlength{\parskip}{4pt}
+\makeatletter
+\@ifundefined{labelindent}{}{\let\labelindent\relax}
+\makeatother
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{titlesec}
+\captionsetup{font=small, labelfont=bf}
+\usepackage{amssymb}
+
+% ── Forzar "Tabla" en lugar de "Cuadro" ──────────────────────
+\renewcommand{\thetable}{\arabic{table}}
+\def\tablename{Tabla}
+
+
+% ── Formato de Secciones ────────────────────────────────────
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+
+\titleformat{\section}
+{\normalfont\Large\bfseries}
+{\thesection.}
+{1em}
+{}
+
+\titleformat{\subsection}
+{\normalfont\large\bfseries}
+{\thesubsection.}
+{1em}
+{}
+
+\titleformat{\subsubsection}
+{\normalfont\normalsize\bfseries}
+{\thesubsubsection.}
+{1em}
+{}
+
+% ── Bibliografía: biblatex + biber, estilo IEEE ──────────────
+\usepackage[
+backend=biber,
+style=ieee,
+citestyle=numeric-comp,
+isbn=true,
+doi=true
+]{biblatex}
+\addbibresource{referencias.bib}
+
+\usepackage[hidelinks,colorlinks=false]{hyperref}
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+\begin{document}
+	\begin{titlepage}
+	\centering
+
+	{\large\bfseries UNIVERSIDAD TÉCNICA ESTATAL DE QUEVEDO\\[12pt]}
+
+	\includegraphics[width=0.2\textwidth]{figuras/logo_uteq.png}\\[12pt]
+
+	{\large\bfseries FACULTAD DE CIENCIAS DE LA COMPUTACIÓN\\[4pt]
+		CARRERA DE INGENIERÍA EN SOFTWARE}
+
+	\vspace{1cm}
+
+	{\normalsize\bfseries TEMA:}\\[4pt]
+	{\normalsize PRÁCTICA EXPERIMENTAL -- UNIDAD IV}\\[4pt]
+	{\normalsize Validación, Gestión de Requisitos y Herramientas CASE}\\[4pt]
+	\vspace{0.5cm}
+
+	{\normalsize\bfseries ASIGNATURA:}\\[4pt]
+	{\normalsize INGENIERÍA DE REQUERIMIENTOS}
+
+	\vspace{0.5cm}
+
+	{\normalsize\bfseries DOCENTE:}\\[4pt]
+	{\normalsize ING. GUERRERO ULLOA GLEISTON CICERÓN}
+
+	\vspace{0.5cm}
+
+	{\normalsize\bfseries INTEGRANTES:}\\[6pt]
+
+	\textit{CEDEÑO AVILA WINSTON DAMIAN},~CI: 0942833492,~wcedenoa2@uteq.edu.ec\\
+
+
+	\vspace{0.5cm}
+
+	\textit{CORDOVA CARREÑO MAYRA LUCILA},~CI: 0750286775,~mcordovac2@uteq.edu.ec\\
+
+
+	\vspace{0.5cm}
+
+	\textit{\textbf{MENDOZA PÁRRAGA ANDY JOHEL}},~CI: 1251401590,~amendozap9@uteq.edu.ec,~Titular PFC\\
+
+
+	\vspace{0.5cm}
+
+	{\normalsize\bfseries EQUIPO:}\\[4pt]
+	{\normalsize B}
+
+	\vspace{0.5cm}
+
+	{\normalsize\bfseries CURSO/PARALELO:}\\[4pt]
+	{\normalsize CUARTO SEMESTRE PARALELO ``B''}
+
+	\vspace{0.5cm}
+
+	{\normalsize\bfseries SISTEMA PFC:}\\[4pt]
+	{\normalsize MundiPets (Andy Mendoza -- Titular PFC)}
+
+	\vspace{0.5cm}
+
+	\textbf{REPOSITORIO GITHUB:}\\[4pt]
+	% NOTA (G1 -- criterio de piso): la URL debe verse completa, en una sola línea y el repo debe ser público.
+	\url{https://github.com/andymendozap03/ISR401-PFC-ERS-EQUIPOB.git}
+
+	\vspace{1cm}
+
+	{\normalsize\bfseries QUEVEDO -- LOS RÍOS -- ECUADOR}\\[4pt]
+	{\normalsize\bfseries 2026 -- 2027 PPA}
+
+\end{titlepage}
+
+
+\newpage
+\tableofcontents
+\newpage
+
+	% ============================================================
+	% 2. RESUMEN Y OBJETIVOS (máx. 200 palabras)
+	% ============================================================
+	\section{Resumen y objetivos}
+
+% TODO (máx. 200 palabras): resumen ejecutivo redactado por el equipo al FINALIZAR el
+% informe (se escribe de último, aunque va primero). Debe mencionar: sistema del PFC
+% (MundiPets), qué se hizo (inspección Fagan, RFC/CCB, trazabilidad en herramienta CASE,
+% baseline con Git, comparativa) y el resultado principal obtenido (p. ej. n.º de
+% defectos corregidos, versión final del ERS, tag de baseline publicado).
+
+\subsection{Objetivo general}
+
+Aplicar técnicas formales de validación de requisitos, gestionar cambios mediante un
+Change Control Board (CCB) simulado, implementar la trazabilidad del ERS en una
+herramienta CASE, establecer una línea base con Git y comparar metodológicamente la
+Ingeniería de Requisitos (IR) tradicional frente a la IR ágil, sobre el ERS real del
+Proyecto Fin de Curso MundiPets.
+
+\subsection{Objetivos específicos}
+
+\begin{enumerate}
+	\item Ejecutar una inspección formal tipo Fagan sobre el ERS del PFC, con roles
+	diferenciados, lista de verificación y registro de defectos.
+	\item Calcular e interpretar métricas de inspección (densidad de defectos,
+	distribución por tipo y severidad, tasa de corrección).
+	\item Tramitar tres solicitudes formales de cambio (RFC) con análisis de impacto
+	sustentado en la matriz de trazabilidad.
+	\item Deliberar y decidir en un CCB simulado, dejando acta motivada y versión
+	actualizada del ERS.
+	\item Construir la trazabilidad bidireccional del ERS en una herramienta CASE de
+	gestión (Jira o Trello) con campos personalizados y enlaces verificables.
+	\item Establecer y publicar la línea base del ERS con control de versiones
+	(commit semántico, tag anotado y \texttt{CHANGELOG.md}).
+	\item Comparar herramientas CASE de IR y contrastar la IR tradicional frente a la
+	IR ágil, cerrando con conclusiones críticas propias.
+\end{enumerate}
+	% ============================================================
+	% 3. FUNDAMENTO TEÓRICO
+	% ============================================================
+
+	\section{Fundamento teórico}
+
+\subsection{Marco normativo}
+
+\subsubsection{¿Qué regula la validación y gestión de requisitos?}
+% TODO: panorama general de por qué la validación y la gestión del cambio requieren un marco
+% normativo propio, distinto de la elicitación y la especificación (temas de PE2 y PE3).
+
+\subsubsection{IEEE/ISO/IEC 29148:2018 -- Proceso de validación de requisitos de software}
+% TODO: ubicación exacta en la norma (sección 6.4, Software Requirements Validation Process);
+% qué actividades exige y qué evidencia produce.
+
+\subsubsection{IEEE/ISO/IEC 15288:2023 y 12207:2017 -- Procesos de control de cambios}
+% TODO: cómo cada norma enmarca la gestión de la configuración y el control de cambios del ERS.
+
+\subsubsection{ISO/IEC 25010:2023 -- Modelo de calidad aplicado al ERS}
+% TODO: características de calidad del modelo SQuaRE relevantes para validar un ERS.
+
+\subsubsection{SWEBOK v4.0 y Pohl (2025) Parte V}
+% TODO: qué aportan las secciones 1.6-1.8 del SWEBOK y la Parte V de Pohl a la validación
+% y gestión de requisitos.
+
+\subsubsection{El CCB según PMBOK 7.ª edición}
+% TODO: rol del Change Control Board dentro del sistema de control de cambios del proyecto,
+% conforme al PMBOK.
+
+\subsection{Validación de requisitos}
+
+\subsubsection{Verificación vs. validación: diferencias conceptuales}
+% TODO: distinguir "construir el producto correctamente" (verificación) de "construir el
+% producto correcto" (validación), con cita normativa.
+
+\subsubsection{Principios de validación de requisitos}
+% TODO: principios generales que debe cumplir todo proceso de validación (objetividad,
+% trazabilidad al stakeholder, independencia del revisor, etc.).
+
+\subsubsection{Técnicas de validación}
+% TODO: revisión informal, walkthrough, prototipado, listas de verificación, análisis por
+% perspectivas (perspective-based reading); ventajas y limitaciones de cada una.
+
+\subsubsection{Inspección Fagan: origen, fases y roles}
+% TODO: origen del método (Fagan, 1976); fases (planificación, preparación individual, reunión
+% de inspección, corrección, seguimiento); roles (Moderador, Lector, Inspector 1, Inspector 2).
+
+\subsubsection{Métricas de inspección}
+% TODO: densidad de defectos, distribución por tipo, distribución por severidad, tasa de
+% detección por inspector, esfuerzo en horas-persona; qué revela cada métrica sobre el ERS.
+
+\subsubsection{Caso de estudio o ejemplo aplicado}
+% TODO: ejemplo breve (propio o de la literatura) que ilustre una inspección Fagan aplicada.
+
+\subsection{Gestión de requisitos}
+
+\subsubsection{Gestión de la configuración del ERS}
+% TODO: qué implica gestionar la configuración de un documento de requisitos vivo.
+
+\subsubsection{Línea base (baseline) y control de versiones}
+% TODO: qué es una línea base, cuándo se declara, y su relación con el versionado semántico
+% del ERS (v1.0, v1.1, etc.).
+
+\subsubsection{Atributos de los requisitos}
+% TODO: atributos típicos de gestión (prioridad, fuente, estado, responsable, estabilidad) y
+% su utilidad para la trazabilidad y el seguimiento.
+
+\subsubsection{Trazabilidad: pre-traceability y post-traceability}
+% TODO: trazabilidad hacia atrás (fuente/stakeholder) y hacia adelante (CU, clase, módulo,
+% prueba); diferencia entre pre- y post-traceability.
+
+\subsubsection{Matriz de trazabilidad}
+% TODO: propósito, estructura típica y utilidad de la matriz de trazabilidad en el análisis
+% de impacto de un cambio.
+
+\subsubsection{Proceso de cambio: RFC, análisis de impacto, CCB, implementación y cierre}
+% TODO: ciclo de vida completo de una solicitud de cambio, desde su registro hasta el cierre.
+
+\subsubsection{Métricas de volatilidad de requisitos}
+% TODO: qué mide la volatilidad de requisitos y por qué es relevante para el PFC.
+
+\subsection{Herramientas CASE para IR}
+
+\subsubsection{Clasificación de herramientas CASE}
+% TODO: herramientas upper-CASE, lower-CASE e integrated-CASE; dónde se ubican las
+% herramientas de gestión de requisitos dentro de esta clasificación.
+
+\subsubsection{Funcionalidades esperables en gestión de requisitos}
+% TODO: repositorio centralizado, atributos personalizables, trazabilidad, baselining,
+% control de cambios, colaboración, integración con sistemas de control de versiones (VCS).
+
+\subsubsection{Criterios de selección de una herramienta CASE}
+% TODO: criterios técnicos y organizacionales para elegir una herramienta CASE (tamaño de
+% equipo, madurez del proceso, presupuesto, curva de aprendizaje, etc.).
+
+\subsubsection{Limitaciones y costos}
+% TODO: limitaciones típicas de las herramientas CASE (licenciamiento, curva de adopción,
+% dependencia del proveedor) y su impacto en proyectos académicos o de PFC.
+
+\subsection{IR en procesos ágiles}
+
+\subsubsection{Product backlog, historias de usuario y criterios de aceptación}
+% TODO: definición y estructura de un backlog ágil; formato de historia de usuario; criterios
+% de aceptación como forma de requisito verificable.
+
+\subsubsection{Grooming y Definition of Ready / Definition of Done}
+% TODO: qué es el refinamiento (grooming) del backlog; diferencia entre DoR y DoD.
+
+\subsubsection{BDD y formato Gherkin}
+% TODO: Behavior-Driven Development; sintaxis Given-When-Then; relación con la validación
+% de requisitos en entornos ágiles.
+
+\subsubsection{Trazabilidad en entornos ágiles}
+% TODO: cómo se preserva la trazabilidad cuando los requisitos viven en un backlog en lugar
+% de un ERS formal.
+
+\subsubsection{IR documental frente a IR ágil: ¿cuándo conviene cada enfoque?}
+% TODO: contraste explícito entre ambos enfoques y criterios de contexto (regulación,
+% tamaño de equipo, estabilidad de requisitos) para preferir uno u otro.
+
+	% ============================================================
+	% 4. INSPECCIÓN FORMAL FAGAN
+	% ============================================================
+	\section{Inspección formal del ERS (método Fagan)}
+
+	\subsection{Planificación y roles}
+	% TODO: Moderador, Lector, Inspector 1, Inspector 2 (nombre y firma); alcance inspeccionado
+	% (secciones del ERS y número de páginas efectivas).
+
+	\subsection{Preparación individual}
+	% TODO: Anexo A por cada inspector (mínimo 6 defectos por inspector, con marca temporal
+	% verificable), sobre las seis propiedades: ambigüedad, completitud, consistencia,
+	% verificabilidad, trazabilidad y factibilidad.
+
+	\subsection{Acta de la reunión de inspección}
+	% TODO: reunión máx. 90 minutos; consolidación en el Anexo B (N.º, sección, descripción del
+	% defecto, tipo, severidad crítico/mayor/menor, requisito afectado). Mínimo 15 defectos únicos,
+	% de los cuales al menos 3 críticos o mayores.
+
+	\subsection{Métricas de inspección}
+	% TODO: tabla y gráfico de densidad de defectos (defectos/página), distribución por tipo,
+	% distribución por severidad, tasa de detección por inspector, esfuerzo total en horas-persona.
+	% Interpretar cada métrica en una oración.
+
+	% ============================================================
+	% 5. CORRECCIONES APLICADAS
+	% ============================================================
+	\section{Correcciones aplicadas}
+	% TODO: tabla antes/después por cada defecto crítico y mayor (100 % corregidos), con
+	% referencia al requisito afectado. Defectos menores no corregidos deben quedar justificados.
+
+	% ============================================================
+	% 6. GESTIÓN DEL CAMBIO Y CCB
+	% ============================================================
+	\section{Gestión del cambio y Change Control Board (CCB)}
+
+	\subsection{RFC-01 -- Cambio de alcance (nuevo requisito)}
+	% TODO: Anexo C completo (ID, fecha, solicitante y rol, requisito afectado, descripción,
+	% justificación de negocio, requisitos impactados desde la matriz de trazabilidad, artefactos
+	% impactados, costo estimado en horas-persona, riesgo, recomendación técnica).
+
+	\subsection{RFC-02 -- Cambio de calidad (modificación de un RNF)}
+	% TODO: mismo formato que RFC-01.
+
+	\subsection{RFC-03 -- Cambio de restricción o normativa}
+	% TODO: mismo formato que RFC-01.
+
+	\subsection{Acta del CCB}
+	% TODO: asistentes con roles diferenciados (presidente, representante del cliente, analista,
+	% desarrollador); agenda; deliberación resumida por RFC; decisión (aprobado / aprobado con
+	% condiciones / rechazado / diferido); justificación; acciones; responsables; plazos; nueva
+	% versión resultante del ERS; firmas.
+
+	\subsection{Versión resultante del ERS}
+	% TODO: de v1.0 a v1.1 (coherente entre portada, historial de revisiones, CHANGELOG.md y tag de Git).
+
+	% ============================================================
+	% 7. TRAZABILIDAD EN HERRAMIENTA CASE
+	% ============================================================
+	\section{Trazabilidad en herramienta CASE} \label{sec:trazabilidad_case}
+
+	\subsection{Estructura del tablero}
+	% TODO: nombre del proyecto (Jira o Trello); Epics por área funcional (≥ 4); Stories por
+	% requisito funcional (≥ 15); Sub-tasks por criterio de aceptación (≥ 2 por al menos 5 historias).
+
+	\subsection{Campos personalizados}
+	% TODO: mínimo dos campos (Prioridad MoSCoW, Fuente del requisito); campo opcional de
+	% estado de verificación.
+
+	\subsection{Matriz de trazabilidad}
+	% TODO: tabla (mínimo 15 filas), forma: Stakeholder → RF → CU → Clase/Módulo → Prueba.
+	% Todo requisito debe enlazar hacia atrás (fuente) y hacia adelante (CU, clase, módulo, prueba);
+	% reportar explícitamente los requisitos huérfanos.
+
+	\subsection{Evidencias del tablero}
+	% TODO: capturas del tablero completo, del detalle de al menos 3 issues con enlaces visibles,
+	% del panel de estadísticas, y referencia al CSV exportado (Anexo D).
+
+	% ============================================================
+	% 8. LÍNEA BASE CON GIT
+	% ============================================================
+	\section{Línea base del ERS con Git}
+
+	\subsection{Repositorio y estructura}
+	% TODO: repositorio público ISR401-PFC-ERS-[NombreEquipo]; README.md con sistema, integrantes,
+	% estructura de carpetas e instrucciones de compilación del informe (compilador, orden de
+	% comandos, archivo principal, dependencias).
+
+	\subsection{Commits semánticos}
+	% TODO: mínimo 8 commits distribuidos, con autoría de todos los integrantes; ejemplo de mensaje
+	% semántico: docs(ers): v1.1 - aplicar cambios CCB semana 14.
+
+	\subsection{Tag anotado de línea base}
+	% TODO: git tag -a baseline-v1.1 -m "Baseline aprobada por CCB"; git push origin baseline-v1.1.
+
+	\subsection{CHANGELOG.md}
+	% TODO: formato [Versión] -- [Fecha] / Añadido / Cambiado / Eliminado, una entrada por RFC aprobado.
+
+	\subsection{Historial de commits (evidencia)}
+	% TODO: capturas de git log --oneline --graph --decorate y git tag -n (ver también Anexo E).
+
+	% ============================================================
+	% 9. COMPARATIVA DE HERRAMIENTAS CASE
+	% ============================================================
+	\section{Comparativa de herramientas CASE}
+	% TODO: cuadro comparativo de mínimo 4 herramientas (Jira, IBM DOORS, Jama Connect, ReqView u
+	% otras justificadas) con al menos 6 criterios (funcionalidades de IR, trazabilidad, colaboración,
+	% integración con VCS, costo, curva de aprendizaje). Cerrar con recomendación argumentada para
+	% el PFC del equipo.
+
+	% ============================================================
+	% 10. IR TRADICIONAL FRENTE A IR ÁGIL
+	% ============================================================
+	\section{IR tradicional frente a IR ágil}
+	% TODO: tabla de seis dimensiones (documentación, gestión del cambio, participación de
+	% stakeholders, herramientas, velocidad, escalabilidad), indicando en qué contexto conviene
+	% cada enfoque, con discusión contextual.
+
+	% ============================================================
+	% 11. CONCLUSIONES CRÍTICAS
+	% ============================================================
+	\section{Conclusiones críticas}
+	% TODO: cinco conclusiones críticas que integren los cuatro temas de la unidad (inspección,
+	% CCB, trazabilidad CASE, baseline/comparativa). Cada conclusión debe interpretar un resultado
+	% propio del equipo, no una afirmación general de manual.
+
+	% ============================================================
+	% 12. DISTRIBUCIÓN DEL TRABAJO
+	% ============================================================
+	\section{Distribución del trabajo}
+	% TODO: tabla de aportes por integrante (roles desempeñados en la inspección, RFC trabajados,
+	% construcción del tablero CASE, commits), contrastable con el historial de commits de GitHub.
+
+	% ============================================================
+	% 13. REFERENCIAS
+	% ============================================================
+	\section{Referencias}
+	% Ver \printbibliography en el Anexo D-equivalente / Anexo F más abajo.
+	% TODO: asegurar formato IEEE comprimido y que toda referencia citada en el texto figure aquí
+	% (y viceversa) -- una discrepancia se contabiliza como defecto de rigor bibliográfico.
+
+	% ============================================================
+	% 14. ANEXOS A-F
+	% ============================================================
+
+\newpage
+\section*{Anexo A --- Lista de verificación de inspección (checklists individuales)}
+\addcontentsline{toc}{section}{Anexo A --- Lista de verificación de inspección (checklists individuales)}
+% TODO: una fila por propiedad (ambigüedad, completitud, consistencia, verificabilidad,
+% trazabilidad, factibilidad) con columnas: pregunta de verificación, requisito revisado,
+% cumple (S/N), evidencia, observación. Una copia por inspector, firmada y fechada.
+
+\newpage
+\section*{Anexo B --- Registro de defectos}
+\addcontentsline{toc}{section}{Anexo B --- Registro de defectos}
+% TODO: tabla con columnas N.º, Sección, Descripción del defecto, Tipo, Severidad, Corrección.
+% Mínimo 15 defectos únicos consolidados (≥ 3 críticos o mayores).
+
+\newpage
+\section*{Anexo C --- Formularios RFC y acta del CCB}
+\addcontentsline{toc}{section}{Anexo C --- Formularios RFC y acta del CCB}
+% TODO: tres instancias completas de RFC (ID/Fecha/Solicitante, Requisito afectado, Descripción del
+% cambio, Justificación de negocio, Requisitos impactados, Artefactos impactados, Costo estimado/
+% Riesgo, Recomendación técnica, Decisión del CCB/Justificación/Responsable/Plazo) más el acta del CCB.
+
+\newpage
+\section*{Anexo D --- Exportación CSV del backlog}
+\addcontentsline{toc}{section}{Anexo D --- Exportación CSV del backlog}
+% TODO: referenciar el archivo exportado desde Jira/Trello, incluido en 04_Trazabilidad/ del
+% repositorio.
+
+\newpage
+\section*{Anexo E --- Capturas del tablero CASE y del repositorio Git}
+\addcontentsline{toc}{section}{Anexo E --- Capturas del tablero CASE y del repositorio Git}
+% TODO: capturas del tablero completo, detalle de ≥ 3 issues, panel de estadísticas,
+% y capturas de git log --oneline --graph --decorate y git tag -n.
+
+\newpage
+\section*{Anexo F --- Referencias IEEE y declaración de uso de Inteligencia Artificial}
+\addcontentsline{toc}{section}{Anexo F --- Referencias IEEE y declaración de uso de Inteligencia Artificial}
+
+\printbibliography[title={Referencias}]
+
+\newpage
+
+\textbf{Uso de la IA}
+% TODO: declarar herramienta, versión, tarea asistida, fragmento afectado y verificación crítica
+% realizada por el equipo, con firma de los integrantes (criterio de admisión A4 -- su omisión
+% asigna la nota mínima).
+
+\end{document}
