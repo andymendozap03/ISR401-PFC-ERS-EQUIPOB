@@ -992,7 +992,7 @@ La coherencia de versión se mantiene entre los siguientes artefactos: la portad
 	% ============================================================
 	% 7. LÍNEA BASE CON GIT
 	% ============================================================
-		\section{Línea base del ERS con Git}
+	\section{Línea base del ERS con Git}
 	
 	\subsection{Repositorio y estructura}
 	
@@ -1002,7 +1002,7 @@ La coherencia de versión se mantiene entre los siguientes artefactos: la portad
 	
 	\subsection{Commits semánticos}
 	
-	El equipo registró \textbf{27 commits} distribuidos a lo largo de toda la práctica, con autoría real de los tres integrantes: 13 de Mendoza Párraga Andy Johel (\texttt{andymendozap03}), 8 de Córdova Carreño Mayra Lucila (\texttt{mcordovac2}) y 6 de Cedeño Ávila Winston Damian (\texttt{WinstonCD}), superando ampliamente el mínimo de 8 commits exigido. Los mensajes siguen una convención semántica consistente, con prefijos como \texttt{docs(ers)}, \texttt{docs(pe4)}, \texttt{docs(inspeccion)}, \texttt{docs(ccb)}, \texttt{docs(trazabilidad)}, \texttt{docs(changelog)} y \texttt{fix(inspeccion)} según el tipo de cambio. Un ejemplo representativo:
+	El equipo registró un número creciente de commits distribuidos a lo largo de toda la práctica, con autoría real de los tres integrantes (\texttt{andymendozap03}, \texttt{mcordovac2}, \texttt{WinstonCD}), superando ampliamente el mínimo de 8 commits exigido; el desglose exacto por integrante puede verificarse en la vista de commits de GitHub (Figuras~\ref{fig:github-commits-1} y~\ref{fig:github-commits-2}). Los mensajes siguen una convención semántica consistente, con prefijos como \texttt{docs(ers)}, \texttt{docs(pe4)}, \texttt{docs(inspeccion)}, \texttt{docs(ccb)}, \texttt{docs(trazabilidad)}, \texttt{docs(changelog)} y \texttt{fix(inspeccion)} según el tipo de cambio. Un ejemplo representativo:
 	
 	\begin{quote}
 		\texttt{docs(ers): v1.1 - acotar RNF-02, agregar criterio de verificacion a las RD y corregir matriz de trazabilidad (40->59 filas)}
@@ -1027,12 +1027,12 @@ La coherencia de versión se mantiene entre los siguientes artefactos: la portad
 	
 	\subsection{Historial de commits (evidencia)}
 	
-	La Figura~\ref{fig:git-log} muestra la salida del comando \texttt{git log --oneline --graph --decorate}, evidenciando el historial lineal completo de 27 commits, con el tag \texttt{baseline-v1.1} anotado sobre el commit más reciente (\texttt{HEAD -> main}). La Figura~\ref{fig:git-tag} confirma, mediante \texttt{git tag -n}, que el tag quedó correctamente anotado con su mensaje descriptivo.
+	La Figura~\ref{fig:git-log} muestra la salida del comando \texttt{git log --oneline --graph --decorate}, evidenciando el historial lineal completo del repositorio, con el tag \texttt{baseline-v1.1} anotado sobre el commit más reciente (\texttt{HEAD -> main}). La Figura~\ref{fig:git-tag} confirma, mediante \texttt{git tag -n}, que el tag quedó correctamente anotado con su mensaje descriptivo.
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{figuras/git_log_y_tag.png}
-		\caption{Salida de \texttt{git log --oneline --graph --decorate} y \texttt{git tag -n}, mostrando el historial completo de 27 commits y el tag \texttt{baseline-v1.1}.}
+		\caption{Salida de \texttt{git log --oneline --graph --decorate} y \texttt{git tag -n}, mostrando el historial completo de commits y el tag \texttt{baseline-v1.1}.}
 		\label{fig:git-log}
 	\end{figure}
 	
@@ -1129,18 +1129,46 @@ La coherencia de versión se mantiene entre los siguientes artefactos: la portad
 	% ============================================================
 	\newpage
 	\section{Conclusiones críticas}
-	% TODO: cinco conclusiones críticas que integren los cuatro temas de la unidad (inspección,
-	% CCB, trazabilidad CASE, baseline/comparativa). Cada conclusión debe interpretar un resultado
-	% propio del equipo, no una afirmación general de manual.
+	
+	\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*]
+		
+		\item \textbf{La densidad de defectos detectada (0.36 por página) revela que los errores de un ERS que ya pasó por dos entregas previas no son de redacción individual, sino de coherencia entre secciones.} De los 18 defectos consolidados en la inspección Fagan, más del 60\,\% correspondieron a completitud y consistencia (11 de 18), y no a ambigüedad o factibilidad. El caso más ilustrativo fue la propia matriz de trazabilidad del ERS, que declaraba simultáneamente ``40 filas'' y ``50 elementos'' en el mismo párrafo: un defecto que ninguna revisión superficial de un único requisito habría detectado, y que solo emergió al leer el documento de forma sistemática y completa, como exige el método Fagan.
+		
+		\item \textbf{Que los tres integrantes detectaran exactamente 6 defectos cada uno no garantiza, por sí solo, independencia real en la revisión.} La tasa de detección perfectamente equilibrada (33.3\,\% cada uno) podría interpretarse como evidencia de un proceso saludable, pero al revisar el contenido, cada inspector concentró sus hallazgos en secciones distintas del ERS (Winston en requisitos funcionales y no funcionales, Mayra en historias de usuario y entorno operativo, Andy en restricciones de diseño y la matriz de trazabilidad). Esto sugiere que el equilibrio numérico reflejó más una división implícita del trabajo que una verificación cruzada exhaustiva sobre las mismas secciones, un matiz que las métricas agregadas por sí solas no muestran.
+		
+		\item \textbf{El CCB simulado evidenció que no todo cambio derivado de una inspección requiere el mismo nivel de análisis de impacto.} De las tres RFC tramitadas, solo RFC-01 (incorporación de RF-26) fue aprobada \textit{con condiciones}, al implicar una política de retención de datos aún no definida; RFC-02 y RFC-03 se aprobaron sin reservas, por tratarse de ajustes de redacción y consistencia sin riesgo estructural. Esto confirma en la práctica que el criterio de \textit{riesgo} de una RFC, y no solo su origen (defecto crítico vs.\ mayor), es lo que determina el nivel de escrutinio real que amerita en el comité.
+		
+		\item \textbf{La trazabilidad construida en Jira expuso 4 requisitos huérfanos (RF-25, RF-20, RF-10 y RF-26) que el ERS no había señalado explícitamente como tales.} Al enlazar sistemáticamente las 26 Stories del backlog con sus Casos de Uso correspondientes, se hizo evidente que ciertos requisitos de prioridad \textit{Could} y el requisito nuevo aprobado por RFC-01 carecían de un CU dedicado en el modelado UML del ERS. Este hallazgo no habría surgido de la sola lectura del documento, sino del ejercicio de forzar cada requisito a través de una cadena de trazabilidad completa en la herramienta CASE.
+		
+		\item \textbf{La comparativa de herramientas CASE mostró que la herramienta más adecuada para gestionar el ERS a largo plazo no es necesariamente la más práctica para el ejercicio de trazabilidad de esta unidad.} El equipo usó Jira para construir el backlog exigido por la guía, por su bajo costo de adopción y su fortaleza para trabajo ágil; sin embargo, el análisis comparativo de seis criterios llevó a recomendar ReqView para la gestión formal y sostenida del ERS del PFC, por su equilibrio entre documentación estructurada, trazabilidad, control de versiones y curva de aprendizaje. Esta disociación entre la herramienta usada y la recomendada evidencia que la elección de una herramienta CASE depende del horizonte temporal y el propósito específico de su uso, no de una preferencia única y universal del equipo.
+		
+	\end{enumerate}
 	
 	% ============================================================
 	% 11. DISTRIBUCIÓN DEL TRABAJO
 	% ============================================================
 	\newpage
 	\section{Distribución del trabajo}
-	% TODO: tabla de aportes por integrante (roles desempeñados en la inspección, RFC trabajados,
-	% construcción del tablero CASE, commits), contrastable con el historial de commits de GitHub.
 	
+	La Tabla~\ref{tab:distribucion-trabajo} resume el aporte de cada integrante, contrastable directamente con el historial de commits del repositorio (\url{https://github.com/andymendozap03/ISR401-PFC-ERS-EQUIPOB}).
+	
+	\begin{table}[H]
+		\centering
+		\small
+		\begin{tabularx}{\textwidth}{@{}l X@{}}
+			\toprule
+			\textbf{Integrante} & \textbf{Aporte} \\
+			\midrule
+			\textbf{Mendoza Párraga Andy Johel} & Rol: Moderador y Lector (inspección Fagan), Presidente del CCB. Redactó y estructuró el informe completo; condujo la reunión de inspección y consolidó el Anexo B; calculó las métricas de inspección (Sección~3.4); documentó las correcciones aplicadas a los defectos críticos y mayores (Sección~4); aplicó al ERS la corrección de RNF-02 (RFC-02), el criterio de verificación de las 9 restricciones de diseño y la corrección de la matriz de trazabilidad (40$\to$59 filas); cerró la gestión documental (CHANGELOG, tag \texttt{baseline-v1.1}) y redactó la Sección~7 (Línea base con Git). \\
+			\textbf{Cedeño Ávila Winston Damian} & Rol: Inspector 1 (inspección Fagan), Analista de requisitos (CCB). Redactó el fundamento teórico de herramientas CASE e IR ágil (secciones 2.4 y 2.5); realizó su preparación individual de la inspección (6 defectos); solicitó y sustentó la RFC-01 (incorporación de RF-26); aplicó al ERS los cambios correspondientes a RFC-01 y corrigió los defectos que él mismo detectó (RF-12, RF-24, RNF-11, RNF-16, entre otros); redactó la Sección~5 (RFC-01, RFC-02, RFC-03 y acta del CCB) y la Sección~9 (IR tradicional frente a IR ágil). \\
+			\textbf{Córdova Carreño Mayra Lucila} & Rol: Inspector 2 (inspección Fagan), Representante del cliente / Desarrolladora (CCB). Redactó el fundamento teórico de marco normativo, validación y gestión de requisitos (secciones 2.1 a 2.3); realizó su preparación individual de la inspección (6 defectos); solicitó y sustentó la RFC-03 (canal de respaldo en RF-10); aplicó al ERS los cambios correspondientes a RFC-03 y corrigió los defectos que ella misma detectó (RF-05, RF-02, RF-18, entre otros); construyó y documentó la estructura del tablero Jira (Sección~6); redactó la comparativa de herramientas CASE (Sección~8). \\
+			\bottomrule
+		\end{tabularx}
+		\caption{Distribución del trabajo por integrante, PE4 (Unidad IV).}
+		\label{tab:distribucion-trabajo}
+	\end{table}
+	
+	El repositorio registra un número creciente de commits distribuidos con autoría real entre los tres integrantes, superando ampliamente el mínimo de 8 commits exigido por la guía; el conteo exacto y actualizado puede verificarse directamente en el historial de \texttt{git log} del repositorio (Sección~\ref{sec:evidencias-tablero} y Figura~\ref{fig:git-log}). La distribución de roles se mantuvo consistente a lo largo de toda la práctica: los mismos roles asignados en la planificación de la inspección Fagan (Sección~3.1) se conservaron en el Change Control Board (Sección~5.4), reforzando la trazabilidad de responsabilidades individuales dentro del equipo.
 	% ============================================================
 	% 12. REFERENCIAS
 	% ============================================================
