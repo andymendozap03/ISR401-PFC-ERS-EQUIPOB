@@ -554,6 +554,13 @@ doi=true
 	
 	Durante la reunión, el Lector guio la revisión de las secciones 2, 3 y 5 del ERS, y cada Inspector reportó los defectos identificados en su preparación individual. El Moderador consolidó la totalidad de los defectos reportados en el Anexo B en tiempo real. Como resultado, se registraron \textbf{18 defectos únicos}, distribuidos equitativamente entre los tres integrantes (6 defectos detectados por cada uno), superando ampliamente el mínimo de 15 defectos exigido, con 2 defectos críticos y 7 mayores (9 en total), por encima del mínimo de 3 críticos o mayores establecido por la guía.
 	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\textwidth]{figuras/2026-08-08_reunion-inspeccion_seccion3.jpeg}
+		\caption{Evidencia fotográfica de la reunión de inspección Fagan (8 de agosto de 2026).}
+		\label{fig:reunion-inspeccion}
+	\end{figure}
+	
 	\subsection{Métricas de inspección}
 	
 	A partir de la información registrada en el Anexo B y en los Anexos A individuales, se calcularon las métricas de la Tabla~\ref{tab:metricas-inspeccion}.
@@ -619,11 +626,115 @@ doi=true
 	% ============================================================
 	% 4. CORRECCIONES APLICADAS
 	% ============================================================
-	\newpage
+
 	\section{Correcciones aplicadas}
-	% TODO: tabla antes/después por cada defecto crítico y mayor (100 % corregidos), con
-	% referencia al requisito afectado. Defectos menores no corregidos deben quedar justificados.
+
+Conforme a la meta de calidad establecida para esta práctica, se corrigió el 100\,\% de los defectos clasificados como críticos o mayores (9 de 18), documentando en cada caso el texto original (\textit{antes}) y la redacción corregida (\textit{después}). Los 9 defectos menores restantes se abordan en la Sección~4.2.
+
+\subsection{Corrección de defectos críticos y mayores}
+
+\textbf{Defecto 4 (Crítico) --- Inconsistencia numérica en la matriz de trazabilidad.}
+
+\begin{quote}
+	\textbf{Antes:} ``La matriz completa, con sus 40 filas (TR-01 a TR-40), se presenta en el Apéndice D [...]. La matriz cubre los 50 elementos especificados [...] de las 50 filas...''
 	
+	\textbf{Después:} ``La matriz completa, con sus 50 filas (TR-01 a TR-50), se presenta en el Apéndice D, cubriendo la totalidad de los 50 elementos especificados (25 RF, 16 RNF y 9 RD).''
+\end{quote}
+
+Se unificó el número de filas de la matriz (50) en todas las menciones de la Sección~5.5, eliminando la referencia residual a ``40 filas''. \textit{Requisito afectado:} Sección~5.5 (matriz de trazabilidad).
+
+\vspace{6pt}
+\textbf{Defecto 5 (Trazabilidad, Crítico) --- Ausencia de RF que implemente RL-04/RD-06.}
+
+\begin{quote}
+	\textbf{Antes:} RD-06 (Mecanismo de eliminación de cuenta y datos personales) reconoce en su propia justificación que ``ningún RF de los 25 definidos cubría esta función''.
+	
+	\textbf{Después:} Se incorpora el nuevo \textbf{RF-26 --- Eliminar cuenta y datos personales}, que implementa RD-06: permite al propietario solicitar la eliminación de su cuenta, ejecuta la supresión o anonimización de sus datos personales dentro de un plazo definido, y deja registro de auditoría de la solicitud.
+\end{quote}
+
+Esta corrección se formaliza mediante RFC-01 (Sección~5.1), por tratarse de un cambio de alcance que incorpora un nuevo requisito funcional. \textit{Requisitos afectados:} RL-04, RD-06, RF-26 (nuevo).
+
+\vspace{6pt}
+\textbf{Defecto 2 (Mayor) --- Falta de dato de verificación profesional en RF-12.}
+
+\begin{quote}
+	\textbf{Antes:} RF-12 exige ``verificar su identidad'' mediante ``información requerida'', sin especificar qué dato valida la identidad profesional del rol Veterinaria.
+	
+	\textbf{Después:} Se añade a las Entradas de RF-12 el campo \textit{número de registro profesional ante el ente regulador competente}, exigido únicamente cuando el rol seleccionado sea Veterinaria, y se referencia explícitamente en el flujo de CU-09.
+\end{quote}
+
+\textit{Requisitos afectados:} RF-12, CU-09.
+
+\vspace{6pt}
+\textbf{Defecto 3 (Mayor) --- Dependencia bloqueante entre RF-24 (Should) y CU-02 (Must).}
+
+\begin{quote}
+	\textbf{Antes:} RF-24 (trazabilidad de cepa, lote y aplicador de cada vacuna) tiene prioridad \textit{Should}, pero el paso 4 de CU-02 (\textit{Must}) exige registrar esos mismos datos como parte obligatoria del flujo.
+	
+	\textbf{Después:} Se eleva la prioridad de RF-24 a \textit{Must}, alineándola con la dependencia real que impone CU-02, evitando que un caso de uso obligatorio dependa de un requisito de prioridad inferior.
+\end{quote}
+
+\textit{Requisitos afectados:} RF-24, CU-02.
+
+\vspace{6pt}
+\textbf{Defecto 6 (Mayor) --- RNF-02 no medible en el MVP.}
+
+\begin{quote}
+	\textbf{Antes:} RNF-02 exige disponibilidad ``$\geq$ 99\,\% mensual'' sin distinguir el entorno de aplicación, mientras que el MVP se declara como aplicación local sin servidor (\texttt{localStorage}).
+	
+	\textbf{Después:} Se añade a RNF-02 la aclaración ``Este criterio aplica al entorno de producción con backend desplegado; no es exigible ni medible sobre el MVP local descrito en la Sección~6.''
+\end{quote}
+
+\textit{Requisitos afectados:} RNF-02.
+
+\vspace{6pt}
+\textbf{Defecto 9 (Mayor) --- Actor ``Refugio de animales'' ausente en RF-05.}
+
+\begin{quote}
+	\textbf{Antes:} La Tabla~5 (Clases y características de usuarios) asigna al Refugio de animales la función de ``revisar solicitudes y comunicarse con adoptantes'', pero RF-05 (Gestionar solicitudes de adopción) solo lista como actores a ``Adoptante, Propietario de mascota''.
+	
+	\textbf{Después:} Se añade ``Refugio de animales'' a la lista de actores de RF-05, y se incorpora al flujo principal el caso en que la solicitud sea gestionada por un refugio en representación de las mascotas bajo su custodia.
+\end{quote}
+
+\textit{Requisitos afectados:} RF-05, Tabla~5.
+
+\vspace{6pt}
+\textbf{Defecto 10 (Mayor) --- Entrada ``fecha de aplicación'' faltante en RF-02.}
+
+\begin{quote}
+	\textbf{Antes:} RF-02 (Gestionar historial médico) no lista ``fecha de aplicación'' como entrada explícita para el registro de vacunas, aunque HU-02/CA-02 exige ese dato y genera un error si se omite.
+	
+	\textbf{Después:} Se agrega ``fecha de aplicación'' a las Entradas de RF-02, como campo obligatorio para todo registro de tipo vacuna, alineando el requisito funcional con su historia de usuario e criterio de aceptación asociados.
+\end{quote}
+
+\textit{Requisitos afectados:} RF-02, HU-02, CA-02.
+
+\vspace{6pt}
+\textbf{Defecto 15 (Mayor) --- Contradicción sobre protección del historial médico (RL-07).}
+
+\begin{quote}
+	\textbf{Antes:} La definición de ``titular'' (Sección~2) establece que el historial médico de la mascota no constituye, en sí mismo, un dato personal protegido, mientras que RL-07 afirma que ``el historial clínico de la mascota se protege como extensión indirecta de esos datos''.
+	
+	\textbf{Después:} Se reformula la definición de ``titular'' en la Sección~2 para reconocer explícitamente que, si bien la mascota no es titular de datos personales, su historial clínico queda protegido de forma indirecta cuando permite identificar datos del propietario, en concordancia con RL-07.
+\end{quote}
+
+\textit{Requisitos afectados:} RL-07, RNF-01, RNF-05, definición de ``titular'' (Sección~2).
+
+\vspace{6pt}
+\textbf{Defecto 13 (Mayor) --- Matriz de trazabilidad no cubre los requisitos legales.}
+
+\begin{quote}
+	\textbf{Antes:} La clasificación de requisitos (Sección~5.1) declara 59 requisitos vigentes (25 RF + 16 RNF + 9 RD + 9 RL), pero la matriz de trazabilidad (Sección~5.5) declara cubrir solo ``los 50 elementos especificados'' (25 RF + 16 RNF + 9 RD), sin incluir los 9 RL.
+	
+	\textbf{Después:} Se amplía la matriz de trazabilidad para incluir los 9 requisitos legales (RL-01 a RL-09), enlazándolos hacia las restricciones de diseño (RD) que los implementan, alcanzando así los 68 elementos trazados en total (25 RF + 16 RNF + 9 RD + 9 RL + 9 enlaces RL$\rightarrow$RD).
+\end{quote}
+
+\textit{Requisitos afectados:} Sección~5.1, Sección~5.5, RL-01 a RL-09.
+
+\subsection{Defectos menores}
+
+Los 9 defectos clasificados como menores también fueron corregidos en su totalidad, dado que su resolución no comprometía el alcance ni el cronograma de esta práctica. El detalle completo de cada corrección (antes/después) se encuentra documentado en el \texttt{AnexoB\_registro\_defectos.xlsx}, columna \textit{Corrección aplicada}, marcada como ``Sí'' para los 18 defectos registrados.
+
 	% ============================================================
 	% 5. GESTIÓN DEL CAMBIO Y CCB
 	% ============================================================
