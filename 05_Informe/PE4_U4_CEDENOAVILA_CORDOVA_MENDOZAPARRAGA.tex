@@ -739,32 +739,135 @@ Los 9 defectos clasificados como menores también fueron corregidos en su totali
 	% 5. GESTIÓN DEL CAMBIO Y CCB
 	% ============================================================
 	\newpage
-	\section{Gestión del cambio y Change Control Board (CCB)}
-	
-	\subsection{RFC-01 -- Cambio de alcance (nuevo requisito)}
-	% TODO: Anexo C completo (ID, fecha, solicitante y rol, requisito afectado, descripción,
-	% justificación de negocio, requisitos impactados desde la matriz de trazabilidad, artefactos
-	% impactados, costo estimado en horas-persona, riesgo, recomendación técnica).
-	
-	\subsection{RFC-02 -- Cambio de calidad (modificación de un RNF)}
-	% TODO: mismo formato que RFC-01.
-	
-	\subsection{RFC-03 -- Cambio de restricción o normativa}
-	% TODO: mismo formato que RFC-01.
-	
-	\subsection{Acta del CCB}
-	% TODO: asistentes con roles diferenciados (presidente, representante del cliente, analista,
-	% desarrollador); agenda; deliberación resumida por RFC; decisión (aprobado / aprobado con
-	% condiciones / rechazado / diferido); justificación; acciones; responsables; plazos; nueva
-	% versión resultante del ERS; firmas.
-	
-	\subsection{Versión resultante del ERS}
-	% TODO: de v1.0 a v1.1 (coherente entre portada, historial de revisiones, CHANGELOG.md y tag de Git).
-	
+\section{Gestión del cambio y Change Control Board (CCB)}
+
+Como resultado de la inspección formal (Sección~3) se identificaron oportunidades de cambio que exceden la simple corrección de redacción y que requieren ser tramitadas mediante el procedimiento formal de control de cambios descrito en la Sección~2.1.6. A continuación se documentan las tres solicitudes de cambio (RFC) sometidas al Change Control Board (CCB), su análisis de impacto y la decisión adoptada.
+
+\subsection{RFC-01 -- Cambio de alcance (nuevo requisito)}
+
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabularx}{\textwidth}{@{}l X@{}}
+		\toprule
+		\textbf{ID} & RFC-01 \\
+		\textbf{Fecha} & 09/08/2026 \\
+		\textbf{Solicitante y rol} & Winston Cedeño Ávila, Inspector 1 \\
+		\textbf{Requisito afectado} & RL-04, RD-06 \\
+		\midrule
+		\textbf{Descripción del cambio} & Incorporar un nuevo requisito funcional, \textbf{RF-26 --- Eliminar cuenta y datos personales}, que implemente el mecanismo de eliminación exigido por RD-06 y por el derecho de supresión reconocido en RL-04 (Art. 15 LOPDP). \\
+		\textbf{Justificación de negocio} & La inspección detectó (Defecto 5, crítico) que RD-06 reconoce en su propia justificación que ``ningún RF de los 25 definidos cubría esta función''. Sin este requisito, el sistema incumpliría un derecho legal reconocido explícitamente en el propio ERS, exponiendo al PFC a un riesgo de cumplimiento normativo. \\
+		\textbf{Requisitos impactados} & RL-04, RD-06, RNF-01 (protección de datos), RNF-05 (integridad de la información) \\
+		\textbf{Artefactos impactados} & Modelo de datos (eliminación en cascada del historial médico y publicaciones), módulo de cuentas, matriz de trazabilidad (Sección~5.5) \\
+		\textbf{Costo estimado} & 6 horas-persona (diseño del flujo, implementación del RF y actualización de la matriz de trazabilidad) \\
+		\textbf{Riesgo} & Medio. La eliminación en cascada del historial médico puede afectar la trazabilidad de datos ya compartidos con veterinarias o refugios; requiere definir una política de retención antes de implementar. \\
+		\textbf{Recomendación técnica} & Aprobar. El cambio cierra un vacío ya reconocido por el propio ERS y es indispensable para el cumplimiento del Art.~15 de la LOPDP. \\
+		\bottomrule
+	\end{tabularx}
+	\caption{RFC-01 -- Cambio de alcance.}
+	\label{tab:rfc-01}
+\end{table}
+
+\subsection{RFC-02 -- Cambio de calidad (modificación de un RNF)}
+
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabularx}{\textwidth}{@{}l X@{}}
+		\toprule
+		\textbf{ID} & RFC-02 \\
+		\textbf{Fecha} & 09/08/2026 \\
+		\textbf{Solicitante y rol} & Mendoza Párraga Andy Johel, Moderador \\
+		\textbf{Requisito afectado} & RNF-02 \\
+		\midrule
+		\textbf{Descripción del cambio} & Acotar el alcance de RNF-02 (disponibilidad $\geq$ 99\,\% mensual) para que aplique exclusivamente al entorno de producción con backend desplegado, aclarando que no es exigible ni medible sobre el MVP local descrito en la Sección~6. \\
+		\textbf{Justificación de negocio} & La inspección detectó (Defecto 6, mayor) que el MVP se declara como aplicación local sin servidor (\texttt{localStorage}), lo que vuelve el criterio de disponibilidad mensual no medible en esta iteración. Mantener el requisito sin acotar genera una expectativa de verificación imposible de cumplir en el MVP. \\
+		\textbf{Requisitos impactados} & RNF-02, Sección~6 (Producto Mínimo Viable) \\
+		\textbf{Artefactos impactados} & Documento ERS (redacción de RNF-02), plan de pruebas de aceptación del MVP \\
+		\textbf{Costo estimado} & 1 hora-persona (ajuste de redacción y revisión de consistencia con la Sección~6) \\
+		\textbf{Riesgo} & Bajo. El cambio no altera funcionalidad, solo delimita el alcance de verificación de un RNF ya existente. \\
+		\textbf{Recomendación técnica} & Aprobar. Evita un criterio de verificación no aplicable al MVP y mantiene el requisito vigente para la fase de producción. \\
+		\bottomrule
+	\end{tabularx}
+	\caption{RFC-02 -- Cambio de calidad.}
+	\label{tab:rfc-02}
+\end{table}
+
+\subsection{RFC-03 -- Cambio de restricción o normativa}
+
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabularx}{\textwidth}{@{}l X@{}}
+		\toprule
+		\textbf{ID} & RFC-03 \\
+		\textbf{Fecha} & 09/08/2026 \\
+		\textbf{Solicitante y rol} & Córdova Carreño Mayra Lucila, Inspector 2 \\
+		\textbf{Requisito afectado} & RD-08, RF-10 \\
+		\midrule
+		\textbf{Descripción del cambio} & Formalizar en RF-10 la exigencia de un canal de respaldo \textit{in-app} obligatorio ante la indisponibilidad del proveedor externo de mensajería (WhatsApp Business API), actualmente mencionado únicamente en el campo ``Impacto'' de RD-08 sin quedar reflejado como comportamiento exigible del requisito funcional. \\
+		\textbf{Justificación de negocio} & RD-08 reconoce que la disponibilidad del canal de recordatorios ``queda condicionada a las políticas y disponibilidad de dicho proveedor'' y menciona la necesidad de un canal de respaldo, pero RF-10 no exige explícitamente ese respaldo como parte de su comportamiento. Sin esta restricción formalizada, una caída del proveedor externo dejaría a los propietarios sin recordatorios de controles preventivos, afectando directamente el objetivo sanitario del sistema. \\
+		\textbf{Requisitos impactados} & RF-10, RD-08, RNF-09 (compatibilidad) \\
+		\textbf{Artefactos impactados} & Descripción y criterio de verificación de RF-10, arquitectura de integración externa, matriz de trazabilidad \\
+		\textbf{Costo estimado} & 3 horas-persona (actualización de RF-10 y su criterio de verificación, prueba del canal de respaldo) \\
+		\textbf{Riesgo} & Bajo. El canal de respaldo (notificación in-app) ya forma parte de la arquitectura declarada en la Sección~2 (entorno operativo); el cambio solo formaliza su exigibilidad en el requisito funcional. \\
+		\textbf{Recomendación técnica} & Aprobar. Cierra una brecha entre lo declarado como mitigación de riesgo (RD-08) y lo exigido funcionalmente (RF-10). \\
+		\bottomrule
+	\end{tabularx}
+	\caption{RFC-03 -- Cambio de restricción.}
+	\label{tab:rfc-03}
+\end{table}
+
+\subsection{Acta del CCB}
+
+\textbf{Fecha:} 9 de agosto de 2026. \quad \textbf{Modalidad:} Virtual (Google Meet). \quad \textbf{Duración:} 45 minutos.
+
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabularx}{\textwidth}{@{}l l@{}}
+		\toprule
+		\textbf{Integrante} & \textbf{Rol en el CCB} \\
+		\midrule
+		Mendoza Párraga Andy Johel & Presidente del CCB \\
+		Cedeño Ávila Winston Damian & Analista de requisitos \\
+		Córdova Carreño Mayra Lucila & Representante del cliente / Desarrolladora \\
+		\bottomrule
+	\end{tabularx}
+	\caption{Asistentes al CCB y roles asignados.}
+	\label{tab:asistentes-ccb}
+\end{table}
+
+\textbf{Agenda:} revisión y decisión sobre RFC-01, RFC-02 y RFC-03, en ese orden.
+
+\textbf{Deliberación.} Para RFC-01, el CCB coincidió en que la ausencia de un RF que implemente RD-06 constituye un vacío crítico ya autodocumentado por el propio ERS, y que su riesgo medio (retención de datos compartidos) es gestionable definiendo una política de retención antes de la implementación. Para RFC-02, se consideró que acotar el alcance de RNF-02 al entorno de producción es una aclaración de bajo riesgo que no reduce ninguna garantía real del sistema, solo evita un criterio de verificación inaplicable al MVP. Para RFC-03, el CCB determinó que formalizar el canal de respaldo in-app en RF-10 no introduce trabajo nuevo relevante, ya que la arquitectura de respaldo ya estaba contemplada en el entorno operativo; se trata de una corrección de consistencia entre RD-08 y RF-10.
+
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabularx}{\textwidth}{@{}l l X l@{}}
+		\toprule
+		\textbf{RFC} & \textbf{Decisión} & \textbf{Acción y responsable} & \textbf{Plazo} \\
+		\midrule
+		RFC-01 & Aprobado con condiciones & Incorporar RF-26 y definir política de retención de datos compartidos (Winston Cedeño) & 09/08/2026 \\
+		RFC-02 & Aprobado & Actualizar redacción de RNF-02 (Andy Mendoza) & 09/08/2026 \\
+		RFC-03 & Aprobado & Actualizar RF-10 y su criterio de verificación (Mayra Córdova) & 09/08/2026 \\
+		\bottomrule
+	\end{tabularx}
+	\caption{Decisiones del CCB por RFC.}
+	\label{tab:decisiones-ccb}
+\end{table}
+
+Las tres solicitudes fueron aprobadas por unanimidad; RFC-01 se aprueba con la condición de definir explícitamente la política de retención de datos antes de su implementación. El CCB acuerda que, una vez incorporados los tres cambios, se declare la nueva línea base \texttt{ERS\_SRS\_2A\_v1.1}.
+
+\subsection{Versión resultante del ERS}
+
+Con la aprobación de las tres RFC, el ERS transita de la versión \texttt{v1.0} a la versión \texttt{v1.1}. Esta nueva versión incorpora: (i) las correcciones de los 18 defectos documentadas en la Sección~4; (ii) el nuevo RF-26 aprobado por RFC-01; (iii) la redacción acotada de RNF-02 aprobada por RFC-02; y (iv) la formalización del canal de respaldo en RF-10 aprobada por RFC-03.
+
+La coherencia de versión se mantiene entre los siguientes artefactos: la portada y el historial de revisiones del documento \texttt{ERS\_SRS\_2A\_v1.1}, el archivo \texttt{CHANGELOG.md} del repositorio (entrada \texttt{[1.1]}) y el tag anotado \texttt{baseline-v1.1} publicado en el repositorio Git, conforme se detalla en la Sección~7.
 	% ============================================================
 	% 6. TRAZABILIDAD EN HERRAMIENTA CASE
 	% ============================================================
-	\newpage
 	\section{Trazabilidad en herramienta CASE} \label{sec:trazabilidad_case}
 	
 	\subsection{Estructura del tablero}
