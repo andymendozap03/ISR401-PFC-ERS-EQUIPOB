@@ -180,11 +180,7 @@ doi=true
 	% ============================================================
 	\section{Resumen y objetivos}
 	
-	% TODO (máx. 200 palabras): resumen ejecutivo redactado por el equipo al FINALIZAR el
-	% informe (se escribe de último, aunque va primero). Debe mencionar: sistema del PFC
-	% (MundiPets), qué se hizo (inspección Fagan, RFC/CCB, trazabilidad en herramienta CASE,
-	% baseline con Git, comparativa) y el resultado principal obtenido (p. ej. n.º de
-	% defectos corregidos, versión final del ERS, tag de baseline publicado).
+Esta práctica aplicó técnicas formales de validación y gestión de requisitos sobre el ERS del Proyecto de Fin de Curso \textbf{MundiPets}. El equipo ejecutó una inspección formal Fagan con roles diferenciados, consolidando 18 defectos únicos (2 críticos y 7 mayores), todos corregidos en su totalidad. Los hallazgos de mayor impacto se formalizaron en tres solicitudes de cambio (RFC), evaluadas y aprobadas por un Change Control Board simulado, dando lugar a un nuevo requisito funcional, la acotación de un requisito no funcional y la formalización de un canal de respaldo ante fallas de un proveedor externo. Se construyó además la trazabilidad de 26 requisitos funcionales en una herramienta CASE (Jira), organizados en 5 Epics y respaldados por 10 sub-tareas de verificación. Finalmente, se estableció una nueva línea base del ERS mediante control de versiones con Git, publicando el tag anotado \texttt{baseline-v1.1}, y se comparó un conjunto de herramientas CASE, así como el enfoque tradicional y ágil de la Ingeniería de Requisitos, con conclusiones críticas propias del equipo.
 	
 	\subsection{Objetivo general}
 	
@@ -874,6 +870,8 @@ La coherencia de versión se mantiene entre los siguientes artefactos: la portad
 	
 	La trazabilidad de requisitos se gestionó en \textbf{Jira} (proyecto \texttt{MundiPets-PE4}, clave \texttt{KAN}), en modalidad Kanban, con acceso otorgado a los tres integrantes del equipo y al docente. El tablero se organizó en cinco columnas: \textbf{Backlog}, \textbf{Análisis}, \textbf{Aprobado}, \textbf{Desarrollo} y \textbf{Hecho}.
 	
+	\url{https://mundipetspe4.atlassian.net/jira/software/projects/KAN/summary}
+	
 	El backlog se estructuró en tres niveles jerárquicos:
 	
 	\begin{itemize}
@@ -1318,22 +1316,98 @@ A modo de vista previa ordenada del contenido del CSV, la Figura~\ref{fig:backlo
 	\label{fig:backlog-tabla}
 \end{figure}
 	\newpage
-	\section*{Anexo E --- Capturas del tablero CASE y del repositorio Git}
-	\addcontentsline{toc}{section}{Anexo E --- Capturas del tablero CASE y del repositorio Git}
-	% TODO: capturas del tablero completo, detalle de ≥ 3 issues, panel de estadísticas,
-	% y capturas de git log --oneline --graph --decorate y git tag -n.
-	
-	\newpage
-	\section*{Anexo F --- Referencias IEEE y declaración de uso de Inteligencia Artificial}
-	\addcontentsline{toc}{section}{Anexo F --- Referencias IEEE y declaración de uso de Inteligencia Artificial}
-	
-	\printbibliography[title={Referencias}]
-	
-	\newpage
-	
-	\textbf{Uso de la IA}
-	% TODO: declarar herramienta, versión, tarea asistida, fragmento afectado y verificación crítica
-	% realizada por el equipo, con firma de los integrantes (criterio de admisión A4 -- su omisión
-	% asigna la nota mínima).
+\section*{Anexo E --- Capturas del tablero CASE y del repositorio Git}
+\addcontentsline{toc}{section}{Anexo E --- Capturas del tablero CASE y del repositorio Git}
+
+A continuación se presenta la totalidad de las capturas del tablero CASE (Jira) y del repositorio Git referenciadas a lo largo del informe, consolidadas en este anexo como evidencia adicional.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{figuras/2026-08-09_jira-tablero-completo.png}
+	\caption{Tablero Kanban completo del proyecto MundiPets-PE4 en Jira.}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{figuras/2026-08 09_jira-panel-estadisticas.png}
+	\caption{Panel de estadísticas del proyecto MundiPets-PE4.}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{figuras/2026-08-09_jira-detalle-RF-01-registrar-mascota.png}
+	\caption{Detalle de la Story ``Registrar mascota'' (RF-01).}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{figuras/2026-08-09_jira-detalle-RF-03-consultar-perfil.png}
+	\caption{Detalle de la Story ``Consultar perfil completo de una mascota'' (RF-03).}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{figuras/2026-08-09_jira-detalle-RF-05-solicitudes-adopcion.png}
+	\caption{Detalle de la Story ``Gestionar solicitudes de adopción'' (RF-05).}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{figuras/git_log_y_tag.png}
+	\caption{Salida de \texttt{git log --oneline --graph --decorate} y \texttt{git tag -n}.}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{figuras/git_log.png}
+	\caption{Detalle ampliado del historial de commits, con autoría distribuida entre los tres integrantes.}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{figuras/commits_1.png}
+	\caption{Vista de GitHub con los commits más recientes del repositorio.}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{figuras/commits_2.png}
+	\caption{Continuación del historial de commits en GitHub.}
+\end{figure}
+
+\newpage
+\section*{Anexo F --- Referencias IEEE y declaración de uso de Inteligencia Artificial}
+\addcontentsline{toc}{section}{Anexo F --- Referencias IEEE y declaración de uso de Inteligencia Artificial}
+
+\printbibliography[title={Referencias}]
+
+\newpage
+
+\textbf{Uso de la Inteligencia Artificial}
+
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabularx}{\textwidth}{@{}l X@{}}
+		\toprule
+		\textbf{Campo} & \textbf{Detalle} \\
+		\midrule
+		Herramienta y versión & Claude (Anthropic), modelo Claude Sonnet 4.5, acceso vía interfaz de chat. \\
+		Tareas asistidas & Apoyo en la redacción y en la organización del formato de algunas secciones del informe, a partir del trabajo, los datos y las decisiones ya generados por el equipo (defectos de la inspección, RFC, decisiones del CCB, estructura del tablero en Jira, historial de commits); apoyo puntual en la construcción de tablas y en la corrección de errores de compilación de LaTeX. \\
+		Fragmentos afectados & Redacción y formato de partes puntuales del informe y del \texttt{ERS\_SRS\_2A}, siempre a partir de información y decisiones aportadas por el equipo. \\
+		Verificación crítica del equipo & Todos los datos, defectos, decisiones del CCB y contenido técnico incluidos en el informe fueron generados, revisados y aprobados por los integrantes del equipo antes de su incorporación al documento final. \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+\vspace{1em}
+
+\begin{center}
+	\begin{tabular}{ccc}
+		\includegraphics[width=2cm]{figuras/firma_andy.png} & \includegraphics[width=3cm]{figuras/firma_winston.png} & \includegraphics[width=3cm]{figuras/firma_mayra.png} \\
+		\rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+		Mendoza Párraga Andy Johel & Cedeño Ávila Winston Damian & Córdova Carreño Mayra Lucila \\
+	\end{tabular}
+\end{center}
 	
 \end{document}
