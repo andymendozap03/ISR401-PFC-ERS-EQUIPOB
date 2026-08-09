@@ -1264,7 +1264,7 @@ doi=true
 		Descripción & El sistema deberá permitir registrar y actualizar el historial médico de una mascota, incluyendo vacunas (con su cepa/marca y profesional aplicador), desparasitaciones, enfermedades, alergias, cirugías, tratamientos y controles veterinarios. \\
 		Actor & Propietario de mascota, Veterinaria \\
 		Origen (ID de evidencia) & EV-01, EV-02, EV-03, EV-04, EV-05, EV-06, EV-07, EV-15, EV-16 \\
-		Entradas & Vacunas (cepa, aplicador), desparasitaciones, enfermedades, alergias, cirugías, tratamientos, controles médicos, observaciones. \\
+		Entradas & Vacunas (fecha de aplicación, cepa, aplicador), desparasitaciones, enfermedades, alergias, cirugías, tratamientos, controles médicos, observaciones. \\
 		Salidas & Historial médico actualizado. \\
 		Precondiciones & La mascota debe estar registrada en el sistema. \\
 		Postcondiciones & El historial médico queda actualizado y disponible para usuarios autorizados. \\
@@ -1309,15 +1309,15 @@ doi=true
 	\begin{atributos}{RF-05}{RF-05 --- Gestionar solicitudes de adopción.}
 		Identificador & RF-05 \\
 		Nombre & Gestionar solicitudes de adopción \\
-		Descripción & El sistema deberá permitir que un usuario interesado envíe solicitudes de adopción, incluyendo su fotografía de perfil, y que el propietario pueda aceptarlas o rechazarlas después de revisar la información del solicitante. \\
-		Actor & Adoptante, Propietario de mascota \\
+		Descripción & El sistema deberá permitir que un usuario interesado envíe solicitudes de adopción, incluyendo su fotografía de perfil, y que el propietario o el refugio de animales responsable de la mascota puedan aceptarlas o rechazarlas después de revisar la información del solicitante. \\
+		Actor & Adoptante, Propietario de mascota, Refugio de animales \\
 		Origen (ID de evidencia) & EV-01, EV-02, EV-03, EV-05, EV-06, EV-08 \\
 		Entradas & Solicitud de adopción, información y fotografía del solicitante. \\
 		Salidas & Solicitud registrada y estado de aceptación o rechazo. \\
 		Precondiciones & La mascota debe estar disponible para adopción. \\
 		Postcondiciones & La solicitud queda registrada con su estado correspondiente. \\
 		Prioridad (MoSCoW) & Must \\
-		Criterio de verificación & Registrar una solicitud y comprobar que el propietario puede visualizar el perfil del solicitante y gestionarla correctamente. \\
+		Criterio de verificación & Registrar una solicitud y comprobar que el propietario o el refugio responsable pueden visualizar el perfil del solicitante y gestionarla correctamente. \\
 	\end{atributos}
 	
 	\subsubsection{RF-06 --- Evaluar compatibilidad entre mascotas para cruza}
@@ -1389,15 +1389,15 @@ doi=true
 	\begin{atributos}{RF-10}{RF-10 --- Gestionar recordatorios de controles preventivos.}
 		Identificador & RF-10 \\
 		Nombre & Gestionar recordatorios de controles preventivos \\
-		Descripción & El sistema deberá generar recordatorios por notificación en la aplicación y WhatsApp para informar al propietario sobre próximas vacunas, desparasitaciones y controles veterinarios, enviándolos con una semana y un día de anticipación. \\
+		Descripción & El sistema deberá generar recordatorios por notificación en la aplicación y WhatsApp para informar al propietario sobre próximas vacunas, desparasitaciones y controles veterinarios, enviándolos con una semana y un día de anticipación. Ante la indisponibilidad del proveedor externo de mensajería (WhatsApp Business API), el sistema deberá garantizar el recordatorio mediante el canal de respaldo in-app, conforme a RD-08. \\
 		Actor & Propietario de mascota \\
 		Origen (ID de evidencia) & EV-02, EV-04, EV-06, EV-11 \\
 		Entradas & Fechas de vacunas, controles veterinarios y desparasitaciones. \\
-		Salidas & Notificaciones o recordatorios generados por el sistema en los dos momentos definidos. \\
+		Salidas & Notificaciones o recordatorios generados por el sistema en los dos momentos definidos, por WhatsApp o, en caso de falla del proveedor, por el canal de respaldo in-app. \\
 		Precondiciones & Deben existir fechas registradas para los controles preventivos de la mascota. \\
-		Postcondiciones & El propietario recibe el recordatorio correspondiente antes de la fecha programada. \\
+		Postcondiciones & El propietario recibe el recordatorio correspondiente antes de la fecha programada, a través de al menos uno de los dos canales disponibles. \\
 		Prioridad (MoSCoW) & Should \\
-		Criterio de verificación & Registrar una fecha de vacunación próxima y verificar que el sistema genere el recordatorio una semana y un día antes. \\
+		Criterio de verificación & Registrar una fecha de vacunación próxima y verificar que el sistema genere el recordatorio una semana y un día antes; simular la indisponibilidad de WhatsApp y comprobar que el recordatorio se entrega igualmente por el canal in-app. \\
 	\end{atributos}
 	
 	\subsubsection{RF-11 --- Administrar la privacidad de la información}
@@ -1520,7 +1520,7 @@ doi=true
 		Descripción & El sistema deberá guiar la solicitud de adopción a través de etapas secuenciales (formulario, entrevista, visita al hogar, periodo de prueba y compromiso firmado), mostrando al solicitante y al propietario el estado de cumplimiento de cada etapa. \\
 		Actor & Adoptante, Propietario de mascota \\
 		Origen (ID de evidencia) & EV-11, EV-16 \\
-		Entradas & Formulario de solicitud, resultado de entrevista, resultado de visita, resultado de periodo de prueba, compromiso firmado. \\
+		Entradas & Formulario de solicitud, resultado de entrevista, resultado de visita al hogar, resultado de periodo de prueba, compromiso firmado. \\
 		Salidas & Estado de la solicitud actualizado por etapa. \\
 		Precondiciones & La mascota debe estar disponible para adopción y el usuario debe estar verificado (RF-12). \\
 		Postcondiciones & La solicitud queda marcada como completada, rechazada o pendiente en la etapa correspondiente. \\
@@ -1818,9 +1818,9 @@ doi=true
 		Identificador & RNF-11 \\
 		Nombre & Portabilidad entre navegadores y dispositivos \\
 		Característica ISO 25010 & Portabilidad \\
-		Descripción & La plataforma web deberá funcionar correctamente en los navegadores Chrome, Firefox y Safari (dos últimas versiones estables) y adaptarse de forma responsiva a pantallas móviles y de escritorio. \\
+		Descripción & La plataforma web deberá funcionar correctamente en los navegadores Chrome, Firefox, Safari y Microsoft Edge (dos últimas versiones estables) y adaptarse de forma responsiva a pantallas móviles y de escritorio. \\
 		Métrica & Porcentaje de funcionalidades Must que operan sin errores por navegador/dispositivo probado. \\
-		Valor objetivo & 100\,\% de las funcionalidades Must operativas en los 3 navegadores y en resolución móvil y de escritorio. \\
+		Valor objetivo & 100\,\% de las funcionalidades Must operativas en los 4 navegadores y en resolución móvil y de escritorio. \\
 		Prioridad (MoSCoW) & Should \\
 		Criterio de verificación & Ejecutar las pruebas funcionales de los RF Must en cada navegador y tamaño de pantalla y verificar la ausencia de errores bloqueantes. \\
 	\end{atributos}
@@ -2526,6 +2526,7 @@ doi=true
 		Dado que una solicitud de adopcion aun no ha sido completada
 		Cuando intento registrar un reporte de seguimiento
 		Entonces el sistema rechaza la operacion
+		Y muestra el mensaje "No es posible registrar seguimiento: la adopcion aun no ha sido completada"
 	\end{lstlisting}
 	
 	\subsubsection{HU-15 --- Alertas de riesgo en interacciones y cruces}
@@ -3867,7 +3868,7 @@ doi=true
 		\hline
 		RF-03 & Consultar perfil completo & Must & Fundamental para que adoptantes e interesados en cruza tomen decisiones informadas; sustenta RL-02. \\
 		\hline
-		RF-04 & Buscar y filtrar mascotas & Should & Mejora la usabilidad, pero el sistema puede operar inicialmente con listas generales. \\
+		RF-04 & Buscar y filtrar mascotas & Should & Mejora la usabilidad; aunque su media de importancia declarada es alta (4,16/5), el porcentaje de calificación máxima es el más bajo del grupo evaluado (42,1\,\%), por lo que el sistema puede operar inicialmente con listas generales. \\
 		\hline
 		RF-05 & Gestionar solicitudes de adopción & Must & Núcleo del modelo operativo de la plataforma. \\
 		\hline
