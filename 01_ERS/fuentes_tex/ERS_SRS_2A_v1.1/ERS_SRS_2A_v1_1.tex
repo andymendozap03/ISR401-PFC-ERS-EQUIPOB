@@ -1245,7 +1245,7 @@ doi=true
 	\begin{atributos}{RF-01}{RF-01 --- Registrar mascota.}
 		Identificador & RF-01 \\
 		Nombre & Registrar mascota \\
-		Descripción & El sistema deberá permitir al propietario registrar una mascota ingresando su información general, incluyendo nombre, especie, raza, sexo, edad, estado reproductivo y fotografías para su identificación dentro de la plataforma. \\
+		Descripción & El sistema deberá permitir al propietario registrar una mascota ingresando su información general, incluyendo nombre, especie, raza, sexo, edad, estado reproductivo, una descripción libre de su temperamento o características particulares, y fotografías para su identificación dentro de la plataforma. \\
 		Actor & Propietario de mascota \\
 		Origen (ID de evidencia) & EV-02, EV-03, EV-05, EV-06, EV-07, EV-08 \\
 		Entradas & Nombre, especie, raza, sexo, edad, estado reproductivo, fotografías, descripción. \\
@@ -1701,11 +1701,11 @@ doi=true
 		Identificador & RNF-02 \\
 		Nombre & Disponibilidad del sistema \\
 		Característica ISO 25010 & Fiabilidad \\
-		Descripción & El sistema deberá mantenerse disponible para los usuarios con una disponibilidad mínima del 99\,\% mensual, permitiendo el acceso continuo a sus funcionalidades durante la operación normal de la plataforma. \\
-		Métrica & Porcentaje de disponibilidad mensual. \\
-		Valor objetivo & $\geq$ 99\,\% de disponibilidad mensual. \\
+		Descripción & El sistema deberá mantenerse disponible para los usuarios con una disponibilidad mínima del 99\,\% mensual, permitiendo el acceso continuo a sus funcionalidades durante la operación normal de la plataforma. Este criterio aplica al entorno de producción con backend desplegado; no es exigible ni medible sobre el MVP local descrito en la Sección~6, que opera con almacenamiento local (\texttt{localStorage}) sin servidor. \\
+		Métrica & Porcentaje de disponibilidad mensual (entorno de producción). \\
+		Valor objetivo & $\geq$ 99\,\% de disponibilidad mensual en producción. \\
 		Prioridad (MoSCoW) & Must \\
-		Criterio de verificación & Monitorear la disponibilidad del sistema durante un mes de operación y comprobar que cumple el porcentaje establecido. \\
+		Criterio de verificación & Monitorear la disponibilidad del sistema en el entorno de producción durante un mes de operación y comprobar que cumple el porcentaje establecido. No aplica al MVP local. \\
 	\end{atributos}
 	
 	\subsubsection{RNF-03 --- Tiempo de respuesta del sistema}
@@ -1731,7 +1731,7 @@ doi=true
 		Métrica & Porcentaje de usuarios que completan las tareas sin asistencia y puntuación media SUS. \\
 		Valor objetivo & $\geq$ 90\,\% de finalización sin ayuda; puntuación SUS media $\geq$ 80/100. \\
 		Prioridad (MoSCoW) & Should \\
-		Criterio de verificación & Realizar pruebas de usabilidad con usuarios representativos, medir el porcentaje de finalización sin ayuda y aplicar el cuestionario SUS al finalizar. \\
+		Criterio de verificación & Realizar pruebas de usabilidad con una muestra mínima de 15 usuarios representativos (sin experiencia previa con la plataforma), medir el porcentaje de finalización sin ayuda y aplicar el cuestionario SUS al finalizar. \\
 	\end{atributos}
 	
 	\subsubsection{RNF-05 --- Integridad de la información médica}
@@ -1984,6 +1984,7 @@ doi=true
 		Justificación & La solución propuesta incorpora IA como parte del valor agregado del sistema para mejorar la confiabilidad de los procesos de cruza y la validación del contenido publicado. \\
 		Impacto & Arquitectura del sistema, módulo de IA y procesamiento de imágenes. \\
 		Prioridad (MoSCoW) & Must \\
+		Criterio de verificación & Verificar que el módulo de compatibilidad y el de validación de imágenes generan una respuesta basada en el componente de IA correspondiente, y no en una regla estática, para una muestra de al menos 10 casos de prueba. \\
 	\end{atributos}
 	
 	\subsubsection{RD-02 --- Acceso basado en roles}
@@ -1995,6 +1996,7 @@ doi=true
 		Justificación & Las entrevistas muestran que cada tipo de usuario realiza funciones distintas y accede a diferente información; refuerza además RL-05 y RL-08 (minimización y protección desde el diseño, Art. 10 y 39 LOPDP). \\
 		Impacto & Seguridad, autenticación, autorización y diseño de la base de datos. \\
 		Prioridad (MoSCoW) & Must \\
+		Criterio de verificación & Iniciar sesión con cada rol (propietario, veterinaria, administrador) y comprobar que cada uno accede únicamente a las funciones y datos permitidos para su rol. \\
 	\end{atributos}
 	
 	\subsubsection{RD-03 --- Validación profesional de la información médica}
@@ -2006,6 +2008,7 @@ doi=true
 		Justificación & Los veterinarios entrevistados (EV-15, EV-16) resaltan la importancia de que la información médica sea confiable y verificable. \\
 		Impacto & Diseño de usuarios, permisos y módulo de historial médico. \\
 		Prioridad (MoSCoW) & Must \\
+		Criterio de verificación & Registrar información médica desde una cuenta sin rol Veterinaria y comprobar que el sistema la marca como no validada profesionalmente; repetir desde una cuenta con rol Veterinaria y comprobar que queda marcada como validada. \\
 	\end{atributos}
 	
 	\subsubsection{RD-04 --- Protección de datos personales}
@@ -2017,6 +2020,7 @@ doi=true
 		Justificación & Los entrevistados consideran prioritaria la privacidad de la información registrada (EV-09, EV-10, EV-18); implementa directamente RL-05, RL-07 y RL-08. \\
 		Impacto & Seguridad, arquitectura del sistema y base de datos. \\
 		Prioridad (MoSCoW) & Must \\
+		Criterio de verificación & Intentar acceder a datos personales o clínicos sin autenticación o autorización adecuada y comprobar que el sistema deniega el acceso, conforme al principio de protección de datos desde el diseño y por defecto. \\
 	\end{atributos}
 	
 	\subsubsection{RD-05 --- Arquitectura modular del sistema}
@@ -2028,6 +2032,7 @@ doi=true
 		Justificación & La plataforma integra funcionalidades de gestión, adopción, cruza e IA, por lo que una arquitectura modular facilitará su evolución y mantenimiento; sustenta directamente RNF-10 (mantenibilidad). \\
 		Impacto & Arquitectura del software y organización del código fuente. \\
 		Prioridad (MoSCoW) & Must \\
+		Criterio de verificación & Verificar que los módulos del sistema (gestión de mascotas, adopción, cruza, IA) están desacoplados en el código fuente, de modo que la modificación de uno no requiera cambios en los demás. \\
 	\end{atributos}
 	
 	\subsubsection{RD-06 --- Mecanismo de eliminación de cuenta y datos personales}
@@ -2039,6 +2044,7 @@ doi=true
 		Justificación & El Art. 15 de la LOPDP reconoce el derecho de eliminación del titular; ningún RF de los 25 definidos cubría esta función (vacío detectado en 3.4, RL-04). \\
 		Impacto & Modelo de datos, módulo de cuentas, políticas de retención y borrado en cascada del historial médico y publicaciones asociadas. \\
 		Prioridad (MoSCoW) & Must \\
+		Criterio de verificación & Solicitar la eliminación de una cuenta de prueba y comprobar que, dentro del plazo definido, los datos personales quedan suprimidos o anonimizados según corresponda. \\
 	\end{atributos}
 	
 	\subsubsection{RD-07 --- Protocolo de notificación de vulneraciones de seguridad}
@@ -2050,6 +2056,7 @@ doi=true
 		Justificación & Los Art. 43 y 46 de la LOPDP exigen esta notificación; no existía ningún RD que la contemplara (vacío detectado en 3.4, RL-09). \\
 		Impacto & Arquitectura de monitoreo/logging, módulo de administración, procedimiento operativo del equipo responsable del tratamiento. \\
 		Prioridad (MoSCoW) & Must \\
+		Criterio de verificación & Simular un incidente de seguridad y comprobar que el sistema genera el registro correspondiente y que el procedimiento de notificación puede ejecutarse dentro de los plazos de 5 y 3 días establecidos. \\
 	\end{atributos}
 	
 	\subsubsection{RD-08 --- Dependencia de servicios externos de mensajería}
@@ -2061,6 +2068,7 @@ doi=true
 		Justificación & La evidencia de campo (EV-11) muestra una fuerte preferencia de los usuarios por recibir recordatorios por ese canal; sustenta RNF-09 (compatibilidad). \\
 		Impacto & Arquitectura de integración externa; requiere canal de respaldo (notificación in-app) ante caídas del proveedor. \\
 		Prioridad (MoSCoW) & Should \\
+		Criterio de verificación & Simular la indisponibilidad del proveedor externo de mensajería y comprobar que el sistema entrega el recordatorio mediante el canal de respaldo in-app, conforme a RF-10. \\
 	\end{atributos}
 	
 	\subsubsection{RD-09 --- Anonimización de evidencias de campo para publicación abierta (nueva)}
@@ -2072,6 +2080,7 @@ doi=true
 		Justificación & Los Art. 30 a 32 de la LOPDP exigen anonimización para el tratamiento de datos de salud con fines de investigación; los consentimientos firmados (Apéndice B.6) ya autorizan explícitamente el uso de datos anonimizados en publicaciones científicas. \\
 		Impacto & Proceso de preparación de datos para la Entrega 4 (paquete FAIR), scripts de anonimización, README\_dataset.md. \\
 		Prioridad (MoSCoW) & Must \\
+		Criterio de verificación & Revisar una muestra de transcripciones, videos y respuestas incluidas en el conjunto de datos abierto, y comprobar que no contienen identificadores directos del propietario. \\
 	\end{atributos}
 	
 	
@@ -4174,7 +4183,7 @@ doi=true
 	$\rightarrow$ Caso de Uso $\rightarrow$ Historia de Usuario
 	$\rightarrow$ Criterio de Aceptación $\rightarrow$ Mockup. A continuación se
 	muestra la primera fila a modo de ejemplo del formato empleado;
-	\textbf{la matriz completa, con sus 40 filas (TR-01 a TR-40), se presenta en
+	\textbf{la matriz completa, con sus 59 filas (TR-01 a TR-59), se presenta en
 		el Apéndice~D} y se versiona además como
 	\texttt{04\_Trazabilidad/matriz\_trazabilidad.csv} en el repositorio. La
 	versión en CSV incorpora además las columnas \emph{Tipo} (RF, RNF o RD) e
@@ -4183,11 +4192,13 @@ doi=true
 	versión impresa por restricciones de ancho de página.
 	
 	\paragraph{Cobertura alcanzada.}
-	La matriz cubre los 50 elementos especificados en este documento: los 25
-	requisitos funcionales, los 16 no funcionales y las 9 restricciones de
-	diseño. Cada fila parte de al menos una evidencia del catálogo del
+	La matriz cubre los 59 requisitos vigentes especificados en este documento:
+	los 25 requisitos funcionales, los 16 no funcionales, las 9 restricciones de
+	diseño y los 9 requisitos legales, estos últimos enlazados hacia la
+	restricción de diseño (RD) que los implementa, conforme a la Tabla~\ref{tab:legales}.
+	Cada fila parte de al menos una evidencia del catálogo del
 	Apéndice~B.1, de modo que ningún requisito queda sin respaldo empírico. De
-	las 50 filas, 22 declaran una obligación legal explícita de la LOPDP con su
+	las 59 filas, 22 declaran una obligación legal explícita de la LOPDP con su
 	artículo correspondiente, 17 enlazan hasta una historia de usuario con su
 	criterio de aceptación --- las de los requisitos funcionales de prioridad
 	\emph{Must} --- y 18 hasta un prototipo de interfaz. Los tramos sin enlace se
@@ -4206,7 +4217,7 @@ doi=true
 	
 	\begin{table}[H]
 		\centering
-		\caption{Estructura de la matriz de trazabilidad extendida (formato de las 50 filas del Apéndice~D).}
+		\caption{Estructura de la matriz de trazabilidad extendida (formato de las 59 filas del Apéndice~D).}
 		\label{tab:trazabilidad}
 		\small
 		\begin{tabularx}{\textwidth}{@{}l X@{}}
@@ -6564,11 +6575,13 @@ doi=true
 	medida que se redactan las historias de usuario (Sección~\ref{sec:historias})
 	y los mockups de alta fidelidad (Sección~\ref{sec:mockups}). Debe coincidir
 	con el archivo \texttt{04\_Trazabilidad/matriz\_trazabilidad.csv}. La matriz
-	alcanza las \textbf{50 filas} (TR-01 a TR-50), por encima del mínimo de 40
-	exigido: las veinte filas finales (TR-31 a TR-50) recogen las relaciones
+	alcanza las \textbf{59 filas} (TR-01 a TR-59), por encima del mínimo de 40
+	exigido: las veinte filas TR-31 a TR-50 recogen las relaciones
 	derivadas de los RF-18 a RF-25, de los RNF-09 a RNF-16 y de los RD-06 a RD-09
-	incorporados o completados en esta entrega. Con ello, la totalidad de los 25
-	RF, los 16 RNF y las 9 RD del documento queda trazada.
+	incorporados o completados en esta entrega, y las nueve filas finales
+	(TR-51 a TR-59) enlazan cada requisito legal (RL-01 a RL-09) con la
+	restricción de diseño que lo implementa. Con ello, la totalidad de los 25
+	RF, los 16 RNF, las 9 RD y los 9 RL del documento queda trazada.
 	
 	\textbf{Lectura de las celdas marcadas con \enquote{---}.} El guion no indica
 	información faltante, sino ausencia de relación en ese eslabón concreto. En la
