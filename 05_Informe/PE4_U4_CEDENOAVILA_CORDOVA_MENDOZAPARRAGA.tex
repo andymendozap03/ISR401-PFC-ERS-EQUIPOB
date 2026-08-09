@@ -1063,15 +1063,41 @@ La coherencia de versión se mantiene entre los siguientes artefactos: la portad
 	% 8. COMPARATIVA DE HERRAMIENTAS CASE
 	% ============================================================
 	\section{Comparativa de herramientas CASE}
-	% TODO: cuadro comparativo de mínimo 4 herramientas (Jira, IBM DOORS, Jama Connect, ReqView u
-	% otras justificadas) con al menos 6 criterios (funcionalidades de IR, trazabilidad, colaboración,
-	% integración con VCS, costo, curva de aprendizaje). Cerrar con recomendación argumentada para
-	% el PFC del equipo.
 	
+	La selección de una herramienta CASE para ingeniería de requisitos debe considerar tanto sus capacidades funcionales como las condiciones específicas del proyecto y del equipo que la utilizará. Tras analizar 56 herramientas de ingeniería de requisitos, Ozkaya et al. agrupan sus características en dimensiones como gestión de proyectos, especificación, colaboración, personalización, interoperabilidad, metodología y soporte al usuario, y señalan que ninguna herramienta proporciona un nivel uniforme de soporte para todas ellas \cite{Ozkaya2023}. De forma complementaria, Nadeem et al. comparan herramientas de obtención y gestión de requisitos considerando características como gestión jerárquica, verificación, análisis de calidad, versionado, gestión de pruebas y generación de reportes \cite{Nadeem2022}. La selección tampoco debe reducirse al número de funcionalidades disponibles: Bjarnason et al. sostienen que la evaluación de software debe considerar criterios técnicos y organizacionales en función del contexto donde será adoptado \cite{Bjarnason2023}.
+	
+	A partir de estos principios y de la documentación oficial disponible, se comparan Jira, IBM Engineering Requirements Management DOORS Next, Jama Connect y ReqView mediante seis criterios relevantes para el PFC MundiPets.
+	
+	\begin{longtable}{@{}p{2.1cm} p{2.6cm} p{2.6cm} p{2.6cm} p{2.6cm}@{}}
+		\caption{Comparativa de herramientas CASE para gestión de requisitos.}
+		\label{tab:comparativa-case} \\
+		\toprule
+		\textbf{Criterio} & \textbf{Jira} & \textbf{IBM DOORS Next} & \textbf{Jama Connect} & \textbf{ReqView} \\
+		\midrule
+		\endfirsthead
+		\toprule
+		\textbf{Criterio} & \textbf{Jira} & \textbf{IBM DOORS Next} & \textbf{Jama Connect} & \textbf{ReqView} \\
+		\midrule
+		\endhead
+		Funcionalidades de gestión de requisitos & Media-Alta. Flexible mediante issues, historias, épicas y workflows, especialmente en proyectos ágiles; no nació como herramienta especializada en IR & Muy alta. Diseñado específicamente para requisitos de sistemas y software, con gestión de cambios, revisiones e integración con el ciclo de vida \cite{IBM2023} & Muy alta. Orientado a requisitos, pruebas, riesgos, workflows y revisiones; sólido en procesos formales de validación \cite{JamaSoftware2026} & Alta. Permite documentar requisitos, atributos, riesgos, verificaciones y validaciones, con una aproximación más ligera que DOORS o Jama \cite{ReqView2026} \\
+		Trazabilidad & Media-Alta. Enlaces entre issues permiten relaciones, aunque una trazabilidad formal extremo a extremo requiere estructurar cuidadosamente tipos y enlaces & Muy alta. Es una capacidad central; relaciona requisitos con otros artefactos mediante el ecosistema IBM ELM \cite{IBM2023} & Muy alta. Trazabilidad hacia adelante y hacia atrás, análisis de impacto e informes, apropiada para proyectos complejos o regulados \cite{JamaSoftwareTraceability2026} & Muy alta. Permite crear relaciones, visualizar matrices de trazabilidad, analizar impactos y gestionar enlaces sospechosos \cite{ReqView2026} \\
+		Colaboración & Muy alta. Comentarios, asignaciones y workflows facilitan la colaboración continua, particularmente apropiado para equipos ágiles & Alta. Incorpora revisiones, edición visual, generación de documentos e historial de auditoría \cite{IBM2023} & Muy alta. Revisiones, comentarios y distintos tipos de participantes favorecen la colaboración entre ingeniería, producto y calidad \cite{JamaSoftware2026} & Alta. Permite comentarios y trabajo compartido mediante unidades de red, almacenamiento cloud, Git o SVN \cite{ReqView2026} \\
+		Integración con Git/VCS & Muy alta para desarrollo de software; se adapta bien a ecosistemas donde requisitos y tareas se relacionan con repositorios de código & Media-Alta. Su fortaleza está en la integración con el ecosistema IBM ELM; un flujo centrado en Git puede resultar más complejo & Alta. Mantiene trazabilidad con otras herramientas del ciclo de desarrollo, aunque algunas integraciones dependen de infraestructura adicional & Muy alta. Git y SVN forman parte directa de su estrategia de versionado, control de historial y gestión de baselines \cite{ReqView2026} \\
+		Costo & Favorable para equipos pequeños; dispone de opciones de entrada, funciones avanzadas dependen del plan & Alto/empresarial. Dirigido principalmente a organizaciones que necesitan gestión formal y escalable; puede resultar sobredimensionado para un PFC & Alto/empresarial. Licenciamiento según tipos de usuario; no presenta precio único público \cite{JamaSoftware2026} & Favorable. Planes Free, Pro, Team y Enterprise; la edición gratuita permite evaluar la herramienta antes de adquirir un plan superior \cite{ReqView2026} \\
+		Curva de aprendizaje & Baja-Media. Organización mediante issues y tableros es accesible, aunque un proceso formal de requisitos exige configuración previa & Alta. Su amplitud funcional proporciona gran control, pero requiere mayor configuración y capacitación & Media-Alta. Sus capacidades especializadas requieren familiarización inicial, justificable en proyectos complejos & Baja-Media. Enfoque documental y estructura relativamente sencilla permiten comenzar con menor configuración \cite{ReqView2026} \\
+		\bottomrule
+	\end{longtable}
+	
+	Las valoraciones ``baja'', ``media'', ``alta'' y ``muy alta'' son juicios comparativos, no clasificaciones declaradas por los fabricantes: se derivan de las capacidades documentadas y de los criterios de selección propuestos por la literatura \cite{Ozkaya2023, Bjarnason2023}.
+	
+	\subsection*{Recomendación para el PFC MundiPets}
+	
+	Para el PFC MundiPets se recomienda \textbf{ReqView} como la alternativa que presenta el equilibrio más favorable entre gestión formal de requisitos, trazabilidad, control de versiones, costo y curva de aprendizaje. Aunque IBM DOORS Next y Jama Connect ofrecen capacidades más amplias para organizaciones y proyectos de ingeniería complejos, esa amplitud también implica un nivel de infraestructura, licenciamiento y aprendizaje que puede resultar innecesario para el alcance de un proyecto académico. Jira, por su parte, destaca en colaboración y en su cercanía con el flujo de desarrollo ágil, pero requiere mayor adaptación para funcionar como repositorio formal de requisitos.
+	
+	ReqView resulta particularmente adecuado porque integra documentación estructurada de requisitos, atributos, trazabilidad, verificación y validación, análisis de impacto y control de cambios, y además permite utilizar Git o SVN para versionar proyectos y gestionar baselines. Estas características se relacionan directamente con los mecanismos desarrollados en el fundamento teórico --- ERS, línea base, trazabilidad y gestión de cambios --- y permiten aplicarlos en el PFC sin incorporar la complejidad de una plataforma empresarial de mayor escala. Esta decisión responde al criterio planteado: la herramienta no debería seleccionarse simplemente por disponer del mayor número de funcionalidades, sino por su adecuación al contexto y necesidades concretas del proyecto \cite{Bjarnason2023}.
 	% ============================================================
 	% 9. IR TRADICIONAL FRENTE A IR ÁGIL
 	% ============================================================
-	\newpage
 	\section{IR tradicional frente a IR ágil}
 	% TODO: tabla de seis dimensiones (documentación, gestión del cambio, participación de
 	% stakeholders, herramientas, velocidad, escalabilidad), indicando en qué contexto conviene
