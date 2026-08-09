@@ -1266,18 +1266,57 @@ La coherencia de versión se mantiene entre los siguientes artefactos: la portad
 	
 	
 	\newpage
-	\section*{Anexo C --- Formularios RFC y acta del CCB}
-	\addcontentsline{toc}{section}{Anexo C --- Formularios RFC y acta del CCB}
-	% TODO: tres instancias completas de RFC (ID/Fecha/Solicitante, Requisito afectado, Descripción del
-	% cambio, Justificación de negocio, Requisitos impactados, Artefactos impactados, Costo estimado/
-	% Riesgo, Recomendación técnica, Decisión del CCB/Justificación/Responsable/Plazo) más el acta del CCB.
-	
-	\newpage
-	\section*{Anexo D --- Exportación CSV del backlog}
-	\addcontentsline{toc}{section}{Anexo D --- Exportación CSV del backlog}
-	% TODO: referenciar el archivo exportado desde Jira/Trello, incluido en 04_Trazabilidad/ del
-	% repositorio.
-	
+\section*{Anexo C --- Formularios RFC y acta del CCB}
+\addcontentsline{toc}{section}{Anexo C --- Formularios RFC y acta del CCB}
+
+A continuación se presentan los documentos firmados de las tres solicitudes de cambio (RFC-01, RFC-02 y RFC-03) y del acta de la reunión del Change Control Board, correspondientes al 9 de agosto de 2026. El contenido íntegro de cada formulario --- descripción del cambio, justificación de negocio, requisitos y artefactos impactados, costo estimado, riesgo, recomendación técnica y decisión del CCB --- ya fue desarrollado en la Sección~\ref{sec:trazabilidad_case}, subsecciones correspondientes a la gestión del cambio; las figuras siguientes constituyen la evidencia firmada de dichos formularios.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figuras/AnexoC_RFC01.jpg}
+	\caption{RFC-01 -- Cambio de alcance (incorporación de RF-26), firmado por el solicitante y el Presidente del CCB.}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{figuras/AnexoC_RFC02.jpg}
+	\caption{RFC-02 -- Cambio de calidad (acotación de RNF-02), firmado por el solicitante y el Presidente del CCB.}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{figuras/AnexoC_RFC03.jpg}
+	\caption{RFC-03 -- Cambio de restricción (formalización del canal de respaldo en RF-10), firmado por el solicitante y el Presidente del CCB.}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{figuras/AnexoC_Acta_CCB.jpg}
+	\caption{Acta de la reunión del Change Control Board, con la decisión de las tres RFC y las firmas de los tres asistentes.}
+\end{figure}
+
+\newpage
+\section*{Anexo D --- Exportación CSV del backlog}
+\addcontentsline{toc}{section}{Anexo D --- Exportación CSV del backlog}
+
+El backlog completo del tablero CASE (Jira, proyecto \texttt{MundiPets-PE4}, clave \texttt{KAN}) fue exportado en formato CSV con todos los campos, incluyendo los personalizados (Prioridad MoSCoW y Fuente del requisito). El archivo contiene un total de \textbf{41 issues}: 5 Epics, 26 Stories (una por cada requisito funcional del ERS, RF-01 a RF-26) y 10 Sub-tasks (correspondientes a los criterios de aceptación de 5 historias de usuario).
+
+El archivo se encuentra disponible en el repositorio en la ruta:
+
+\begin{quote}
+	\texttt{04\_Trazabilidad/backlog\_export.csv}
+\end{quote}
+
+Este mismo archivo sirvió de base para construir la matriz de trazabilidad presentada en la Sección~\ref{sec:trazabilidad_case} y en el Anexo del formato \texttt{.xlsx} (\texttt{04\_Trazabilidad/matriz\_trazabilidad.xlsx}), cruzando cada Story con su Caso de Uso, clase/módulo del diagrama de clases refinado y caso de prueba correspondiente.
+
+A modo de vista previa ordenada del contenido del CSV, la Figura~\ref{fig:backlog-tabla} presenta las 41 filas del backlog organizadas por columnas relevantes (Clave, Tipo, Resumen, Estado, Prioridad MoSCoW, Fuente del requisito y Epic principal), diferenciando visualmente los 5 Epics (azul) y las 10 Sub-tasks (naranja) de las 26 Stories.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{figuras/Anexo_D_backlog_tabla.jpg}
+	\caption{Backlog completo exportado y ordenado por columnas (41 issues: 5 Epics, 26 Stories, 10 Sub-tasks).}
+	\label{fig:backlog-tabla}
+\end{figure}
 	\newpage
 	\section*{Anexo E --- Capturas del tablero CASE y del repositorio Git}
 	\addcontentsline{toc}{section}{Anexo E --- Capturas del tablero CASE y del repositorio Git}
