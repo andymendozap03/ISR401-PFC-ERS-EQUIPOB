@@ -862,35 +862,136 @@ Las tres solicitudes fueron aprobadas por unanimidad; RFC-01 se aprueba con la c
 
 \subsection{Versión resultante del ERS}
 
-Con la aprobación de las tres RFC, el ERS transita de la versión \texttt{v1.0} a la versión \texttt{v1.1}. Esta nueva versión incorpora: (i) las correcciones de los 18 defectos documentadas en la Sección~4; (ii) el nuevo RF-26 aprobado por RFC-01; (iii) la redacción acotada de RNF-02 aprobada por RFC-02; y (iv) la formalización del canal de respaldo en RF-10 aprobada por RFC-03.
+Con la aprobación de las tres RFC, el archivo del ERS transita de \texttt{v1.0} a \texttt{v1.1} dentro del repositorio, correspondiendo internamente al salto de versión \textbf{3.0 $\rightarrow$ 3.1} en el historial de revisiones del propio documento (Entrega 3/2A ya vigente). Esta nueva versión incorpora: (i) las correcciones de los 18 defectos documentadas en la Sección~4; (ii) el nuevo RF-26 aprobado por RFC-01; (iii) la redacción acotada de RNF-02 aprobada por RFC-02; y (iv) la formalización del canal de respaldo en RF-10 aprobada por RFC-03.
 
-La coherencia de versión se mantiene entre los siguientes artefactos: la portada y el historial de revisiones del documento \texttt{ERS\_SRS\_2A\_v1.1}, el archivo \texttt{CHANGELOG.md} del repositorio (entrada \texttt{[1.1]}) y el tag anotado \texttt{baseline-v1.1} publicado en el repositorio Git, conforme se detalla en la Sección~7.
+La coherencia de versión se mantiene entre los siguientes artefactos: la portada y el historial de revisiones del propio documento \texttt{ERS\_SRS\_2A\_v1.1} (que registra internamente el salto de 3.0 a 3.1), el archivo \texttt{CHANGELOG.md} del repositorio (entrada \texttt{[1.1]}) y el tag anotado \texttt{baseline-v1.1} publicado en el repositorio Git, conforme se detalla en la Sección~7.
 	% ============================================================
 	% 6. TRAZABILIDAD EN HERRAMIENTA CASE
 	% ============================================================
 	\section{Trazabilidad en herramienta CASE} \label{sec:trazabilidad_case}
 	
 	\subsection{Estructura del tablero}
-	% TODO: nombre del proyecto (Jira o Trello); Epics por área funcional (≥ 4); Stories por
-	% requisito funcional (≥ 15); Sub-tasks por criterio de aceptación (≥ 2 por al menos 5 historias).
+	
+	La trazabilidad de requisitos se gestionó en \textbf{Jira} (proyecto \texttt{MundiPets-PE4}, clave \texttt{KAN}), en modalidad Kanban, con acceso otorgado a los tres integrantes del equipo y al docente. El tablero se organizó en cinco columnas: \textbf{Backlog}, \textbf{Análisis}, \textbf{Aprobado}, \textbf{Desarrollo} y \textbf{Hecho}.
+	
+	El backlog se estructuró en tres niveles jerárquicos:
+	
+	\begin{itemize}
+		\item \textbf{5 Epics}, uno por cada área funcional del sistema: E1 --- Gestión de mascotas y perfiles, E2 --- Adopción y solicitudes, E3 --- Historial médico y veterinaria, E4 --- Cruza y compatibilidad, E5 --- Cuenta, privacidad y comunicación.
+		\item \textbf{26 Stories}, una por cada requisito funcional definido en el ERS (RF-01 a RF-26), superando el mínimo de 15 exigido.
+		\item \textbf{10 Sub-tasks}, correspondientes a los criterios de aceptación de 5 historias de usuario (2 sub-tasks por historia): Registrar mascota (CA-01), Gestionar historial médico (CA-02), Consultar perfil completo (CA-03), Gestionar solicitudes de adopción (CA-04) y Evaluar compatibilidad para cruza (CA-05).
+	\end{itemize}
+	
+	Al cierre de esta práctica, el tablero registraba 41 actividades totales (5 Epics, 26 Stories y 10 Sub-tasks), distribuidas en los cinco estados: 29 en Backlog, 7 en Análisis, 2 en Aprobado, 2 en Desarrollo y 1 en Hecho, conforme se detalla en la Sección~\ref{sec:evidencias-tablero}.
 	
 	\subsection{Campos personalizados}
-	% TODO: mínimo dos campos (Prioridad MoSCoW, Fuente del requisito); campo opcional de
-	% estado de verificación.
+	
+	Se configuraron dos campos personalizados a nivel de Story, aplicados a las 26 historias del backlog:
+	
+	\begin{itemize}
+		\item \textbf{Prioridad MoSCoW}: lista desplegable con los valores \textit{Must}, \textit{Should}, \textit{Could} y \textit{Won't}, poblada directamente desde la prioridad ya definida para cada RF en el ERS.
+		\item \textbf{Fuente del requisito}: campo de texto con el identificador de evidencia (Origen, ID de evidencia) que originó cada RF, por ejemplo \texttt{EV-02, EV-03, EV-05, EV-06, EV-07, EV-08} para RF-01.
+	\end{itemize}
+	
+	Ambos campos quedaron completos en las 26 Stories (26/26), permitiendo tanto la trazabilidad hacia atrás (Fuente del requisito) como la priorización visible directamente desde el tablero (Prioridad MoSCoW), sin necesidad de consultar el ERS para conocer el origen o la importancia de cada historia.
 	
 	\subsection{Matriz de trazabilidad}
-	% TODO: tabla (mínimo 15 filas), forma: Stakeholder → RF → CU → Clase/Módulo → Prueba.
-	% Todo requisito debe enlazar hacia atrás (fuente) y hacia adelante (CU, clase, módulo, prueba);
-	% reportar explícitamente los requisitos huérfanos.
 	
-	\subsection{Evidencias del tablero}
-	% TODO: capturas del tablero completo, del detalle de al menos 3 issues con enlaces visibles,
-	% del panel de estadísticas, y referencia al CSV exportado (Anexo D).
+	La Tabla~\ref{tab:matriz-trazabilidad-jira} presenta la trazabilidad de las 26 Stories cargadas en el tablero CASE (Jira), en el formato Stakeholder $\rightarrow$ RF $\rightarrow$ CU $\rightarrow$ Clase/Módulo $\rightarrow$ Prueba. El stakeholder corresponde al participante que originó cada requisito (columna \textit{Fuente del requisito} del tablero), la clase o módulo se obtiene del diagrama de clases refinado del ERS (Sección 5.6, \textit{Diagrama de clases refinado}), y el identificador de prueba (CP-XX) corresponde al caso de prueba asociado a cada requisito funcional.
+	
+	\begin{longtable}{@{}l l l p{4.2cm} l@{}}
+		\caption{Matriz de trazabilidad extendida: Stakeholder $\rightarrow$ RF $\rightarrow$ CU $\rightarrow$ Clase/Módulo $\rightarrow$ Prueba.}
+		\label{tab:matriz-trazabilidad-jira} \\
+		\toprule
+		\textbf{RF} & \textbf{Stakeholder} & \textbf{CU} & \textbf{Clase/Módulo} & \textbf{Prueba} \\
+		\midrule
+		\endfirsthead
+		\toprule
+		\textbf{RF} & \textbf{Stakeholder} & \textbf{CU} & \textbf{Clase/Módulo} & \textbf{Prueba} \\
+		\midrule
+		\endhead
+		RF-01 & PROP-02 (propietaria) & CU-01 & Mascota & CP-01 \\
+		RF-03 & PROP-02 (propietaria) & CU-10 & Mascota, HistorialMedico & CP-03 \\
+		RF-04 & Usuarios encuestados & CU-11 & Mascota (búsqueda) & CP-04 \\
+		RF-13 & PROP-01 (propietario) & CU-04 & Publicacion & CP-13 \\
+		RF-17 & PROP-01 (propietario) & CU-04 & Publicacion, Módulo de IA & CP-17 \\
+		RF-21 & VET-05 (veterinario) & CU-01 & Microchip & CP-21 \\
+		RF-25 & PROP-07 (propietaria) & --- & AvisoExtraviado & CP-25 \\
+		RF-05 & PROP-01 (propietario) & CU-04 & SolicitudAdopcion & CP-05 \\
+		RF-15 & PROP-01 (propietario) & CU-07 & SolicitudAdopcion, SolicitudCruza & CP-15 \\
+		RF-18 & PROP-06 (propietaria) & CU-04 & SolicitudAdopcion & CP-18 \\
+		RF-20 & PROP-08 (propietario) & --- & SolicitudAdopcion (extensión) & CP-20 \\
+		RF-22 & VET-05 (veterinario) & CU-07 & SolicitudAdopcion (seguimiento) & CP-22 \\
+		RF-23 & PROP-04 (propietario) & CU-06 & AlertaRiesgo & CP-23 \\
+		RF-02 & PROP-01 (propietario) & CU-02 & HistorialMedico & CP-02 \\
+		RF-09 & VET-01 (veterinaria) & CU-09 & HistorialMedico, RD-03 & CP-09 \\
+		RF-14 & PROP-02 (propietaria) & CU-03 & HistorialMedico (vacunas) & CP-14 \\
+		RF-24 & VET-04 (veterinaria) & CU-03 & HistorialMedico (vacunas) & CP-24 \\
+		RF-06 & PROP-01 (propietario) & CU-06 & RegistroCompatibilidad, Módulo de IA & CP-06 \\
+		RF-08 & PROP-01 (propietario) & CU-05 & SolicitudCruza & CP-08 \\
+		RF-16 & PROP-01 (propietario) & CU-13 & AntecedenteGenetico & CP-16 \\
+		RF-19 & PROP-06 (propietaria) & CU-06 & CertificadoVeterinario & CP-19 \\
+		RF-11 & PROP-02 (propietaria) & CU-12 & Usuario (privacidad) & CP-11 \\
+		RF-12 & PROP-01 (propietario) & CU-09 & Usuario & CP-12 \\
+		RF-07 & PROP-02 (propietaria) & CU-08 & Mensaje & CP-07 \\
+		RF-10 & PROP-02 (propietaria) & --- & HistorialMedico (recordatorios) & CP-10 \\
+		RF-26 & RL-04 (LOPDP, Art. 15) & --- & Usuario (eliminación) & CP-26 \\
+		\bottomrule
+	\end{longtable}
+	
+	\textbf{Requisitos huérfanos.} Cuatro de los 26 requisitos trazados (RF-25, RF-20, RF-10 y RF-26) no cuentan con un Caso de Uso (CU) formalmente documentado en el ERS, por lo que se reportan explícitamente como huérfanos hacia adelante en esta dimensión: RF-25 (Publicar aviso de mascota extraviada) y RF-20 (Coordinar encuentros de socialización) son funcionalidades de prioridad \textit{Could} incorporadas en la última entrega sin un CU dedicado; RF-10 (Gestionar recordatorios) se apoya en el flujo de RF-14 sin CU propio; y RF-26 (Eliminar cuenta y datos personales) es un requisito nuevo incorporado por RFC-01 en esta misma práctica, pendiente de un CU dedicado en una futura iteración del modelado UML. En los cuatro casos, la trazabilidad hacia atrás (stakeholder/fuente) y hacia la clase/módulo y prueba correspondientes sí está completa.
+	
+	
+	\subsection{Evidencias del tablero} \label{sec:evidencias-tablero}
+	
+	La Figura~\ref{fig:jira-tablero} muestra el tablero Kanban completo, con las cinco columnas de trabajo y las tarjetas distribuidas entre los distintos estados al cierre de esta práctica.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figuras/2026-08-09_jira-tablero-completo.png}
+		\caption{Tablero Kanban completo del proyecto MundiPets-PE4 en Jira.}
+		\label{fig:jira-tablero}
+	\end{figure}
+	
+	La Figura~\ref{fig:jira-panel} muestra el panel de estadísticas del proyecto (pestaña ``Resumen''), con el desglose de 41 actividades por estado, tipo de trabajo y prioridad.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figuras/2026-08 09_jira-panel-estadisticas.png}
+		\caption{Panel de estadísticas del proyecto MundiPets-PE4.}
+		\label{fig:jira-panel}
+	\end{figure}
+	
+	Las Figuras~\ref{fig:jira-rf01}, \ref{fig:jira-rf03} y \ref{fig:jira-rf05} muestran el detalle de tres issues representativos, evidenciando los campos personalizados completos (Prioridad MoSCoW, Fuente del requisito), la descripción con el RF y el CU enlazados, y las sub-tasks asociadas.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figuras/2026-08-09_jira-detalle-RF-01-registrar-mascota.png}
+		\caption{Detalle de la Story ``Registrar mascota'' (RF-01), con sus dos sub-tasks (CA-01) y campos personalizados.}
+		\label{fig:jira-rf01}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figuras/2026-08-09_jira-detalle-RF-03-consultar-perfil.png}
+		\caption{Detalle de la Story ``Consultar perfil completo de una mascota'' (RF-03), con sus dos sub-tasks (CA-03) y campos personalizados.}
+		\label{fig:jira-rf03}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figuras/2026-08-09_jira-detalle-RF-05-solicitudes-adopcion.png}
+		\caption{Detalle de la Story ``Gestionar solicitudes de adopción'' (RF-05), con sus dos sub-tasks (CA-04) y campos personalizados.}
+		\label{fig:jira-rf05}
+	\end{figure}
+	
+	Adicionalmente, el backlog completo (41 issues: 5 Epics, 26 Stories y 10 Sub-tasks) fue exportado en formato CSV con todos los campos, y se encuentra disponible en el repositorio como \texttt{04\_Trazabilidad/backlog\_
+		export.csv} (Anexo D), junto con la matriz de trazabilidad en formato \texttt{.xlsx} (\texttt{04\_Trazabilidad
+		/matriz\_trazabilidad.xlsx}).
 	
 	% ============================================================
 	% 7. LÍNEA BASE CON GIT
 	% ============================================================
-	\newpage
 	\section{Línea base del ERS con Git}
 	
 	\subsection{Repositorio y estructura}
