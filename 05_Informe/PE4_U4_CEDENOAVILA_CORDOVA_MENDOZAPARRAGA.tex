@@ -1099,10 +1099,31 @@ La coherencia de versión se mantiene entre los siguientes artefactos: la portad
 	% 9. IR TRADICIONAL FRENTE A IR ÁGIL
 	% ============================================================
 	\section{IR tradicional frente a IR ágil}
-	% TODO: tabla de seis dimensiones (documentación, gestión del cambio, participación de
-	% stakeholders, herramientas, velocidad, escalabilidad), indicando en qué contexto conviene
-	% cada enfoque, con discusión contextual.
+	La Ingeniería de Requisitos (IR) tradicional y la IR ágil presentan diferencias en la forma de documentar, gestionar y evolucionar los requisitos. Estas diferencias no implican que un enfoque sea mejor que otro, sino que su conveniencia depende de las características y restricciones del proyecto.
 	
+	\begin{longtable}{@{}p{2.1cm} p{3.5cm} p{3.5cm} p{3.5cm}@{}}
+		\caption{IR tradicional frente a IR ágil en seis dimensiones.}
+		\label{tab:ir-tradicional-agil} \\
+		\toprule
+		\textbf{Dimensión} & \textbf{IR tradicional (documental)} & \textbf{IR ágil} & \textbf{Contexto de conveniencia} \\
+		\midrule
+		\endfirsthead
+		\toprule
+		\textbf{Dimensión} & \textbf{IR tradicional (documental)} & \textbf{IR ágil} & \textbf{Contexto de conveniencia} \\
+		\midrule
+		\endhead
+		Documentación & Se apoya en una especificación formal de requisitos, línea base y mecanismos de trazabilidad verificable. El énfasis está en mantener una referencia documental controlada durante el ciclo de vida \cite{ISO29148-2018} & Prioriza artefactos ligeros y vivos, como el product backlog, las historias de usuario y los criterios de aceptación. La documentación se construye y refina de manera incremental \cite{Tomaselli2025} & Conviene cuando se requiere evidencia formal, control documental o trazabilidad verificable. El enfoque ágil conviene cuando los requisitos evolucionan continuamente \\
+		Gestión del cambio & Los cambios se gestionan de manera controlada sobre los requisitos y sus versiones, procurando conservar la trazabilidad y el impacto de las modificaciones \cite{ISO29148-2018} & Los cambios se incorporan mediante el refinamiento y la repriorización continua del backlog, permitiendo adaptar las necesidades durante las iteraciones \cite{Tomaselli2025} & El tradicional es adecuado cuando los cambios tienen implicaciones contractuales, regulatorias o críticas. El ágil es conveniente cuando existe alta variabilidad de requisitos \\
+		Participación de stakeholders & La participación de los interesados se integra en actividades de elicitación y validación, buscando comprobar que los requisitos representan sus necesidades y los objetivos del sistema \cite{ISO29148-2018} & La participación es continua y cercana al desarrollo. Las historias de usuario representan necesidades desde la perspectiva del usuario y se refinan con retroalimentación frecuente \cite{Tomaselli2025} & El tradicional resulta conveniente cuando existen aprobaciones y revisiones formales. El ágil es apropiado cuando el cliente o los usuarios pueden participar de manera frecuente \\
+		Herramientas & Puede utilizar herramientas CASE para especificación estructurada, versionado, trazabilidad y gestión de cambios, manteniendo relaciones controladas entre los artefactos \cite{ISO29148-2018} & Utiliza herramientas colaborativas para gestionar backlog, historias de usuario y trazabilidad ligera. También pueden vincularse commits, historias y casos de prueba \cite{Tomaselli2025} & Las herramientas con control documental son apropiadas cuando se necesita auditoría y trazabilidad formal. Las colaborativas son convenientes para equipos iterativos \\
+		Velocidad & Requiere mayor esfuerzo inicial para especificar, revisar y establecer una referencia controlada de los requisitos \cite{ISO29148-2018} & Favorece ciclos cortos e incrementales y permite responder con mayor rapidez a cambios mediante el refinamiento continuo del backlog \cite{Tomaselli2025} & El enfoque ágil conviene especialmente con plazos cortos y necesidad de adaptación rápida. El tradicional es apropiado cuando la estabilidad y previsibilidad son prioritarias \\
+		Escalabilidad & La documentación formal, las versiones y la trazabilidad permiten mantener control en proyectos complejos, aunque aumenta el esfuerzo de mantenimiento documental \cite{ISO29148-2018} & Puede escalar mediante backlog, herramientas y trazabilidad ligera; sin embargo, la reducción de documentación puede afectar especialmente la trazabilidad de requisitos no funcionales \cite{LohMunKeong2022} & En proyectos grandes, regulados o con alta exigencia de trazabilidad conviene reforzar el enfoque documental. En proyectos iterativos puede utilizarse el enfoque ágil con mecanismos complementarios \\
+		\bottomrule
+	\end{longtable}
+	
+	\subsection*{Discusión}
+	
+	La elección entre IR tradicional e IR ágil debe entenderse como una decisión condicionada por el contexto del proyecto y no como una comparación para determinar cuál enfoque es mejor. Los proyectos con alta variabilidad de requisitos, plazos cortos y participación constante del cliente se benefician de prácticas ágiles de gestión de requisitos \cite{Tomaselli2025}. En cambio, los proyectos regulados, de misión crítica o con requisitos contractuales estrictos requieren conservar un nivel de documentación formal y trazabilidad verificable, especialmente cuando están sujetos a normas como ISO/IEC/IEEE 29148:2018 \cite{Tomaselli2025, ISO29148-2018}. Asimismo, en contextos ágiles se debe prestar especial atención a los requisitos no funcionales, ya que su documentación puede ser descuidada y requerir mecanismos complementarios de trazabilidad \cite{LohMunKeong2022}. Por ello, cuando las condiciones del proyecto lo exigen, también puede resultar conveniente un esquema híbrido que conserve una especificación de alto nivel y una línea base formal, mientras administra el detalle operativo mediante backlog e historias de usuario \cite{Tomaselli2025}.
 	% ============================================================
 	% 10. CONCLUSIONES CRÍTICAS
 	% ============================================================
