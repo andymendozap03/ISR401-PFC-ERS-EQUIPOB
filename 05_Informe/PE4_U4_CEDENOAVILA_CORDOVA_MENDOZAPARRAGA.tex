@@ -1186,15 +1186,84 @@ La coherencia de versión se mantiene entre los siguientes artefactos: la portad
 	\newpage
 	\section*{Anexo A --- Lista de verificación de inspección (checklists individuales)}
 	\addcontentsline{toc}{section}{Anexo A --- Lista de verificación de inspección (checklists individuales)}
-	% TODO: una fila por propiedad (ambigüedad, completitud, consistencia, verificabilidad,
-	% trazabilidad, factibilidad) con columnas: pregunta de verificación, requisito revisado,
-	% cumple (S/N), evidencia, observación. Una copia por inspector, firmada y fechada.
+	
+	A continuación se presentan los tres checklists de preparación individual, uno por integrante, firmados y fechados el 8 de agosto de 2026. Cada uno registra sus defectos evaluando las seis propiedades de calidad: ambigüedad, completitud, consistencia, verificabilidad, trazabilidad y factibilidad.
+	
+	\subsection*{A.1 -- Moderador y Lector: Mendoza Párraga Andy Johel}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figuras/AnexoA_Andy.png}
+		\caption{Checklist de preparación individual -- Andy Mendoza (Moderador/Lector) con firma.}
+	\end{figure}
+	
+	
+	\newpage
+	\subsection*{A.2 -- Inspector 1: Cedeño Ávila Winston Damian}
+	
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figuras/AnexoA_Winston.png}
+		\caption{Checklist de preparación individual -- Winston Cedeño (Inspector 1) con firma.}
+	\end{figure}
+	
+	\newpage
+	\subsection*{A.3 -- Inspector 2: Córdova Carreño Mayra Lucila}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figuras/AnexoA_Mayra.png}
+		\caption{Checklist de preparación individual -- Mayra Córdova (Inspector 2) con firma.}
+	\end{figure}
+	
 	
 	\newpage
 	\section*{Anexo B --- Registro de defectos}
 	\addcontentsline{toc}{section}{Anexo B --- Registro de defectos}
-	% TODO: tabla con columnas N.º, Sección, Descripción del defecto, Tipo, Severidad, Corrección.
-	% Mínimo 15 defectos únicos consolidados (≥ 3 críticos o mayores).
+	
+	La Tabla~\ref{tab:anexo-b} presenta el registro consolidado de los 18 defectos detectados durante la reunión de inspección del 8 de agosto de 2026 (16:00, modalidad virtual, duración aproximada de 60 minutos), con Andy Mendoza como Moderador y Lector, Winston Cedeño como Inspector 1 y Mayra Córdova como Inspector 2. El registro supera el mínimo de 15 defectos únicos exigido, con 2 defectos críticos y 7 mayores (9 en total), por encima del mínimo de 3 críticos o mayores. Los 18 defectos fueron corregidos en su totalidad, conforme se documenta en la Sección~\ref{sec:trazabilidad_case} y en la Sección~4.
+	
+	\begin{longtable}{@{}c p{2.3cm} p{5.2cm} p{1.8cm} c p{2cm} p{1.8cm}@{}}
+		\caption{Anexo B -- Registro consolidado de defectos.}
+		\label{tab:anexo-b} \\
+		\toprule
+		\textbf{N.\textdegree} & \textbf{Sección} & \textbf{Descripción} & \textbf{Tipo} & \textbf{Sev.} & \textbf{Detectado por} & \textbf{Corregido} \\
+		\midrule
+		\endfirsthead
+		\toprule
+		\textbf{N.\textdegree} & \textbf{Sección} & \textbf{Descripción} & \textbf{Tipo} & \textbf{Sev.} & \textbf{Detectado por} & \textbf{Corregido} \\
+		\midrule
+		\endhead
+		1 & 3.3.16 (RNF-16) & Uso de ``radio $\geq$ 1 km'' permite radios arbitrariamente grandes, volviendo inútil la búsqueda local. & Ambigüedad & Menor & Winston Cedeño & Sí \\
+		2 & 3.2.12 (RF-12) y 4.2 (CU-09) & No se especifica qué dato valida la identidad profesional de la Veterinaria, pese a ser crítico para CU-09. & Completitud & Mayor & Winston Cedeño & Sí \\
+		3 & 3.2.24 (RF-24) vs 4.2 (CU-02) & RF-24 es prioridad Should, pero CU-02 (Must) depende obligatoriamente de esos mismos datos. & Consistencia & Mayor & Winston Cedeño & Sí \\
+		4 & 3.3.13 a 3.3.15 (RNF-13,14,15) & El criterio de verificación exige calificación media $\geq$ 4/5 pero no define tamaño de muestra. & Verificabilidad & Menor & Winston Cedeño & Sí \\
+		5 & 3.4 (RL-04) y 3.5.6 (RD-06) & RL-04 origina RD-06, pero ningún RF implementa la función de eliminación de cuenta. & Trazabilidad & Crítico & Winston Cedeño & Sí \\
+		6 & 3.3.2 (RNF-02) vs 6.1 (MVP) & RNF-02 exige disponibilidad $\geq$ 99\,\% mensual, pero el MVP es local sin servidor. & Factibilidad & Mayor & Winston Cedeño & Sí \\
+		7 & 3.6.14 (CA-14) & El escenario de rechazo termina en ``el sistema rechaza la operación'' sin especificar el mensaje mostrado. & Ambigüedad & Menor & Mayra Córdova & Sí \\
+		8 & 3.2.18 y 3.6.13 (RF-18 vs HU-13) & Inconsistencia terminológica: ``visita al hogar'' vs. ``resultado de visita''. & Ambigüedad & Menor & Mayra Córdova & Sí \\
+		9 & 2.3 y 3.2.5 (Tabla 5 vs RF-05) & La Tabla 5 asigna al Refugio de animales una función que RF-05 no le reconoce como actor. & Completitud & Mayor & Mayra Córdova & Sí \\
+		10 & 3.2.2 y 3.6.2 (RF-02 vs HU-02) & RF-02 no lista ``fecha de aplicación'' pero HU-02/CA-02 sí la exige. & Completitud & Mayor & Mayra Córdova & Sí \\
+		11 & 2.5 y 3.3.11 (Entorno vs RNF-11) & La Sección 2.5 incluye Microsoft Edge, pero RNF-11 solo exige Chrome, Firefox y Safari. & Consistencia & Menor & Mayra Córdova & Sí \\
+		12 & 5.3.0c y 3.2.4 (Kano vs RF-04) & El Modelo de Kano asigna baja relevancia (42,1\,\%) a IM-08, pero RF-04 mantiene prioridad Should sin reconsiderar. & Consistencia & Menor & Mayra Córdova & Sí \\
+		13 & Sección 5.1 vs. Sección 5.5 & La clasificación declara 59 requisitos vigentes, pero la matriz cubre solo 50 elementos, sin incluir los 9 RL. & Completitud & Mayor & Andy Mendoza & Sí \\
+		14 & RF-01 & El campo Entradas incluye ``descripción'', pero la narrativa no la menciona. & Completitud & Menor & Andy Mendoza & Sí \\
+		15 & RL-07 (Sección 2) & La definición de ``titular'' contradice a RL-07 sobre la protección del historial médico. & Consistencia & Mayor & Andy Mendoza & Sí \\
+		16 & Sección 5.5, matriz de trazabilidad & El texto declara ``40 filas'' y luego ``50 elementos''/``50 filas'', inconsistencia numérica. & Consistencia & Crítico & Andy Mendoza & Sí \\
+		17 & RNF-04 & El criterio exige 90\,\% de finalización sin capacitación, pero no define tamaño/perfil de la muestra. & Verificabilidad & Menor & Andy Mendoza & Sí \\
+		18 & RD-03 (y RD-01 a RD-09) & Las restricciones de diseño no incluyen ``Criterio de verificación'' explícito. & Completitud & Menor & Andy Mendoza & Sí \\
+		\bottomrule
+	\end{longtable}
+	
+	\textbf{Resumen de severidad:} 2 críticos, 7 mayores, 9 menores (18 totales); 9 críticos/mayores sobre un mínimo exigido de 3.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figuras/AnexoB.png}
+		\caption{Registro consolidado de defectos (Anexo B), evidencia del archivo original}
+	\end{figure}
+	
 	
 	\newpage
 	\section*{Anexo C --- Formularios RFC y acta del CCB}
