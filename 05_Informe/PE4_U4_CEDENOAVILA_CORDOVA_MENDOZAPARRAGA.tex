@@ -992,30 +992,76 @@ La coherencia de versión se mantiene entre los siguientes artefactos: la portad
 	% ============================================================
 	% 7. LÍNEA BASE CON GIT
 	% ============================================================
-	\section{Línea base del ERS con Git}
+		\section{Línea base del ERS con Git}
 	
 	\subsection{Repositorio y estructura}
-	% TODO: repositorio público ISR401-PFC-ERS-[NombreEquipo]; README.md con sistema, integrantes,
-	% estructura de carpetas e instrucciones de compilación del informe (compilador, orden de
-	% comandos, archivo principal, dependencias).
+	
+	El repositorio del equipo, \texttt{ISR401-PFC-ERS-EQUIPOB}, es público y está alojado en GitHub (\url{https://github.com/andymendozap03/ISR401-PFC-ERS-EQUIPOB}). Contiene un \texttt{README.md} con: el sistema del PFC (MundiPets), los tres integrantes con su rol, la estructura completa de carpetas (\texttt{01\_ERS} a \texttt{07\_Borradores}) y las instrucciones de compilación del informe y del ERS --- distribución LaTeX requerida, orden de comandos (\texttt{pdflatex} $\rightarrow$ \texttt{biber} $\rightarrow$ \texttt{pdflatex} $\times 2$), archivo principal de cada documento y dependencias de paquetes.
+	
+	La estructura del repositorio separa claramente los artefactos de cada paso de la práctica: \texttt{01\_ERS/} contiene el ERS versionado (\texttt{v1.0} y \texttt{v1.1}, con sus fuentes LaTeX y figuras); \texttt{02\_Inspeccion/} y \texttt{03\_CCB/} contienen la evidencia firmada de la inspección Fagan y del CCB; \texttt{04\_Trazabilidad/} contiene el backlog exportado y la matriz de trazabilidad; \texttt{05\_Informe/} contiene el informe de la PE4; y \texttt{06\_Evidencias/} contiene las capturas y fotografías de las sesiones de trabajo.
 	
 	\subsection{Commits semánticos}
-	% TODO: mínimo 8 commits distribuidos, con autoría de todos los integrantes; ejemplo de mensaje
-	% semántico: docs(ers): v1.1 - aplicar cambios CCB semana 14.
+	
+	El equipo registró \textbf{27 commits} distribuidos a lo largo de toda la práctica, con autoría real de los tres integrantes: 13 de Mendoza Párraga Andy Johel (\texttt{andymendozap03}), 8 de Córdova Carreño Mayra Lucila (\texttt{mcordovac2}) y 6 de Cedeño Ávila Winston Damian (\texttt{WinstonCD}), superando ampliamente el mínimo de 8 commits exigido. Los mensajes siguen una convención semántica consistente, con prefijos como \texttt{docs(ers)}, \texttt{docs(pe4)}, \texttt{docs(inspeccion)}, \texttt{docs(ccb)}, \texttt{docs(trazabilidad)}, \texttt{docs(changelog)} y \texttt{fix(inspeccion)} según el tipo de cambio. Un ejemplo representativo:
+	
+	\begin{quote}
+		\texttt{docs(ers): v1.1 - acotar RNF-02, agregar criterio de verificacion a las RD y corregir matriz de trazabilidad (40->59 filas)}
+	\end{quote}
+	
+	La mayoría de los commits aparecen marcados como \textit{Verified} en GitHub, confirmando que fueron firmados con las credenciales reales de cada integrante.
 	
 	\subsection{Tag anotado de línea base}
-	% TODO: git tag -a baseline-v1.1 -m "Baseline aprobada por CCB"; git push origin baseline-v1.1.
+	
+	Una vez incorporados los cambios aprobados por el CCB (RFC-01, RFC-02 y RFC-03) y corregidos los 18 defectos de la inspección, se declaró la nueva línea base del ERS mediante un tag anotado:
+	
+	\begin{quote}
+		\texttt{git tag -a baseline-v1.1 -m "Baseline aprobada por CCB"} \\
+		\texttt{git push origin baseline-v1.1}
+	\end{quote}
+	
+	El tag \texttt{baseline-v1.1} quedó publicado en el repositorio remoto, apuntando al commit \texttt{ee63ed3} (\texttt{docs(changelog): completar entrada [1.1] con el detalle de cambios aplicados al ERS}), que es el commit que consolida el cierre de la versión.
 	
 	\subsection{CHANGELOG.md}
-	% TODO: formato [Versión] -- [Fecha] / Añadido / Cambiado / Eliminado, una entrada por RFC aprobado.
+	
+	El archivo \texttt{CHANGELOG.md} del repositorio documenta ambas versiones del ERS en el formato \texttt{[Versión] - [Fecha] / Añadido / Cambiado / Eliminado}. La entrada \texttt{[1.0]} (14/06/2026) registra la versión base importada desde la Entrega 2A. La entrada \texttt{[1.1]} (09/08/2026) detalla individualmente cada uno de los cambios aprobados por RFC (RF-26, RNF-02 acotado, canal de respaldo en RF-10) y cada corrección de defecto aplicada durante la inspección (RF-01, RF-02, RF-05, RF-12, RF-18, RF-24, los RNF de muestra, RNF-11, RNF-16, la definición de titular, y la corrección de la matriz de trazabilidad de 40 a 59 filas), incluyendo una nota que aclara la relación entre el versionado del archivo (\texttt{v1.0} $\rightarrow$ \texttt{v1.1}) y la versión interna del propio documento (\texttt{3.0} $\rightarrow$ \texttt{3.1}).
 	
 	\subsection{Historial de commits (evidencia)}
-	% TODO: capturas de git log --oneline --graph --decorate y git tag -n (ver también Anexo E).
+	
+	La Figura~\ref{fig:git-log} muestra la salida del comando \texttt{git log --oneline --graph --decorate}, evidenciando el historial lineal completo de 27 commits, con el tag \texttt{baseline-v1.1} anotado sobre el commit más reciente (\texttt{HEAD -> main}). La Figura~\ref{fig:git-tag} confirma, mediante \texttt{git tag -n}, que el tag quedó correctamente anotado con su mensaje descriptivo.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figuras/git_log_y_tag.png}
+		\caption{Salida de \texttt{git log --oneline --graph --decorate} y \texttt{git tag -n}, mostrando el historial completo de 27 commits y el tag \texttt{baseline-v1.1}.}
+		\label{fig:git-log}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figuras/git_log.png}
+		\caption{Detalle ampliado del historial de commits, con autoría distribuida entre los tres integrantes del equipo.}
+		\label{fig:git-tag}
+	\end{figure}
+	
+	Adicionalmente, las Figuras~\ref{fig:github-commits-1} y~\ref{fig:github-commits-2} muestran la vista de commits en GitHub, confirmando la autoría real de cada integrante (\texttt{andymendozap03}, \texttt{mcordovac2}, \texttt{WinstonCD}) y el estado \textit{Verified} de la mayoría de los commits.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figuras/commits_1.png}
+		\caption{Vista de GitHub con los commits más recientes del repositorio, mostrando autoría distribuida.}
+		\label{fig:github-commits-1}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{figuras/commits_2.png}
+		\caption{Continuación del historial de commits en GitHub.}
+		\label{fig:github-commits-2}
+	\end{figure}
 	
 	% ============================================================
 	% 8. COMPARATIVA DE HERRAMIENTAS CASE
 	% ============================================================
-	\newpage
 	\section{Comparativa de herramientas CASE}
 	% TODO: cuadro comparativo de mínimo 4 herramientas (Jira, IBM DOORS, Jama Connect, ReqView u
 	% otras justificadas) con al menos 6 criterios (funcionalidades de IR, trazabilidad, colaboración,
