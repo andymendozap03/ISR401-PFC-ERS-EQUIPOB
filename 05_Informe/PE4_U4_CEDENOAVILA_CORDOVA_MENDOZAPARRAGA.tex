@@ -176,7 +176,7 @@ doi=true
 	\newpage
 	
 	% ============================================================
-	% 2. RESUMEN Y OBJETIVOS (máx. 200 palabras)
+	% 1. RESUMEN Y OBJETIVOS (máx. 200 palabras)
 	% ============================================================
 	\section{Resumen y objetivos}
 	
@@ -213,7 +213,7 @@ doi=true
 		IR ágil, cerrando con conclusiones críticas propias.
 	\end{enumerate}
 	% ============================================================
-	% 3. FUNDAMENTO TEÓRICO
+	% 2. FUNDAMENTO TEÓRICO
 	% ============================================================
 	\newpage
 	\section{Fundamento teórico}
@@ -513,32 +513,111 @@ doi=true
 	
 	La disyuntiva entre un enfoque documental --propio de los estándares revisados en 3.1 a 3.3, con énfasis en el ERS, la línea base y la matriz de trazabilidad formal-- y un enfoque ágil --centrado en el backlog vivo, las historias de usuario y la trazabilidad ligera-- no debe entenderse como una elección excluyente, sino como una decisión de diseño de proceso condicionada por el contexto del proyecto. La revisión de Tomaselli et al. \cite{Tomaselli2025} concluye que los proyectos con alta variabilidad de requisitos, plazos cortos y participación constante del cliente se benefician de prácticas ágiles de gestión de requisitos, mientras que proyectos regulados, de misión crítica o con requisitos contractuales estrictos --por ejemplo, aquellos sujetos a normas como la ISO/IEC/IEEE 29148:2018 o a certificaciones sectoriales-- requieren preservar un nivel de documentación formal y trazabilidad verificable que los formatos puramente ágiles no garantizan por defecto \cite{ISO29148-2018}. En la práctica, numerosas organizaciones adoptan esquemas híbridos: mantienen una especificación de alto nivel documentada y una línea base contractual, mientras gestionan el detalle operativo mediante backlog, historias de usuario y escenarios Gherkin, combinando así la trazabilidad formal exigida por el marco normativo con la agilidad necesaria para responder a los cambios propios del desarrollo iterativo \cite{Tomaselli2025, LohMunKeong2022}.
 	% ============================================================
-	% 4. INSPECCIÓN FORMAL FAGAN
+	% 3. INSPECCIÓN FORMAL FAGAN
 	% ============================================================
 	\newpage
 	\section{Inspección formal del ERS (método Fagan)}
 	
 	\subsection{Planificación y roles}
-	% TODO: Moderador, Lector, Inspector 1, Inspector 2 (nombre y firma); alcance inspeccionado
-	% (secciones del ERS y número de páginas efectivas).
+	
+	Debido a que el equipo está conformado por tres integrantes, se asignaron los cuatro roles exigidos por el método Fagan de la siguiente manera: Andy Johel Mendoza Párraga asumió simultáneamente los roles de Moderador y Lector, mientras que Winston Damian Cedeño Ávila y Mayra Lucila Córdova Carreño actuaron como Inspector 1 e Inspector 2, respectivamente. Esta asignación quedó formalizada en el documento \textit{Planificación de la Inspección Formal Fagan}, firmado por los tres integrantes el 7 de agosto de 2026.
+	
+	El alcance de la inspección se delimitó a las secciones 2 (Descripción general), 3 (Requisitos específicos completos) y 5 (Priorización y trazabilidad extendida) del \texttt{ERS\_SRS\_2A\_v1.0}, por concentrar la mayor densidad de requisitos verificables y de relaciones de trazabilidad del documento. Dicho alcance corresponde a un total de \textbf{50 páginas efectivas} (7 páginas de la Sección 2, 34 de la Sección 3 y 9 de la Sección 5), según el conteo realizado sobre el PDF compilado del ERS.
+	
+	La reunión de inspección se planificó para el 8 de agosto de 2026, a las 16:00, en modalidad virtual (Google Meet), con una duración máxima acordada de 90 minutos.
 	
 	\subsection{Preparación individual}
-	% TODO: Anexo A por cada inspector (mínimo 6 defectos por inspector, con marca temporal
-	% verificable), sobre las seis propiedades: ambigüedad, completitud, consistencia,
-	% verificabilidad, trazabilidad y factibilidad.
+	
+	Previo a la reunión, cada integrante realizó de forma independiente una revisión del ERS dentro del alcance definido, registrando los defectos encontrados en su propia copia del Anexo A, con marca temporal de inicio y fin de la preparación. La Tabla~\ref{tab:preparacion-individual} resume la evidencia de esta etapa.
+	
+	\begin{table}[H]
+		\centering
+		\caption{Evidencia de preparación individual por integrante.}
+		\label{tab:preparacion-individual}
+		\small
+		\begin{tabularx}{\textwidth}{@{}l l l X@{}}
+			\toprule
+			\textbf{Integrante} & \textbf{Rol} & \textbf{Horario de preparación} & \textbf{Defectos detectados} \\
+			\midrule
+			Andy Mendoza & Moderador / Lector & 08/08/2026, 09:00--11:15 & 6 \\
+			Winston Cedeño & Inspector 1 & 08/08/2026, 10:00--11:30 & 6 \\
+			Mayra Córdova & Inspector 2 & 08/08/2026, 10:15--11:30 & 6 \\
+			\bottomrule
+		\end{tabularx}
+	\end{table}
+	
+	Cada inspector superó el mínimo de 6 defectos exigido, evaluando las seis propiedades de calidad establecidas: ambigüedad, completitud, consistencia, verificabilidad, trazabilidad y factibilidad. Los defectos identificados abarcaron desde imprecisiones de redacción (por ejemplo, el uso de ``radio $\geq$ 1 km'' en RNF-16, que permite valores arbitrariamente grandes) hasta brechas estructurales más profundas, como la ausencia de un Requisito Funcional que implemente el derecho de supresión de cuenta exigido por RL-04.
 	
 	\subsection{Acta de la reunión de inspección}
-	% TODO: reunión máx. 90 minutos; consolidación en el Anexo B (N.º, sección, descripción del
-	% defecto, tipo, severidad crítico/mayor/menor, requisito afectado). Mínimo 15 defectos únicos,
-	% de los cuales al menos 3 críticos o mayores.
+	
+	La reunión se realizó el 8 de agosto de 2026, a partir de las 16:00, con una duración aproximada de 60 minutos, dentro del límite máximo de 90 minutos establecido. Participaron los tres integrantes del equipo, cada uno en su rol asignado. Conforme a la regla acordada en la planificación, la reunión se limitó estrictamente a la detección y el registro de defectos, sin discutir ni proponer soluciones.
+	
+	Durante la reunión, el Lector guio la revisión de las secciones 2, 3 y 5 del ERS, y cada Inspector reportó los defectos identificados en su preparación individual. El Moderador consolidó la totalidad de los defectos reportados en el Anexo B en tiempo real. Como resultado, se registraron \textbf{18 defectos únicos}, distribuidos equitativamente entre los tres integrantes (6 defectos detectados por cada uno), superando ampliamente el mínimo de 15 defectos exigido, con 2 defectos críticos y 7 mayores (9 en total), por encima del mínimo de 3 críticos o mayores establecido por la guía.
 	
 	\subsection{Métricas de inspección}
-	% TODO: tabla y gráfico de densidad de defectos (defectos/página), distribución por tipo,
-	% distribución por severidad, tasa de detección por inspector, esfuerzo total en horas-persona.
-	% Interpretar cada métrica en una oración.
+	
+	A partir de la información registrada en el Anexo B y en los Anexos A individuales, se calcularon las métricas de la Tabla~\ref{tab:metricas-inspeccion}.
+	
+	\begin{table}[H]
+		\centering
+		\caption{Métricas de la inspección formal Fagan.}
+		\label{tab:metricas-inspeccion}
+		\small
+		\begin{tabularx}{\textwidth}{@{}X l@{}}
+			\toprule
+			\textbf{Métrica} & \textbf{Valor} \\
+			\midrule
+			Defectos totales detectados & 18 \\
+			Páginas efectivas del alcance & 50 \\
+			Densidad de defectos & 0.36 defectos/página \\
+			Esfuerzo de preparación individual & 5.00 horas-persona \\
+			Esfuerzo de la reunión (3 personas $\times$ 60 min) & 3.00 horas-persona \\
+			Esfuerzo total de la inspección & 8.00 horas-persona \\
+			Productividad de la inspección & 2.25 defectos/hora-persona \\
+			Tasa de detección por inspector & 33.3\,\% cada uno (6/18) \\
+			\bottomrule
+		\end{tabularx}
+	\end{table}
+	
+	\begin{table}[H]
+		\centering
+		\caption{Distribución de defectos por tipo (propiedad de calidad).}
+		\label{tab:distribucion-tipo}
+		\small
+		\begin{tabularx}{\textwidth}{@{}X l@{}}
+			\toprule
+			\textbf{Tipo} & \textbf{Cantidad} \\
+			\midrule
+			Completitud & 6 \\
+			Consistencia & 5 \\
+			Ambigüedad & 3 \\
+			Verificabilidad & 2 \\
+			Trazabilidad & 1 \\
+			Factibilidad & 1 \\
+			\bottomrule
+		\end{tabularx}
+	\end{table}
+	
+	\begin{table}[H]
+		\centering
+		\caption{Distribución de defectos por severidad.}
+		\label{tab:distribucion-severidad}
+		\small
+		\begin{tabularx}{\textwidth}{@{}X l@{}}
+			\toprule
+			\textbf{Severidad} & \textbf{Cantidad} \\
+			\midrule
+			Crítico & 2 \\
+			Mayor & 7 \\
+			Menor & 9 \\
+			\bottomrule
+		\end{tabularx}
+	\end{table}
+	
+	La densidad de defectos (0.36 por página) indica que, en promedio, se detectó poco más de un defecto cada tres páginas del alcance inspeccionado, lo cual es consistente con un ERS que ya había pasado por un ciclo previo de especificación (Entrega 2A) pero que aún conserva inconsistencias entre secciones. La distribución por tipo muestra que \textbf{completitud} (6) y \textbf{consistencia} (5) concentran más del 60\,\% de los defectos, lo que sugiere que el principal riesgo del documento no es la redacción individual de cada requisito, sino la coherencia entre secciones y artefactos relacionados (por ejemplo, discrepancias entre la matriz de trazabilidad y la clasificación de requisitos, o entre un RF y su historia de usuario asociada). La distribución por severidad, con 9 defectos críticos o mayores sobre 18 totales (50\,\%), confirma que la mitad de los hallazgos requiere corrección obligatoria antes de establecer la nueva línea base del ERS. Finalmente, la tasa de detección equilibrada entre los tres inspectores (33.3\,\% cada uno) indica que ningún integrante concentró desproporcionadamente la carga de revisión, aunque --tal como advierte la literatura citada en la Sección~2.2.5-- esto no garantiza por sí solo independencia total entre las detecciones, ya que varios defectos fueron reportados sobre secciones distintas del ERS por cada inspector.
 	
 	% ============================================================
-	% 5. CORRECCIONES APLICADAS
+	% 4. CORRECCIONES APLICADAS
 	% ============================================================
 	\newpage
 	\section{Correcciones aplicadas}
@@ -546,7 +625,7 @@ doi=true
 	% referencia al requisito afectado. Defectos menores no corregidos deben quedar justificados.
 	
 	% ============================================================
-	% 6. GESTIÓN DEL CAMBIO Y CCB
+	% 5. GESTIÓN DEL CAMBIO Y CCB
 	% ============================================================
 	\newpage
 	\section{Gestión del cambio y Change Control Board (CCB)}
@@ -572,7 +651,7 @@ doi=true
 	% TODO: de v1.0 a v1.1 (coherente entre portada, historial de revisiones, CHANGELOG.md y tag de Git).
 	
 	% ============================================================
-	% 7. TRAZABILIDAD EN HERRAMIENTA CASE
+	% 6. TRAZABILIDAD EN HERRAMIENTA CASE
 	% ============================================================
 	\newpage
 	\section{Trazabilidad en herramienta CASE} \label{sec:trazabilidad_case}
@@ -595,7 +674,7 @@ doi=true
 	% del panel de estadísticas, y referencia al CSV exportado (Anexo D).
 	
 	% ============================================================
-	% 8. LÍNEA BASE CON GIT
+	% 7. LÍNEA BASE CON GIT
 	% ============================================================
 	\newpage
 	\section{Línea base del ERS con Git}
@@ -619,7 +698,7 @@ doi=true
 	% TODO: capturas de git log --oneline --graph --decorate y git tag -n (ver también Anexo E).
 	
 	% ============================================================
-	% 9. COMPARATIVA DE HERRAMIENTAS CASE
+	% 8. COMPARATIVA DE HERRAMIENTAS CASE
 	% ============================================================
 	\newpage
 	\section{Comparativa de herramientas CASE}
@@ -629,7 +708,7 @@ doi=true
 	% el PFC del equipo.
 	
 	% ============================================================
-	% 10. IR TRADICIONAL FRENTE A IR ÁGIL
+	% 9. IR TRADICIONAL FRENTE A IR ÁGIL
 	% ============================================================
 	\newpage
 	\section{IR tradicional frente a IR ágil}
@@ -638,7 +717,7 @@ doi=true
 	% cada enfoque, con discusión contextual.
 	
 	% ============================================================
-	% 11. CONCLUSIONES CRÍTICAS
+	% 10. CONCLUSIONES CRÍTICAS
 	% ============================================================
 	\newpage
 	\section{Conclusiones críticas}
@@ -647,7 +726,7 @@ doi=true
 	% propio del equipo, no una afirmación general de manual.
 	
 	% ============================================================
-	% 12. DISTRIBUCIÓN DEL TRABAJO
+	% 11. DISTRIBUCIÓN DEL TRABAJO
 	% ============================================================
 	\newpage
 	\section{Distribución del trabajo}
@@ -655,7 +734,7 @@ doi=true
 	% construcción del tablero CASE, commits), contrastable con el historial de commits de GitHub.
 	
 	% ============================================================
-	% 13. REFERENCIAS
+	% 12. REFERENCIAS
 	% ============================================================
 	\newpage
 	\section{Referencias}
@@ -665,7 +744,7 @@ doi=true
 	% (y viceversa) -- una discrepancia se contabiliza como defecto de rigor bibliográfico.
 	
 	% ============================================================
-	% 14. ANEXOS A-F
+	% 13. ANEXOS A-F
 	% ============================================================
 	
 	\newpage
