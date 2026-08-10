@@ -997,11 +997,69 @@ La coherencia de versión se mantiene entre los siguientes artefactos: la portad
 	% ============================================================
 	\section{Línea base del ERS con Git}
 	
-	\subsection{Repositorio y estructura}
-	
 	El repositorio del equipo, \texttt{ISR401-PFC-ERS-EQUIPOB}, es público y está alojado en GitHub (\url{https://github.com/andymendozap03/ISR401-PFC-ERS-EQUIPOB}). Contiene un \texttt{README.md} con: el sistema del PFC (MundiPets), los tres integrantes con su rol, la estructura completa de carpetas (\texttt{01\_ERS} a \texttt{07\_Borradores}) y las instrucciones de compilación del informe y del ERS --- distribución LaTeX requerida, orden de comandos (\texttt{pdflatex} $\rightarrow$ \texttt{biber} $\rightarrow$ \texttt{pdflatex} $\times 2$), archivo principal de cada documento y dependencias de paquetes.
 	
-	La estructura del repositorio separa claramente los artefactos de cada paso de la práctica: \texttt{01\_ERS/} contiene el ERS versionado (\texttt{v1.0} y \texttt{v1.1}, con sus fuentes LaTeX y figuras); \texttt{02\_Inspeccion/} y \texttt{03\_CCB/} contienen la evidencia firmada de la inspección Fagan y del CCB; \texttt{04\_Trazabilidad/} contiene el backlog exportado y la matriz de trazabilidad; \texttt{05\_Informe/} contiene el informe de la PE4; y \texttt{06\_Evidencias/} contiene las capturas y fotografías de las sesiones de trabajo.
+	La estructura del repositorio separa claramente los artefactos de cada paso de la práctica: \texttt{01\_ERS/} contiene el ERS versionado (\texttt{v1.0} y \texttt{v1.1}, con sus fuentes LaTeX y figuras); \texttt{02\_Inspeccion/} y \texttt{03\_CCB/} contienen la evidencia firmada de la inspección Fagan y del CCB; \texttt{04\_Trazabilidad/} contiene el backlog exportado y la matriz de trazabilidad; \texttt{05\_Informe/} contiene el informe de la PE4; y \texttt{06\_Evidencias/} contiene las capturas y fotografías de las sesiones de trabajo. El árbol completo del repositorio se presenta a continuación:
+	\newpage
+	{\scriptsize
+		\begin{verbatim}
+			ISR401-PFC-ERS-EQUIPOB/
+			|   README.md
+			|   CHANGELOG.md
+			|
+			+---01_ERS/
+			|   |   ERS_SRS_2A_v1.0.pdf
+			|   |   ERS_SRS_2A_v1_1.pdf
+			|   |
+			|   +---fuentes_tex/
+			|       +---ERS_SRS_2A_v1.0/
+			|       |   |   .gitignore
+			|       |   |   ERS_SRS_2A_v1.0.tex
+			|       |   |   referencias.bib
+			|       |   +---figuras/
+			|       +---ERS_SRS_2A_v1.1/
+			|           |   .gitignore
+			|           |   ERS_SRS_2A_v1_1.tex
+			|           |   referencias.bib
+			|           +---figuras/
+			|
+			+---02_Inspeccion/
+			|   |   AnexoB_registro_defectos.xlsx
+			|   |   metricas.xlsx
+			|   |   Planificacion_Roles_Inspeccion.pdf
+			|   +---AnexoA_checklists/
+			|           AnexoA_checklist_Inspector1_Winston_Cedeno.xlsx
+			|           AnexoA_checklist_Inspector2_Mayra_Cordova.xlsx
+			|           AnexoA_checklist_Moderador_Lector_Andy_Mendoza.xlsx
+			|
+			+---03_CCB/
+			|       Acta_CCB.pdf
+			|       RFC-01.pdf
+			|       RFC-02.pdf
+			|       RFC-03.pdf
+			|
+			+---04_Trazabilidad/
+			|   |   backlog_export.csv
+			|   |   matriz_trazabilidad.xlsx
+			|   +---capturas/
+			|
+			+---05_Informe/
+			|   |   PE4_U4_CEDENOAVILA_CORDOVA_MENDOZAPARRAGA.pdf
+			|   |   PE4_U4_CEDENOAVILA_CORDOVA_MENDOZAPARRAGA.tex
+			|   |   referencias.bib
+			|   +---figuras/
+			|
+			+---06_Evidencias/
+			|   |   declaracion_IA.pdf
+			|   +---capturas_git/
+			|   +---fotos_sesion/
+			|
+			+---07_Borradores/
+			+---CedenoAvila/
+			+---CordovaCarreno/
+			+---MendozaParraga/
+		\end{verbatim}
+	}
 	
 	\subsection{Commits semánticos}
 	
